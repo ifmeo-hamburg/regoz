@@ -8,34 +8,34 @@ parts:
   - caption: Syllabus
     chapters:
     - file: general/syllabus
-    - file: general/SuSe-2023
+    - file: general/SuSe-2024
   - caption: Lectures
     chapters:
     - file: lectures/lecture-1-seawater
-    - file: lectures/lecture-3-airsea
-    - file: lectures/lecture-4-mixedlayer
-    - file: lectures/lecture-5-watermasses
-    - file: lectures/lecture-7-eqn-of-motion
-    - file: lectures/lecture-7.1-scaling
-    - file: lectures/lecture-8-geostrophy
-    - file: lectures/lecture-9-Ekman
-    - file: lectures/lecture-10-Sverdrup
+#    - file: lectures/lecture-3-airsea
+#    - file: lectures/lecture-4-mixedlayer
+#    - file: lectures/lecture-5-watermasses
+#    - file: lectures/lecture-7-eqn-of-motion
+#    - file: lectures/lecture-7.1-scaling
+#    - file: lectures/lecture-8-geostrophy
+#    - file: lectures/lecture-9-Ekman
+#    - file: lectures/lecture-10-Sverdrup
   - caption: Exercises
     chapters:
     - file: exercises/overview
-    - file: exercises/exercise-1
-    - file: exercises/exercise-2
-    - file: exercises/exercise-3
-    - file: exercises/exercise-4
-    - file: exercises/exercise-5
-    - file: exercises/mini-project
-  - caption: Computing (optional)
+#    - file: exercises/exercise-1
+#    - file: exercises/exercise-2
+#    - file: exercises/exercise-3
+#    - file: exercises/exercise-4
+#    - file: exercises/exercise-5
+#    - file: exercises/mini-project
+  - caption: Computing 
     chapters:
     - file: computing/practical-1.md
-    - file: computing/practical-2.md
-    - file: computing/practical-3.md
-    - file: computing/practical-4.md
-    - file: computing/practical-5.md
-    - file: computing/practical-6.md
+#    - file: computing/practical-2.md
+#    - file: computing/practical-3.md
+#    - file: computing/practical-4.md
+#    - file: computing/practical-5.md
+#    - file: computing/practical-6.md
 
 

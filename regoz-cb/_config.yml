@@ -18,7 +18,7 @@ execute:
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
-    targetname: book.tex
+    targetname: course-RegOz-SuSe2023.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
