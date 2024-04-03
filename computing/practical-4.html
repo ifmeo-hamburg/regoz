@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Seasons &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/practical-4';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spatial data" href="practical-5.html" />
+    <link rel="prev" title="Trends" href="practical-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/practical-4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/practical-4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Seasons</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Seasons</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-a-time-series-of-sst-in-the-atlantic">Exploring the a time series of SST in the Atlantic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-some-basic-statistics">Calculate some basic statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-seasonal-cycle">Find the seasonal cycle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-use-the-function-fit-harmonics-m">Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-calculate-a-seasonal-climatology">Method 2: Calculate a seasonal climatology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="seasons">
+<h1>Seasons<a class="headerlink" href="#seasons" title="Permalink to this heading">#</a></h1>
+<p>Besides trends in time series, a common pattern in natural datasets is a cycle of some sort, whether it be a diurnal or seasonal cycle.  Here we will explore ways to quantify the amplitude, period and phase of a cycle.  Amplitude refers to how big the fluctuations are (half the difference between the peak and trough value); period refers to how far apart in time the peaks are separated; and phase describes when a peak happens (e.g., for a seasonal cycle, it can be used to identify whether the time series peaks in the summer or winter).</p>
+<p><strong>Aim:</strong>  This lab explores a method of time series analysis for oscillating data.</p>
+<p><strong>Learning outcomes:</strong>
+At the end of this lab, you will be able to:</p>
+<ol class="arabic simple">
+<li><p>Load data into Matlab (a <code class="docutils literal notranslate"><span class="pre">mat</span></code>-file containing data variables)</p></li>
+<li><p>Work with the structure class of variables in Matlab</p></li>
+<li><p>Gain basic familiarity with \textit{indices} in Matlab.</p></li>
+<li><p>Use the function  <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code> to fit a sinusoid with period 365.25 days to a time series.</p></li>
+</ol>
+<p><strong>Data:</strong> You will work with a time series of SST from the North Atlantic, in filename <code class="docutils literal notranslate"><span class="pre">oisst_t1.mat</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-m-files">
+<h1>Working with m-files.<a class="headerlink" href="#working-with-m-files" title="Permalink to this heading">#</a></h1>
+<p><strong>Create an m-file.</strong>  While in Matlab, it is possible to work in the command window, typing commands at the command prompt as needed, it can be useful to store the commands that works, in the right order, in a separate file for later use.  That way, if you needed to carry out the same calculations again, you would not have a useful record of what you had done.   An <code class="docutils literal notranslate"><span class="pre">m</span></code>-file is like a Word document where you can write your Matlab commands, save them, and use them again later.</p>
+<p>To open an m-file, in the Matlab window, select <code class="docutils literal notranslate"><span class="pre">File&gt;New&gt;Script</span></code>.  Save the file as <code class="docutils literal notranslate"><span class="pre">time_series_analysis.m</span></code>.</p>
+<p><em>Note: Matlab doesn’t like filenames with dashes or spaces in them, or names that start with a number.</em></p>
+<p><strong>Executing the m-file.</strong> Matlab  executes lines of code in sequential order, from top to bottom.  It skips lines that are commented (beginning with the <code class="docutils literal notranslate"><span class="pre">%</span></code> sign).  These comments show up in a different colour than commands in the Matlab editor.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Hello World&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% This is a comment</span>
+</pre></div>
+</div>
+<p>Once you type commands into your m-file, you can highlight them and the use the F9 shortcut to evaluate the selected code.  You can also click the green run button, which will evaluate the whole m-file.  Or, you can type the <code class="docutils literal notranslate"><span class="pre">ctrl-return</span></code> keystroke to evaluate the current cell within your m-file.</p>
+<p>A <em>cell</em> is a segment of code that is separated by a line that begins with exactly two percent symbols (no spaces between them).  Two percent symbols (<code class="docutils literal notranslate"><span class="pre">%%</span></code>) with no spaces between or before them start a new cell.  Any text that occurs after the two percents is also a comment.</p>
+<p><strong>Throughout this lab, enter your commands into your m-file rather than the command prompt, then execute the m-file in order to see your results.</strong>   To print results to the screen,  either omit the semicolon (simple) or use the <code class="docutils literal notranslate"><span class="pre">disp</span></code> command to add more detailed information (advanced).    Comment your work.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exploring-the-a-time-series-of-sst-in-the-atlantic">
+<h1>Exploring the a time series of SST in the Atlantic<a class="headerlink" href="#exploring-the-a-time-series-of-sst-in-the-atlantic" title="Permalink to this heading">#</a></h1>
+<p><strong>Load the data</strong> and check what has been loaded (Recall: commands <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">whos</span></code>).</p>
+<p>This time, your variable is of class <code class="docutils literal notranslate"><span class="pre">struct</span></code> or structure.  A Matlab structure is a bit like a file folder, with different variables contained within it.  The <code class="docutils literal notranslate"><span class="pre">whos</span></code> command won’t show us what’s in it.</p>
+<p>To see what’s in a structure, use the <code class="docutils literal notranslate"><span class="pre">disp</span></code> command instead:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">disp</span><span class="p">(</span><span class="n">oisst1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should find four fields: <code class="docutils literal notranslate"><span class="pre">time</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>, and <code class="docutils literal notranslate"><span class="pre">sst</span></code>.  To access the variables inside a structure, you use the structure name and then the field name, with a dot in between.  So to access the time vector, use <code class="docutils literal notranslate"><span class="pre">oisst1.time</span></code> and to access the sea surface temperatures, use <code class="docutils literal notranslate"><span class="pre">oisst1.sst</span></code>.</p>
+<p>Plotting your data can be a great way to get an idea of what you’ve got. <strong>Create figure 1</strong> and plot the <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> time series against the time vector using the <code class="docutils literal notranslate"><span class="pre">figure</span></code> and plot` commands.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">clf</span><span class="w">  </span><span class="s">%</span><span class="w"> </span><span class="s">clf</span><span class="w"> </span><span class="s">clears</span><span class="w"> </span><span class="s">the</span><span class="w"> </span><span class="s">current</span><span class="w"> </span><span class="s">figure</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">time</span><span class="p">,</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fix the x-axes using the <code class="docutils literal notranslate"><span class="pre">datetick</span></code> command.  (Recall: command <code class="docutils literal notranslate"><span class="pre">datetick</span></code>.)  Add a grid using <code class="docutils literal notranslate"><span class="pre">grid</span> <span class="pre">on</span></code>.</p>
+<p>Normally when we create scientific figures to display data, we annotate them so the viewer knows what is plotted. Try annotating the figure with some helpful labels on the x- and y-axis.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Temperature [deg C]&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Provide a useful title here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See if you can use the commands <code class="docutils literal notranslate"><span class="pre">legend</span></code> and <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>.</p>
+<section id="calculate-some-basic-statistics">
+<h2>Calculate some basic statistics<a class="headerlink" href="#calculate-some-basic-statistics" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>What is the average of the time series?     Specify your answer to the nearest 100th. (Recall: command <code class="docutils literal notranslate"><span class="pre">mean</span></code>.)</p></li>
+</ol>
+<!--20.73 deg C-->
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">tmean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em><strong>Advanced:</strong> The function <code class="docutils literal notranslate"><span class="pre">disp</span></code> takes a string as input (the variable <code class="docutils literal notranslate"><span class="pre">output_string</span></code>).  It can be used to print useful information to the screen.</em></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">output_string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span>`<span class="n">The</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">SST</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">is</span><span class="w"> </span>`<span class="p">,</span><span class="nb">num2str</span><span class="p">(</span><span class="n">tmean</span><span class="p">),</span>`<span class="w"> </span><span class="n">deg</span><span class="w"> </span><span class="n">C</span>`<span class="p">];</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">output_string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>This was created from three different strings separated by commas.  The first string, denoted by the apostrophes, is simple text “The average of the SST\ldots”.  The second string is constructed from the numeric value contained in the variable <code class="docutils literal notranslate"><span class="pre">tmean</span></code>, but  converted to a string using the function <code class="docutils literal notranslate"><span class="pre">num2str</span></code>.  The third string is again denoted by  apostrophes.  Enclosing them in square brackets combines them into one long string.</em></p>
+<ol class="arabic simple" start="2">
+<li><p>What is the standard deviation of the time series?</p></li>
+</ol>
+<!--2.08 deg C-->
+<p>*Hint: If you don’t remember a command, you can try to find it by using the Matlab command <code class="docutils literal notranslate"><span class="pre">lookfor</span></code> and a keyword.  For example, *</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">lookfor</span><span class="w"> </span><span class="n">deviation</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>How many years long is the record (i.e. the temporal range or coverage of the dataset)?  Report your answer to the nearest 10th of a year.</p></li>
+</ol>
+<!--22.5 years-->
+<p><em>Hint: Recall  that Matlab stores time in units of days.  If you take the first day in the record, and subtract it from the last, you will have the number of days of the record.</em></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numdays</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">time</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">time</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="find-the-seasonal-cycle">
+<h2>Find the seasonal cycle<a class="headerlink" href="#find-the-seasonal-cycle" title="Permalink to this heading">#</a></h2>
+<p>Looking at the time series, you can see a strong seasonal cycle.  Here, we will quantify the seasonal cycle by fitting a sinusoid to it, with a period of 365.25 days.</p>
+<section id="method-1-use-the-function-fit-harmonics-m">
+<h3>Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code><a class="headerlink" href="#method-1-use-the-function-fit-harmonics-m" title="Permalink to this heading">#</a></h3>
+<p>This is not a built-in Matlab function.  Make sure you download it to your computer, then open it in the editor to have a look at what it does.  Use the <code class="docutils literal notranslate"><span class="pre">help</span></code> command to see how to use it.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="n">fit_harmonics</span>
+</pre></div>
+</div>
+<p>This function takes 5 inputs: the data, the time vector, the number of harmonics you want to calculate (for us, this will always be 1), the period (with the same units as the time vector), and the cutoff for how important the harmonic is (we will always use zero).</p>
+<p>Choose the values of the parameters to use (the number of harmonics, period and cutoff) and enter them in your <code class="docutils literal notranslate"><span class="pre">m</span></code>-file as</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Fitting a harmonic</span>
+<span class="n">nharm</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">365.25</span><span class="p">;</span>
+<span class="n">cutoff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now add the line of code to calculate the harmonic, storing all the outputs.</p>
+<!-- line of code-->
+<ol class="arabic simple" start="4">
+<li><p>One of the outputs of the function <code class="docutils literal notranslate"><span class="pre">fit_harmonics</span></code> is the <em>amplitude</em> of the cycle.   What is the seasonal <em>range</em>?</p></li>
+</ol>
+<!--5.69 deg C-->
+<p>Recall that we created cosine-type sinusoids last time, where for <span class="math notranslate nohighlight">\(y=3\cos(2\pi t/T)\)</span> we wrote in Matlab, <code class="docutils literal notranslate"><span class="pre">y=3*cos(2*pi*time/365.25)</span></code>.  Calculate a cosine for the seasonal cycle using the output from fitting a harmonic. In this case, we will create a cosine with the form <span class="math notranslate nohighlight">\(y = a\cos(2\pi t/L+\phi)\)</span>, where the amplitude <span class="math notranslate nohighlight">\(a\)</span> is given by the output <code class="docutils literal notranslate"><span class="pre">amp</span></code> and the phase <span class="math notranslate nohighlight">\(\phi\)</span> by <code class="docutils literal notranslate"><span class="pre">pha</span></code>.  The period <span class="math notranslate nohighlight">\(L\)</span> was set by the input <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p>
+<p><strong>Update the figure:</strong> Add the seasonal cycle to figure 1. You will need to use the <code class="docutils literal notranslate"><span class="pre">offset</span></code> from the outputs from fitting a harmonic in order to get the seasonal cycle on top of the original data.  Annotate the figure with a legend so you can distinguish between the two lines.</p>
+<p><em>Recall the command <code class="docutils literal notranslate"><span class="pre">hold</span> <span class="pre">on</span></code> and how to make the line a different colour.</em></p>
+<p><strong>Export the figure</strong> in <code class="docutils literal notranslate"><span class="pre">*.png</span></code> format.  Recall the steps we used last time.</p>
+<p><em><strong>Advanced:</strong>  Alternatively, you can save figures automatically by adding these lines to your m-file:</em></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Export the figure.  Name it sst_cycle.png</span>
+<span class="nb">set</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="s">&#39;paperpositionmode&#39;</span><span class="p">,</span><span class="s">&#39;auto&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">&#39;-dpng&#39;</span><span class="p">,</span><span class="s">&#39;sst_cycle.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>The <code class="docutils literal notranslate"><span class="pre">set</span></code> command is optional, but will preserve the aspect ratio of your figure on the screen if, for instance, you resize the window before saving the figure.</em></p>
+<ol class="arabic simple" start="5">
+<li><p>In what month does the time series peak?  Zoom in on your figure around one of the peaks in the seasonal cycle.  Then redo the <code class="docutils literal notranslate"><span class="pre">datetick</span></code> command with a third input, to prevent Matlab from resetting the x-axis limits when adding the date ticks.</p></li>
+</ol>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">datetick</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;mmm&#39;</span><span class="p">,</span><span class="s">&#39;keeplimits&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<!--August-->
+</section>
+<section id="method-2-calculate-a-seasonal-climatology">
+<h3>Method 2: Calculate a seasonal climatology<a class="headerlink" href="#method-2-calculate-a-seasonal-climatology" title="Permalink to this heading">#</a></h3>
+<p>In oceanography, we often refer to a time series of monthly averages as a seasonal climatology.  We can calculate that in this case as well, using more advanced programming concepts: the <code class="docutils literal notranslate"><span class="pre">for-do</span></code> loop or <code class="docutils literal notranslate"><span class="pre">for-loop</span></code>.</p>
+<p>If we want to calculate a seasonal climatology for the SST time series, we can start by calculating the average SST in January.  First we need to find which of the elements in the vector <code class="docutils literal notranslate"><span class="pre">oisst1.sst</span></code> are from January.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">month</span></code> converts matlab time (in units of days since Jan 1, 0000) into numeric months, ranging from 1-12.  To create a vector of the months that is the same length as the vector <code class="docutils literal notranslate"><span class="pre">oisst1.sst</span></code>, we can apply <code class="docutils literal notranslate"><span class="pre">month</span></code> to the time vector, <code class="docutils literal notranslate"><span class="pre">oisst1.time</span></code> as</p>
+<blockquote>
+<div><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">month_vec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">month</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">time</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then we can use the find command to determine which of those elements are from January:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">index_jan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">month_vec</span><span class="o">==</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The output, <code class="docutils literal notranslate"><span class="pre">index_jan</span></code> is a vector of indices.  Do a whos on it, and you’ll see it is not the same length as <code class="docutils literal notranslate"><span class="pre">month_vec</span></code> or <code class="docutils literal notranslate"><span class="pre">oisst1.time</span></code>, from which it is derived. Instead, it is exactly as long as there are datapoints from January.  The values within <code class="docutils literal notranslate"><span class="pre">index_jan</span></code> are the positions or indices of those datapoints from January.</p>
+<p>Then if we want the January mean, we can calculate</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">jan_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">(</span><span class="n">index_jan</span><span class="p">));</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>What is the average temperature in January?</p></li>
+</ol>
+<!--18.6 deg C-->
+<p>To create the seasonal cycle, we could repeat these lines of code 12 times,</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">index_jan</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">month_vec</span><span class="o">==</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">jan_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">(</span><span class="n">index_jan</span><span class="p">));</span>
+<span class="n">index_feb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">month_vec</span><span class="o">==</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">feb_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">(</span><span class="n">index_feb</span><span class="p">));</span>
+<span class="n">index_mar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">month_vec</span><span class="o">==</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">mar_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">(</span><span class="n">index_mar</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Then if we wanted a seasonal cycle, we could string together those 12 values as</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seasonal_cycle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">jan_mean</span><span class="w"> </span><span class="n">feb_mean</span><span class="w"> </span><span class="n">mar_mean</span><span class="w"> </span><span class="k">...</span><span class="c">]</span>
+</pre></div>
+</div>
+<p>The more compact and versatile way to do this is to use a <code class="docutils literal notranslate"><span class="pre">for-loop</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">mdo</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">12</span>
+<span class="w">    </span><span class="n">index_month</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">month_vec</span><span class="o">==</span><span class="n">mdo</span><span class="p">);</span>
+<span class="w">    </span><span class="n">month_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">oisst1</span><span class="p">.</span><span class="n">sst</span><span class="p">(</span><span class="n">index_month</span><span class="p">));</span>
+<span class="w">    </span><span class="n">seasonal_cycle</span><span class="p">(</span><span class="n">mdo</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">month_mean</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Using this method, what is the seasonal range?</p></li>
+</ol>
+<p>See if you can make a figure to show both methods of calculating the seasonal cycle on them.  Call it <code class="docutils literal notranslate"><span class="pre">sst_cycle2.png</span></code>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="practical-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Trends</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="practical-5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spatial data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Seasons</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-a-time-series-of-sst-in-the-atlantic">Exploring the a time series of SST in the Atlantic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-some-basic-statistics">Calculate some basic statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-seasonal-cycle">Find the seasonal cycle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-use-the-function-fit-harmonics-m">Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-calculate-a-seasonal-climatology">Method 2: Calculate a seasonal climatology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

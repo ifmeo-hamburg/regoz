@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Trends &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/practical-3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Seasons" href="practical-4.html" />
+    <link rel="prev" title="Profile data" href="practical-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/practical-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/practical-3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Trends</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Trends</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-m-file">Creating an m-file.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-the-m-file">Executing the m-file.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-mauna-loa-data">Exploring the Mauna Loa data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-some-basic-statistics">Calculate some basic statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-linear-regression-to-the-data">Fit a linear regression to the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-use-the-function-detrend">Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">detrend</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-use-the-function-polyfit-label-poly1">Method 2: Use the function <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>. \label{poly1}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-residual">Calculating a residual.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matlab-function-find">Using the Matlab function find.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-your-own-time-more-advanced-polynomial-fitting">In your own time: More advanced polynomial fitting.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-quadratic">Fitting a quadratic.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-equation-of-a-quadratic">Writing the equation of a quadratic.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-the-figure-with-the-best-fit-line-and-quadratic">Export the figure with the best fit line and quadratic.</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="trends">
+<h1>Trends<a class="headerlink" href="#trends" title="Permalink to this heading">#</a></h1>
+<p>One goal of data analysis is to quantify the characteristic pattern or variability of a dataset.  In the case of the time series in Fig. 1, we see an increase in <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration with time, as well as some wiggly bits.  In order to objectively quantify the changes we see by eye, using repeatable methods, we can choose to represent the change by a line that best fits the data.  This is called “linear regression”, where in this case, the slope of the line represents the rate of increase in the data.  Sometimes we also talk about the “increasing rate of change” or the “acceleration”, as in the case of sea level rise.  Not only is sea level rising, the rate at which it is rising is increasing. In order to quantify this change in the rate, we can fit a quadratic (i.e. second order polynomial) to the data, where the slope on squared term gives the acceleration.</p>
+<p><img alt="Time series of  concentration at Mauna Loa, Hawaii (also known as the &quot;Keeling curve&quot;)." src="../_images/maunaloa_co2.png" /></p>
+<p><strong>Aim:</strong>  The purpose of this lab is to get you started with elementary time series analysis: fitting a trend and a polynomial to a time series, and calculating the residual error.</p>
+<p><strong>Learning outcomes:</strong>
+At the end of this lab, you will be able to:</p>
+<ol class="arabic simple">
+<li><p>Calculate a linear trend given a time series, and determine its slope and y-offset.</p></li>
+<li><p>Calculate a polynomial fit to the time series, and determine the acceleration.</p></li>
+<li><p>Gain basic familiarity with Matlab class <code class="docutils literal notranslate"><span class="pre">structure</span></code>, `fieldnames+, and familiarity with  <em>indices</em>.</p></li>
+<li><p>Use the Matlab functions including:  <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>, <code class="docutils literal notranslate"><span class="pre">polyval</span></code>, <code class="docutils literal notranslate"><span class="pre">disp</span></code>, <code class="docutils literal notranslate"><span class="pre">grid</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, and the operators <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code> and <code class="docutils literal notranslate"><span class="pre">.^2</span></code>.</p></li>
+</ol>
+<p><strong>Data:</strong> You will work with the time series of carbon dioxide concentration from the Mauna Loa site, in filename <code class="docutils literal notranslate"><span class="pre">maunaloa_clean.mat</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-m-files">
+<h1>Working with m-files.<a class="headerlink" href="#working-with-m-files" title="Permalink to this heading">#</a></h1>
+<p>So far in Matlab, we’ve been typing commands at the command prompt in the command window.  This gives us the benefit of pressing enter and having Matlab evaluate the command and tell us what it thinks immediately.  But what if you want to save your work?  From now on, you should plan to work within an m-file for each new lab.</p>
+<section id="creating-an-m-file">
+<h2>Creating an m-file.<a class="headerlink" href="#creating-an-m-file" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Option 1:</em>
+For this week, you downloaded an m-file to start with. Next time, you will need to create an m-file.   You can do this in the file menu by selecting <code class="docutils literal notranslate"><span class="pre">File&gt;New&gt;Script</span></code>.  It will create for you an untitled m-file.  Choose <code class="docutils literal notranslate"><span class="pre">File&gt;Save</span> <span class="pre">As...</span></code> to give it a name.  Make sure you save it into the same folder for this module.</p></li>
+<li><p><em>Option 2:</em>
+Alternatively, you can create a new m-file by typing <code class="docutils literal notranslate"><span class="pre">edit</span></code> into the command window, followed by the name you’d like to give it with the extension <code class="docutils literal notranslate"><span class="pre">*.m</span></code>.  The extension is important to tell Matlab it is a file that contains commands.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">edit</span><span class="w"> </span><span class="n">soes2025_trends</span><span class="p">.</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>If the file does not already exist, Matlab will ask you if you want to create it.  Click <code class="docutils literal notranslate"><span class="pre">yes</span></code>.</p>
+<p>In both cases, an editor window will open.  You can either pop this in (dock it) in the larger interface window using the little arrow pointing down and to the right or use it separately.  On a Mac, this is in the top left corner.  On Windows, the top right.</p>
+<!--![The pop-in button](figures/gettingstarted_fig2b-eps-converted-to.pdf)
+\label{fig:popin}-->
+<p>If you were unable to download a text file from the Blackboard website, then select and copy the contents from the website, and paste it into the m-file you have just created.  Now, instead of entering commands at the command prompt, you can edit or execute the m-file.</p>
+</section>
+<section id="executing-the-m-file">
+<h2>Executing the m-file.<a class="headerlink" href="#executing-the-m-file" title="Permalink to this heading">#</a></h2>
+<p>Matlab  executes lines of code in sequential order, from top to bottom.  It skips lines that are commented (beginning with the <code class="docutils literal notranslate"><span class="pre">%</span></code> sign).  These comments show up in a different colour than commands in the Matlab editor.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Hello World&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">% This is a comment</span>
+</pre></div>
+</div>
+<p>To execute commands from or in an m-file, you have a few options.</p>
+<ul class="simple">
+<li><p><strong>Starting option:</strong> You can type the commands into your m-file.  When you want to execute them, copy them and paste them into the command window.</p></li>
+<li><p><strong>Advanced option:</strong> You can execute  cells within your m-file.  A <em>cell</em> is a segment of code that is separated by a line that begins with exactly two percent symbols (no spaces between them).  Two percent symbols (<code class="docutils literal notranslate"><span class="pre">%%</span></code>) with no spaces between or before them start a new cell.  Any text that occurs after the two percents is also a comment.</p></li>
+</ul>
+<p>To execute a cell, put the cursor in the cell (use the mouse to click somewhere in it).  The current cell will be highlighted in pale yellow.  Then you can use the keystroke <code class="docutils literal notranslate"><span class="pre">ctrl-return</span></code> to execute  the commands that are highlighted.</p>
+<hr class="docutils" />
+<p><strong>Throughout this lab, enter your commands into your m-file rather than the command prompt, then execute the m-file in order to see your results.</strong>  Don’t forget to suppress output if you don’t want a lot of stuff dumping to the screen each time you run your m-file.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exploring-the-mauna-loa-data">
+<h1>Exploring the Mauna Loa data<a class="headerlink" href="#exploring-the-mauna-loa-data" title="Permalink to this heading">#</a></h1>
+<p><strong>Load the data</strong> and check what has been loaded (Recall: commands <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">whos</span></code>).</p>
+<p>Plotting your data can be a great way to get an idea of what you’ve got. <strong>Create figure 1</strong> and plot the <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> time series against the time vector using the <code class="docutils literal notranslate"><span class="pre">figure</span></code> and plot` commands.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="nb">time</span><span class="p">,</span><span class="n">co2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fix the x-axes using the <code class="docutils literal notranslate"><span class="pre">datetick</span></code> command.  (Recall: command <code class="docutils literal notranslate"><span class="pre">datetick</span></code>.)  Add a grid using <code class="docutils literal notranslate"><span class="pre">grid</span> <span class="pre">on</span></code>.</p>
+<section id="calculate-some-basic-statistics">
+<h2>Calculate some basic statistics<a class="headerlink" href="#calculate-some-basic-statistics" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>What is the mean of the data?     Specify your answer to the nearest 10th. (Recall: command <code class="docutils literal notranslate"><span class="pre">mean</span></code>.)</p></li>
+</ol>
+<!--348.6 ppm-->
+<ol class="arabic simple" start="2">
+<li><p>What is the max and min?  These are the commands <code class="docutils literal notranslate"><span class="pre">max</span></code> and <code class="docutils literal notranslate"><span class="pre">min</span></code>.  (Use <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span> <span class="pre">help</span> <span class="pre">max</span></code> to see how to use it.)  \label{max}</p></li>
+</ol>
+<!--396.8 ppm, 313.2 ppm-->
+<ol class="arabic simple" start="3">
+<li><p>How many years long is the record (i.e. the temporal coverage)?\label{time}  <em>(Note: Time in Matlab is represented as days since the year 0.  What do you get if you subtract the minimum value in the time vector from the maximum?)</em></p></li>
+</ol>
+<!--54.6 years-->
+<ol class="arabic simple" start="4">
+<li><p>How quickly (in ppm/yr) is the concentration of <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> increasing?  Approximate, using your answers in (\ref{max})–(\ref{time}).\label{slope}</p></li>
+</ol>
+<!--1.53 ppm/yr-->
+</section>
+<section id="fit-a-linear-regression-to-the-data">
+<h2>Fit a linear regression to the data<a class="headerlink" href="#fit-a-linear-regression-to-the-data" title="Permalink to this heading">#</a></h2>
+<p>One of the striking characteristics of this time series, which you can see in your figure, it its tendency towards higher <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentrations.  This might even be called a <em>trend</em>.  Let’s use Matlab to quantify the trend.</p>
+<section id="method-1-use-the-function-detrend">
+<h3>Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">detrend</span></code><a class="headerlink" href="#method-1-use-the-function-detrend" title="Permalink to this heading">#</a></h3>
+<p>Matlab has several ways to fit a trend.  The first is the function <code class="docutils literal notranslate"><span class="pre">detrend</span></code>.  If you read the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span> <span class="pre">help</span> <span class="pre">detrend</span></code>, you will see that this doesn’t just fit a linear trend, but in fact removes it.  Detrend the <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> time series, and save the result in <code class="docutils literal notranslate"><span class="pre">co2resid</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">co2resid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">detrend</span><span class="p">(</span><span class="n">co2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Create Figure 2</strong> and plot the detrended data in it to see what Matlab has done.</p>
+<p>If you want to isolate just the trend (which was removed by <code class="docutils literal notranslate"><span class="pre">detrend</span></code>), you can calculate the trend as the difference between the original data (<code class="docutils literal notranslate"><span class="pre">co2</span></code>) and the residual (<code class="docutils literal notranslate"><span class="pre">co2resid</span></code>).  Calculate the trend and store  it in a new variable called <code class="docutils literal notranslate"><span class="pre">co2trend</span></code>.</p>
+<!--`co2trend = co2-co2resid;`-->
+<p><strong>Update the figure:</strong> Plot this trend line to Figure 1 in a different colour. To be sure you are plotting in Figure 1 and not Figure 2, use the command <code class="docutils literal notranslate"> <span class="pre">figure(1)</span></code> to ``activate’’ figure 1 before using adding any additional plotting commands.</p>
+</section>
+<section id="method-2-use-the-function-polyfit-label-poly1">
+<h3>Method 2: Use the function <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>. \label{poly1}<a class="headerlink" href="#method-2-use-the-function-polyfit-label-poly1" title="Permalink to this heading">#</a></h3>
+<p>While <code class="docutils literal notranslate"><span class="pre">detrend</span></code> is sufficient in many cases, <code class="docutils literal notranslate"><span class="pre">polyfit</span></code> is a more powerful function, as it provides you with the slope and y-intercept of the regression, and can also be used for higher order fits (like a quadratic regression instead of just a straight line).</p>
+<p>Do a <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span> <span class="pre">help</span> <span class="pre">polyfit</span></code> to see what this function can do.  Note that it takes 3 inputs:</p>
+<ul class="simple">
+<li><p>the independent variable (<code class="docutils literal notranslate"><span class="pre">time</span></code>, in our case),</p></li>
+<li><p>the dependent variable (<code class="docutils literal notranslate"><span class="pre">co2</span></code>), and</p></li>
+<li><p>the \textit{order} of the polynomial.</p></li>
+</ul>
+<p>The order refers to the biggest exponential in the polynomial.  Recall that a 1st order or linear polynomial has the form
+$<span class="math notranslate nohighlight">\(A x + B\label{eq1}\ ,\)</span><span class="math notranslate nohighlight">\(
+while a second order or quadratic polynomial has the form
+\)</span><span class="math notranslate nohighlight">\(A x^2+Bx+C\ .\)</span>$</p>
+<p>In the example you’re doing here, this line represents carbon dioxide concentration, while <span class="math notranslate nohighlight">\(x\)</span> represents the time vector.  The term <span class="math notranslate nohighlight">\(Ax\)</span> has units of ppm, while <span class="math notranslate nohighlight">\(x\)</span> has some sort of time units.</p>
+<ol class="arabic simple" start="5">
+<li><p>What are the \textit{units} of the Matlab vector <code class="docutils literal notranslate"><span class="pre">time</span></code>?</p></li>
+</ol>
+<!--days-->
+<p>Fit a linear (1st degree) polynomial to the data using the function <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>.  Use your time vector as the X input, and your data vector as the Y input.</p>
+<ol class="arabic simple" start="6">
+<li><p>What is the slope of the line (i.e. the value of <span class="math notranslate nohighlight">\(A\)</span> in equation (\ref{eq1}))?</p></li>
+</ol>
+<!--$A = 0.004$ ppm/day-->
+<p>Convert your answer into units of ppm/yr.</p>
+<!--$A = 1.47$ ppm/yr-->
+<p>Use the best fit line to calculate the predicted values with  <code class="docutils literal notranslate"><span class="pre">polyval</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">polyval</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="nb">time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Update Figure 1:</strong> Add this trend line to Figure 1, in a third colour.  You may find that it covers up the previous trend line.</p>
+<ol class="arabic simple" start="7">
+<li><p>What is the equation of the line that describes this linear regression?  Write a mathematical expression (rather than a Matlab expression) that uses time in years.</p></li>
+</ol>
+<!--$co2 = 1.47 t - 2573.5$-->
+<ol class="arabic simple" start="8">
+<li><p>Using the above equation for carbon dioxide concentration in terms of time, what <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration would you predict in 1960?</p></li>
+</ol>
+<!-- 311 ppm-->\label{ans1}
+<ol class="arabic simple" start="9">
+<li><p>Predict the <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration in 2100.</p></li>
+</ol>
+<!--517 ppm-->
+</section>
+<section id="calculating-a-residual">
+<h3>Calculating a residual.<a class="headerlink" href="#calculating-a-residual" title="Permalink to this heading">#</a></h3>
+<p>Often, we’d like to quantify how good a <em>best fit</em> line is.  The measure of the goodness of fit can be estimated using root-mean-squared error of the residual, sometimes referred to as rms.  For a 3-element residual vector, <span class="math notranslate nohighlight">\(x'=[x_1, x_2, x_3]\)</span>, the rms is then
+\begin{equation}
+rms(x’)=\sqrt{\frac{x_1^2+x_2^2+x_3^2}{3}}
+\end{equation}
+A smaller rms value indicates a better fit.</p>
+<p>Here, we will calculate the rms error between the original Mauna Loa data and the best fit line.  This means that we will first calculate the residual as the difference between the original and the best fit, and the we will square each of the difference values, sum them up, divide the sum by the number of values (which is the same as the length of the vector/time series) and then square root the whole thing.</p>
+<ul class="simple">
+<li><p><strong>Calculate the residual.</strong>  This is the difference between the original data and the best fit line.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">co2resid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">co2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Y</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Square the residual.</strong>  In Matlab, recall that if you have a vector or matrix and you want to square the individual elements, you use the <em>dot</em> operator, putting a period in front of the notation for squaring as <code class="docutils literal notranslate"><span class="pre">x.^2</span></code>.</p></li>
+</ul>
+<!--```matlab
+>> co2resid.^2
+```-->
+<ul class="simple">
+<li><p><strong>Calculate the mean of the squared values.</strong></p></li>
+</ul>
+<!--
+```matlab
+>> nanmean(co2resid.^2)
+```-->
+<ul class="simple">
+<li><p><strong>Take the squareroot of the mean.</strong></p></li>
+</ul>
+<ol class="arabic simple" start="10">
+<li><p>What value did you get for the rms of the residual?</p></li>
+</ol>
+<!--```matlab
+rmsresid = sqrt(nanmean(co2resid.^2));
+```-->
+<!--3.4 ppm-->
+</section>
+</section>
+<section id="using-the-matlab-function-find">
+<h2>Using the Matlab function find.<a class="headerlink" href="#using-the-matlab-function-find" title="Permalink to this heading">#</a></h2>
+<p>What was the average value in 1960?  Here we will use the function <code class="docutils literal notranslate"><span class="pre">year</span></code> which takes as an input a value in Matlab time format, and returns the numeric value of the year.  We are also introducing the <code class="docutils literal notranslate"><span class="pre">find</span></code> function, which we’ll see quite a bit in future labs.</p>
+<p>First, we translate Matlab time into years:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">yearvec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">year</span><span class="p">(</span><span class="nb">time</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then we apply a Boolean or true/false test to find whether particular elements in our vector, <code class="docutils literal notranslate"><span class="pre">yearvec</span></code> are equal to 1960 (<code class="docutils literal notranslate"><span class="pre">==</span></code>).  The result is a vector which we are calling <code class="docutils literal notranslate"><span class="pre">test_is_1960</span></code> which is filled with 0s or 1s.  0s when the values did not satisfy the Boolean, i.e. weren’t from 1960, and 1s otherwise.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">test_is_1960</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yearvec</span><span class="o">==</span><span class="mi">1960</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The third line takes the 1s and 0s from the Boolean <code class="docutils literal notranslate"><span class="pre">test_is_1960</span></code> and returns their positions within the vector.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">itime</span><span class="p">=</span><span class="nb">find</span><span class="p">(</span><span class="n">test_is_1960</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Next, we use the index <code class="docutils literal notranslate"><span class="pre">itime</span></code> to mask the original data, <code class="docutils literal notranslate"><span class="pre">co2</span></code> to produce only those values which are from 1960.  Note that the length of <code class="docutils literal notranslate"><span class="pre">co2_from_1960</span></code> is the same as the number of 1s in <code class="docutils literal notranslate"><span class="pre">test_is_1960</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">co2_from_1960</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">co2</span><span class="p">(</span><span class="n">itime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Finally, we calculate the mean over just those values.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">co2_from_1960</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li><p>What was the average <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration in  1960?</p></li>
+</ol>
+<!-- 316.9 ppm-->
+<p>If your predicted answer using the linear fit is off by more than 5%, then reevaluate your equation.  Have you used enough significant figures for the slope/rate of change?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="in-your-own-time-more-advanced-polynomial-fitting">
+<h1>In your own time: More advanced polynomial fitting.<a class="headerlink" href="#in-your-own-time-more-advanced-polynomial-fitting" title="Permalink to this heading">#</a></h1>
+<p>This section may be completed outside of the timetabled Matlab session. If you run into any troubles, bring your questions to the next session.</p>
+<section id="fitting-a-quadratic">
+<h2>Fitting a quadratic.<a class="headerlink" href="#fitting-a-quadratic" title="Permalink to this heading">#</a></h2>
+<p>Recall that a 2nd order or quadratic polynomial has the form
+\begin{equation}
+A x^2 + B x + C\label{eq2}
+\end{equation}</p>
+<p>Looking at your figure, you can see that the trend line is not a great fit.  Try repeating the steps in question~\ref{poly1}, but for a 2nd order polynomial.</p>
+<!--16. What command did you use?-->
+<!--```matlab
+P=polyfit(time(igood),co2(igood),2);
+```-->
+<ol class="arabic simple" start="13">
+<li><p>What is the acceleration? (i.e. the value of <span class="math notranslate nohighlight">\(A\)</span> in equation (\ref{eq2}))? \label{acc}</p></li>
+</ol>
+<!--$A = 8.9685 \times 10^{-8}$ ppm/day$^2$-->
+<p>Convert your answer in (\ref{acc}) to ppm/<span class="math notranslate nohighlight">\(\mathrm{yr}^2\)</span>.</p>
+<!--$A = 0.011965$ ppm/yr$^2$-->
+</section>
+<section id="writing-the-equation-of-a-quadratic">
+<h2>Writing the equation of a quadratic.<a class="headerlink" href="#writing-the-equation-of-a-quadratic" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="14">
+<li><p>What is the equation of the line that describes this quadratic regression?  Write a formula that uses time in years.\label{line}</p></li>
+</ol>
+<!--$co2 = 0.011965 t^2 - 46.04 t + 44594.20$-->
+<p>Using the formula in (\ref{line}), what <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration would you predict in 1960?\label{ans1}</p>
+<!--315.7 ppm-->
+<ol class="arabic simple" start="15">
+<li><p>Use your equation in (\ref{line}) to predict the <span class="math notranslate nohighlight">\(\mathrm{CO}_2\)</span> concentration in 2100.</p></li>
+</ol>
+<!-- 670 ppm-->
+<p><em>Question for though: Why is it so important to retain lots of significant figures for <span class="math notranslate nohighlight">\(A\)</span>, the acceleration?</em></p>
+<!--Because it is multiplied by a very big number: $1960^2=384160$, and the desired precision of the final number in ppm is 10ths.-->
+<p>Calculate the best fit line using <code class="docutils literal notranslate"><span class="pre">polyval</span></code>. Add this line to Figure 1 in a fourth colour.</p>
+<ol class="arabic simple" start="16">
+<li><p>Calculate the residual to the quadratic.  What value did you get?</p></li>
+</ol>
+<!--2.2 ppm-->
+<ol class="arabic simple" start="17">
+<li><p>Which is a better fit, the linear or the quadratic?</p></li>
+</ol>
+<!--quadratic-->
+</section>
+<section id="export-the-figure-with-the-best-fit-line-and-quadratic">
+<h2>Export the figure with the best fit line and quadratic.<a class="headerlink" href="#export-the-figure-with-the-best-fit-line-and-quadratic" title="Permalink to this heading">#</a></h2>
+<p>Check now that you plotted the original time series, both a linear and quadratic best fit lines (in different colors).  Add a legend using the <code class="docutils literal notranslate"><span class="pre">legend</span></code> command.</p>
+<p><strong>Export your figure</strong> as <code class="docutils literal notranslate"><span class="pre">maunaloa_co2.png</span></code>.  Be sure you practise exporting the figure properly rather than using screen capture.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="practical-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Profile data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="practical-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Seasons</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Trends</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-m-file">Creating an m-file.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-the-m-file">Executing the m-file.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-mauna-loa-data">Exploring the Mauna Loa data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-some-basic-statistics">Calculate some basic statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-linear-regression-to-the-data">Fit a linear regression to the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-use-the-function-detrend">Method 1: Use the function <code class="docutils literal notranslate"><span class="pre">detrend</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-use-the-function-polyfit-label-poly1">Method 2: Use the function <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>. \label{poly1}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-residual">Calculating a residual.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matlab-function-find">Using the Matlab function find.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-your-own-time-more-advanced-polynomial-fitting">In your own time: More advanced polynomial fitting.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-quadratic">Fitting a quadratic.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-equation-of-a-quadratic">Writing the equation of a quadratic.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-the-figure-with-the-best-fit-line-and-quadratic">Export the figure with the best fit line and quadratic.</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

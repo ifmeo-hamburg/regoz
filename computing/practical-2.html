@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Profile data &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/practical-2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Trends" href="practical-3.html" />
+    <link rel="prev" title="Matlab Introductory lab" href="practical-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/practical-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/practical-2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Profile data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Profile data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-data">Exploring the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data-points-and-lines">Plotting the data (points and lines)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-using-a-for-do-loop">Flow control: Using a <code class="docutils literal notranslate"><span class="pre">for-do</span></code> loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data-colour-plots">Plotting the data (colour plots)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-figures-to-display-data">Creating new figures to display data</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="profile-data">
+<h1>Profile data<a class="headerlink" href="#profile-data" title="Permalink to this heading">#</a></h1>
+<p>Most of oceanography deals with looking at <em>in situ</em> or in water data.  You did some of that with the boat work and analysis of CTD (conductivity-temperature-depth) data from the Callista.  Here, you will work with CTD data in Matlab.</p>
+<p><strong>Aim:</strong>  Use Matlab to plot and analyse some hydrographic data.</p>
+<p><strong>Data:</strong> You will work with a hydrographic data from the Southern Ocean in <code class="docutils literal notranslate"><span class="pre">ctd_data1.mat</span></code>.</p>
+<p><strong>Prerequisites:</strong> You should have completed the Matlab practical <strong>Intro</strong> and <strong>Figures</strong> before working on this one.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-m-files">
+<h1>Working with m-files.<a class="headerlink" href="#working-with-m-files" title="Permalink to this heading">#</a></h1>
+<p><strong>Open an m-file.</strong> In Matlab, open the script called <code class="docutils literal notranslate"><span class="pre">ctd_load.m</span></code>.  Note that all files which contain computer code written in the Matlab language are given the extension <code class="docutils literal notranslate"><span class="pre">*.m</span></code>.  This script loads in temperature data from ten CTD stations.</p>
+<p>Examine the script in the Matlab editor.</p>
+<ol class="arabic simple">
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol in the Matlab script do?</p></li>
+</ol>
+<!--denotes a comment-->
+<p><strong>Run the script.</strong> Run the code to see what it does.  (1) Either type the name of the script at the command window and press return, or (2) use the green arrow button above the window which contains the script.  Let’s go through the script to see what it does.</p>
+<ul class="simple">
+<li><p><strong>Functions.</strong> A <em>function</em> is a set of instructions for Matlab to perform at task.  It can also accept <em>inputs</em> or variables to be operated on.  For example, in line 11 of the script <code class="docutils literal notranslate"><span class="pre">ctd_load.m</span></code>, the <code class="docutils literal notranslate"><span class="pre">load</span></code> function is used.  The <code class="docutils literal notranslate"><span class="pre">load</span></code> function tells Matlab to load in the data file which you specify as an input (in this case, <code class="docutils literal notranslate"><span class="pre">ctd_data1.mat</span></code>).</p></li>
+<li><p><strong>Variables.</strong> A <em>variable</em> is a symbolic name or identifier used to reference stored values.  The data file <code class="docutils literal notranslate"><span class="pre">ctd_data1.mat</span></code> contains five variables:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lat</span></code> - with the latitudes of the 30 CTD stations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lon</span></code> - with the longitudes of the 30 CTD stations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bin_press</span></code> - with pressure levels at which temperature was recorded</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bin_potemp</span></code> - with potential temperature for each of 30 stations, and at each of the pressure levels</p></li>
+</ul>
+</li>
+</ul>
+<section id="exploring-the-data">
+<h2>Exploring the data<a class="headerlink" href="#exploring-the-data" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="2">
+<li><p>What is the fifth variable loaded from <code class="docutils literal notranslate"><span class="pre">ctd_data1.mat</span></code>?</p></li>
+</ol>
+<!--bin_sal-->
+<ol class="arabic simple" start="3">
+<li><p>Is the <code class="docutils literal notranslate"><span class="pre">lat</span></code> variable a vector or a matrix?</p></li>
+</ol>
+<!--vector-->
+<ol class="arabic simple" start="4">
+<li><p>Is the <code class="docutils literal notranslate"><span class="pre">bin_ptemp</span></code> variable a vector or a matrix?  How many rows and columns does it have?</p></li>
+</ol>
+<!--matrix, 3000 rows, 30 columns-->
+<ol class="arabic simple" start="5">
+<li><p>Where was the third CTD station taken (provide lat and lon position).</p></li>
+</ol>
+<!--lat = -54.94, lon = -58.37-->
+<ol class="arabic simple" start="6">
+<li><p>Find the temperature value at the 50th pressure level of the 3rd CTD station.</p></li>
+</ol>
+<!--5.09 deg C-->
+<ol class="arabic simple" start="7">
+<li><p>What pressure was this taken at?</p></li>
+</ol>
+<!--99 dbar-->
+</section>
+<section id="plotting-the-data-points-and-lines">
+<h2>Plotting the data (points and lines)<a class="headerlink" href="#plotting-the-data-points-and-lines" title="Permalink to this heading">#</a></h2>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">m</span></code>-file <code class="docutils literal notranslate"><span class="pre">ctd_plot.m</span></code>.   What is the first cell doing?</p>
+<p><em>Note: In this file,some comments that start with a double <code class="docutils literal notranslate"><span class="pre">%%</span></code>.  The double <code class="docutils literal notranslate"><span class="pre">%%</span></code> at the beginning of a line indicates a new cell.  This means that you can click one of these cells and it will become highlighted in your editor with a pale yellow.  If you then type a <code class="docutils literal notranslate"><span class="pre">ctrl-return</span></code>, the highlighted cell only will be evaluated by Matlab.  This can be a handy way to break up large pieces of code.</em></p>
+<p>Run just the cell plotting the lats and lons.  Add a title to the figure using the <code class="docutils literal notranslate"><span class="pre">title</span></code> command with an input string, e.g.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;Map of stations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run the cell plotting the vertical profile of temperature.</p>
+<ol class="arabic simple" start="8">
+<li><p>Is temperature higher near the surface or at depth? (Note that pressure increases as you go deeper.)</p></li>
+</ol>
+<!--near the surface-->
+</section>
+<section id="flow-control-using-a-for-do-loop">
+<h2>Flow control: Using a <code class="docutils literal notranslate"><span class="pre">for-do</span></code> loop<a class="headerlink" href="#flow-control-using-a-for-do-loop" title="Permalink to this heading">#</a></h2>
+<p>Suppose you wanted to plot the temperature profile for every station.  You could copy and paste the code ten times, changing the value <code class="docutils literal notranslate"><span class="pre">8</span></code> from 1 to 30 in each example.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">bin_ptemp</span><span class="p">(:,</span><span class="mi">8</span><span class="p">),</span><span class="n">bin_press</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Station 8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Matlab makes this easier using a <code class="docutils literal notranslate"><span class="pre">for-loop</span></code> or <code class="docutils literal notranslate"><span class="pre">for-do</span></code> loop.  We’ll see these again later, but it is a way of repeating the same commands multiple times but only typing them once.</p>
+<p>As a simple example of a for loop, try adding</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="p">=[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;hi&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>in a new cell in your <code class="docutils literal notranslate"><span class="pre">m</span></code>-file.  You should find that it prints the word “hi” to your screen three times.  In this code, <code class="docutils literal notranslate"><span class="pre">i</span></code> is called the loop variable, and you are telling Matlab that first for the value of <code class="docutils literal notranslate"><span class="pre">i=1</span></code>, execute the code between the lines starting with <code class="docutils literal notranslate"><span class="pre">for</span></code> and ending with <code class="docutils literal notranslate"><span class="pre">end</span></code>.  Then do it again for the value of <code class="docutils literal notranslate"><span class="pre">i=2</span></code> and <code class="docutils literal notranslate"><span class="pre">i=3</span></code>.</p>
+<p>Now open the code <code class="docutils literal notranslate"><span class="pre">ctd_loop.m</span></code>.  Try to figure out what it is doing before executing the code.</p>
+<ol class="arabic simple" start="9">
+<li><p>What has changed in these lines of code relative to the code in <code class="docutils literal notranslate"><span class="pre">ctd_plot.m</span></code>?</p></li>
+</ol>
+<!--8 was replaced by i-->
+<p>Evaluate the code.  You should get a lot of figure windows appearing on your screen.</p>
+<p><em>Helpful hint: Ok, now you have a ton of figures on your screen.  If you want to close them, you could click the little red close symbol in the corner of each one, or you could use a Matlab command.  Go back to your command window and type</em></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">close</span><span class="w"> </span><span class="nb">all</span>
+</pre></div>
+</div>
+<p><em>All your figures should magically disappear.</em></p>
+</section>
+<section id="plotting-the-data-colour-plots">
+<h2>Plotting the data (colour plots)<a class="headerlink" href="#plotting-the-data-colour-plots" title="Permalink to this heading">#</a></h2>
+<p>When we have two-dimensional data (i.e., a matrix), we could plot it as a bunch of lines, or we could plot it as a contoured plot.  This is like a topo map you might use for hiking in a hilly region, or like a weather map where closed contours encircle regions of high or low pressure.</p>
+<p>Execute the last cell in <code class="docutils literal notranslate"><span class="pre">ctd_plot2.m</span></code>.  This has created a contour plot of the potential temperature matrix as a function of depth (pressure) and position (latitude).</p>
+<ol class="arabic simple" start="10">
+<li><p>Is the temperature higher near the surface for all stations?</p></li>
+</ol>
+<!-- no, at higher latitudes there is some very cold water near the surface-->
+<ol class="arabic simple" start="11">
+<li><p>In general, is the temperature warmer at lower latitudes (smaller negative latitudes) or at higher latitudes?  How can you tell?</p></li>
+</ol>
+<!--lower latitudes.  For most depths/pressures, the isotherms are tilted downwards towards lower latitudes-->
+</section>
+<section id="creating-new-figures-to-display-data">
+<h2>Creating new figures to display data<a class="headerlink" href="#creating-new-figures-to-display-data" title="Permalink to this heading">#</a></h2>
+<p>Repeat some of the styles of plots that you did above.</p>
+<ol class="arabic simple" start="12">
+<li><p>Make a TS plot (plotting temperature against salinity) for two stations.  Pick one station where that cold band of water can be seen in your contour plot, and one station where the surface water is quite warm.  Label the station numbers using the <code class="docutils literal notranslate"><span class="pre">legend</span></code> command.  <strong>Export this figure as a JPG.</strong></p></li>
+<li><p>Make a section of salinity to go along with the section of temperature.</p></li>
+<li><p>Try to plot all the temperature and salinity profiles on a single TS diagram.</p></li>
+<li><p>Now plot every other TS profile.  This will require writing a loop.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="practical-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Matlab Introductory lab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="practical-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Trends</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Profile data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-m-files">Working with m-files.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-data">Exploring the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data-points-and-lines">Plotting the data (points and lines)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-using-a-for-do-loop">Flow control: Using a <code class="docutils literal notranslate"><span class="pre">for-do</span></code> loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data-colour-plots">Plotting the data (colour plots)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-figures-to-display-data">Creating new figures to display data</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

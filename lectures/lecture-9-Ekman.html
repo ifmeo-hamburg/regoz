@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ekman transport &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-9-Ekman';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vorticity and Sverdrup balance" href="lecture-10-Sverdrup.html" />
+    <link rel="prev" title="Geostrophy" href="lecture-8-geostrophy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-9-Ekman.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-9-Ekman.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ekman transport</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ekman transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-layers-stresses-and-fluxes">Boundary layers, stresses and fluxes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-stress-horizontal-momentum-equations">Shear stress (horizontal momentum equations)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekman-spiral-not-to-be-covered-in-regoz">Ekman spiral (not to be covered in RegOz)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-ekman-layer">Surface Ekman layer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atmospheric-boundary-layer-wind-stress">Atmospheric boundary layer - wind stress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ekman transport</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world">Real world</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ekman-transport">
+<h1>Ekman transport<a class="headerlink" href="#ekman-transport" title="Permalink to this heading">#</a></h1>
+<p><strong>Starting from the equations of motion</strong></p>
+<p>We will start with the usual momentum equations:</p>
+<!--\begin{align*}
+\frac{Du}{Dt}& = -\frac{1}{\rho_0}\pfrac{p}{x}+fv+F_x\\ 
+\frac{Dv}{Dt} &=-\frac{1}{\rho_0}\pfrac{p}{y}-fu+F_y\\
+\frac{Dw}{Dt}  &=-\frac{1}{\rho_0}\pfrac{p}{z}-\frac{g\rho}{\rho_0}+F_z
+\end{align*}-->
+<p><img alt="" src="../_images/RegOz_ekman-eqns.png" />
+where <span class="math notranslate nohighlight">\(f=2\Omega\sin\varphi\)</span> is the Coriolis parameter with latitude <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
+<p>As a simple representation, we have written the frictional forces as <span class="math notranslate nohighlight">\((F_x,F_y,F_z)\)</span>.  In this lecture, we’ll consider one main source of friction in the ocean: between the ocean and atmosphere.  A similar process occurs due to the friction between the ocean and seafloor (called bottom Ekman transport).</p>
+<p><strong>Main points:</strong></p>
+<ol class="arabic simple">
+<li><p>Ekman transport occurs in the boundary layer transport due to tangential stress (friction) between ocean currents and the seafloor, or between the atmosphere and ocean.</p></li>
+<li><p><strong>Ekman transport</strong> (vertical integral of the Ekman spiral) does not depend on viscosity and is <span class="math notranslate nohighlight">\(90^\circ\)</span> to the right of the wind in the northern hemisphere (to the left of the wind in the southern hemisphere).\footnote{Know these equations. We will apply them in coursework.}</p></li>
+</ol>
+<p><em>Side note: Surface Ekman transport is computed with units of m<span class="math notranslate nohighlight">\(^2\)</span>/s, and should be integrated in a horizontal direction to produce a true volume transport (which must have units of m<span class="math notranslate nohighlight">\(^3\)</span>/s).</em></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="boundary-layers-stresses-and-fluxes">
+<h1>Boundary layers, stresses and fluxes<a class="headerlink" href="#boundary-layers-stresses-and-fluxes" title="Permalink to this heading">#</a></h1>
+<p>Friction between a fluid and a boundary causes velocity shear.  Near a fixed  boundary, a fluid will have near zero velocity, while in the interior of the fluid it will have some background circulation.  The region of transition between this background circulation and the fixed boundary is called the boundary layer.  Viscosity is a measure of the resistance of a fluid to deformation by the boundary.    Both friction and viscosity resist motion.</p>
+<p>Suppose you had an air hockey table, and were hitting the puck back and forth–it slides smoothly because the air reduces the friction and the surface is smooth.  If you replaced the surface with sand paper, the same hit to the puck would result in much less motion.  For a fluid, the viscosity is a measure of resistance to deformation.  Honey, which is relatively viscous will resist deformation, compared to water.</p>
+<p>In the absence of rotation, the velocity profile has a logarithmic shape beginning some distance from the boundary, while in the near vicinity of the boundary, molecular viscosity applies and the boundary layer is called laminar.</p>
+<section id="shear-stress-horizontal-momentum-equations">
+<h2>Shear stress (horizontal momentum equations)<a class="headerlink" href="#shear-stress-horizontal-momentum-equations" title="Permalink to this heading">#</a></h2>
+<p>Here we will assume that we can represent the friction forces (accelerations) in the equations of motion <span class="math notranslate nohighlight">\((F_x,F_y,F_z)\)</span> by a viscous term where</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\rho_0}\frac{\partial\mathbf{\tau}}{\partial z}=\nu_E\frac{\partial^2\mathbf{u}}{\partial z^2}\ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nu_E\)</span> is an eddy viscosity.</p>
+<p>This is similar to Newton’s law for a viscous fluid, where a tangential (shear) stress <span class="math notranslate nohighlight">\(\tau\)</span> is proportional to the velocity shear, <span class="math notranslate nohighlight">\(\tau\propto\frac{du}{dz}\)</span>.  But here we are replacing molecular viscosity <span class="math notranslate nohighlight">\(\nu\)</span> with an eddy viscosity <span class="math notranslate nohighlight">\(\nu_E\)</span>.</p>
+<p>The gradient in the stress <span class="math notranslate nohighlight">\(\tau\)</span> generates a force, and its vertical derivative dominates. This is because the difference in vertical and horizontal scales in the atmospheric and oceanic boundary layers (<span class="math notranslate nohighlight">\(\delta\approx 1000\)</span> m for the atmosphere, 10 - 100 m for the ocean).
+To include <span class="math notranslate nohighlight">\(\tau\)</span> in a force with the appropriate units, we have</p>
+<div class="math notranslate nohighlight">
+\[(F_x,F_y)=\frac{1}{\rho_0}\left(\frac{\partial \tau^x}{dz},\frac{\partial \tau^y}{dz}\right)=\frac{1}{\rho_0}\left(\nu_E\frac{\partial^2 u}{\partial z^2},\nu_E\frac{\partial^2 v}{\partial z^2}\right)\]</div>
+<p>– skip from here</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ekman-spiral-not-to-be-covered-in-regoz">
+<h1>Ekman spiral (not to be covered in RegOz)<a class="headerlink" href="#ekman-spiral-not-to-be-covered-in-regoz" title="Permalink to this heading">#</a></h1>
+<p>At the sea floor, assuming steady state (so the material derivatives <span class="math notranslate nohighlight">\(Du/Dt=Dv/Dt=0\)</span>), no horizontal gradients in velocity, a flat bottom and <span class="math notranslate nohighlight">\(w=0\)</span> at the bottom, the equations of motion simplify to</p>
+<!--\begin{align}
+-fv&=-\frac{1}{\rho_0}\frac{\partial p}{\partial x}+\nu_E\frac{\partial^2u}{\partial z^2}\label{ekman1}\\
+fu&=-\frac{1}{\rho_0}\frac{\partial p}{\partial y}+\nu_E\frac{\partial^2v}{\partial z^2}\label{ekman2}\\
+0&=-\frac{1}{\rho_0}\frac{\partial p}{\partial z}\label{ekman3}
+\end{align}-->
+<p><img alt="" src="figures/lecures/RegOz_ekman-deriv1.png" /></p>
+<p>then aligning the interior geostrophic velocity with the <span class="math notranslate nohighlight">\(x\)</span>-direction (so <span class="math notranslate nohighlight">\(v_g=0\)</span>), can write equations governing the interior flow as</p>
+<!--\begin{align*}
+0&=-\frac{1}{\rho_0}\frac{\partial p}{\partial x}\\
+fu_g&=-\frac{1}{\rho_0}\frac{\partial p}{\partial y}
+\end{align*}-->
+<p><img alt="" src="../_images/RegOz_ekman-deriv2.png" /></p>
+<p>These derivatives do not depend on <span class="math notranslate nohighlight">\(z\)</span>, so we can then substitute back into the equations to get</p>
+<!--\begin{align*}
+-fv&=\nu_E\frac{d^2u}{dz^2}\\
+f(u-u_g)&=\nu_E\frac{d^2v}{dz^2}
+\end{align*}-->
+<p><img alt="" src="../_images/RegOz_ekman-deriv3.png" /></p>
+<p>We can seek a solution of the form <span class="math notranslate nohighlight">\(u=u_g+Ae^{\lambda z}\)</span> and <span class="math notranslate nohighlight">\(v=Be^{\lambda z}\)</span> where <span class="math notranslate nohighlight">\(\lambda\)</span> is some decay scale and <span class="math notranslate nohighlight">\(A\)</span> is an amplitude.  Verify that
+\begin{equation}
+\nu_E^2\lambda^4+f^2=0\ .\label{hey}
+\end{equation}
+This gives solutions of the form</p>
+<div class="math notranslate nohighlight">
+\[\lambda=\pm(1\pm i)\frac{1}{d}\ ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(d=\sqrt{\frac{2\nu_E}{f}}\)</span> and <span class="math notranslate nohighlight">\(i=\sqrt{-1}\)</span>.  (You can verify that this is an appropriate solution by substituting it into the equation.</p>
+<p>These look fairly complicated, but when you plug them into the expressions for <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, and throw out any exponentially growing solutions, you end up with equations like</p>
+<!--\begin{align}
+u&=u_g\left(1-e^{-z/d}\cos\frac{z}{d}\right)\\
+v&=u_ge^{-z/d}\sin\frac{z}{d}
+\end{align}-->
+<p><img alt="" src="figures/lectures/RegOz_ekman-deriv4.png" /></p>
+<p>Note that the direction of the spiral is clockwise as depth increases, and that the amplitude decreases as depth increases.  The surface winds are roughly <span class="math notranslate nohighlight">\(45^\circ\)</span> to the right of the wind.</p>
+<p><img alt="" src="../_images/RegOz_ekman_spiral.png" />
+<img alt="Bottom Ekman spiral.  Drawn for the Northern Hemisphere (), so the deflection is to the left of the current above the layer. BCR fig 8.4" src="figures/bcr-fig8.4.png" /></p>
+<!--![Surface Ekman spiral.  Time-averaged velocity for 25 day period at open ocean near Bermuda.  T is surface wind stress.](figures/neil-ekman-spiral.png)-->
+<p>The Ekman spiral describes the velocity profile in the Ekman layer. The distance over which the Ekman velocity approaches the interior velocity (<span class="math notranslate nohighlight">\(\bar{u}\)</span>) is <span class="math notranslate nohighlight">\(d\)</span>.  This thickness is called the <em>Ekman depth</em>. The net transport associated with the applied stress can be computed by integrating the velocity over the boundary layer.   This will be called the <em>Ekman transport</em>.</p>
+<p>– unskip from here</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="surface-ekman-layer">
+<h1>Surface Ekman layer<a class="headerlink" href="#surface-ekman-layer" title="Permalink to this heading">#</a></h1>
+<p>In the above, the Ekman layer was computed for the stress between a geostrophic ocean current and the sea floor.  Now we’ll look at the same process, but determined by the stress between the ocean surface and atmospheric winds.</p>
+<section id="atmospheric-boundary-layer-wind-stress">
+<h2>Atmospheric boundary layer - wind stress<a class="headerlink" href="#atmospheric-boundary-layer-wind-stress" title="Permalink to this heading">#</a></h2>
+<p>In the atmosphere, the wind stress is calculated from velocity fluctuations, where <span class="math notranslate nohighlight">\(u_{10}\)</span> is the velocity 10 m above the sea surface.  Relying on the formulation of Reynold’s stresses (where the stress is proportional to the velocity fluctuations, squared), wind stress is calculated as</p>
+<div class="math notranslate nohighlight">
+\[\tau_s = \rho_aC_D|u_{10}|u_{10}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(u_10\)</span> is the wind velocity 10 m above the sea surface.  A typical density for air is <span class="math notranslate nohighlight">\(\rho_a=1.2\)</span> kg/m<span class="math notranslate nohighlight">\(^2\)</span>, and the drag coefficient can be estimated from winds as</p>
+<div class="math notranslate nohighlight">
+\[1000 C_D=0.53+0.064u_{10}\ .\]</div>
+<p>Note that this stress is in the direction of the wind velocity, but scales with the squared-magnitude of the winds.  (Note also that the formulation for the drag coefficient has various forms in published literature, and this one given here may not be the most appropriate in all situations.)</p>
+</section>
+<section id="id1">
+<h2>Ekman transport<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>We have the same equations as before, (\ref{ekman1})-(\ref{ekman3}), but now the form of the stress will be due to surface wind stress.  (Note that stress is due to the difference in the surface currents and surface winds, but in most places the surface winds dominate).</p>
+<p>As before, we will assume steady state (so neglecting <span class="math notranslate nohighlight">\(Du/Dt\)</span> and <span class="math notranslate nohighlight">\(Dv/Dt\)</span>), and also that there is a background geostrophic velocity that we will separate from an Ekman velocity as</p>
+<div class="math notranslate nohighlight">
+\[u=u_g+u_e\]</div>
+<p>where the <span class="math notranslate nohighlight">\(u_g\)</span> satisfies geostrophic balance.</p>
+<p><em>Recall: When we looked at hydrostatics, we divided pressure into the part that exactly balanced hydrostatic pressure for a constant density, and the leftover bits. This is similar.</em></p>
+<p>For the equations which define the surface Ekman spiral, see BCR chapter 8.  Here, we will use the <span class="math notranslate nohighlight">\(\tau\)</span> side of equation (\ref{viscous}) to get</p>
+<!--\begin{align}
+-fv_e& = \frac{1}{\rho_0}\pfrac{X}{z}\label{ekmanX}\\
+fu_e&=\frac{1}{\rho_0}\pfrac{Y}{z}\label{ekmanY}
+\end{align}-->
+<p><img alt="" src="../_images/RegOz_ekman-surf.png" /></p>
+<p>written generically as <span class="math notranslate nohighlight">\(X\)</span> for stress in the <span class="math notranslate nohighlight">\(x\)</span>-direction and <span class="math notranslate nohighlight">\(Y\)</span> for stress in the <span class="math notranslate nohighlight">\(y\)</span>-direction, and where <span class="math notranslate nohighlight">\(X=\rho_0\nu_E\partial{u_e}/\partial{z}\)</span> and <span class="math notranslate nohighlight">\(Y=\rho_0\nu_E\partial{v_e}/\partial{z}\)</span>.   Both <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> depend on depth.</p>
+<p>At the surface, the stress due to the viscous shear in the ocean must match the stress applied at the surface by the winds <span class="math notranslate nohighlight">\((\tau^x,\tau^y)\)</span>, as
+<img alt="" src="../_images/RegOz_ekman-surf2.png" /><!--\begin{align*}
+\rho_0\nu_E\pfrac{u}{z}=\tau^x\ , &\qquad \rho_0\nu_E\pfrac{v}{z}=\tau^y
+\end{align*}--></p>
+<p>By vertically-integrating the Ekman spiral (the solution to the Ekman equations (\ref{ekmanX}) and (\ref{ekmanY})), we can determine the <em>Ekman transport</em>,</p>
+<div class="math notranslate nohighlight">
+\[U_e\ ,\ V_e=\int_{-\delta}^0u_e\ ,v_e\ dz\]</div>
+<p>where the capital <span class="math notranslate nohighlight">\(U_e\)</span> and <span class="math notranslate nohighlight">\(V_e\)</span> represent ``Ekman (volume) transport’’.</p>
+<p>This gives</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{V_e=-\frac{1}{f\rho_0}\tau^x\ , \qquad
+U_e=\frac{1}{f\rho_0}\tau^y}\tag{Ekman transport}\]</div>
+<p>which can be calculated directly from the surface wind stress, <span class="math notranslate nohighlight">\(\tau^x\)</span> and <span class="math notranslate nohighlight">\(\tau^y\)</span> without regard to the details of eddy viscosity <span class="math notranslate nohighlight">\(\nu_E\)</span>.  While the shape of the Ekman spiral does depend on how momentum is transferred downwards over the Ekman layer, the net transport does not.</p>
+<p>Note that (volume) transport typically has units of m<span class="math notranslate nohighlight">\(^3\)</span>/s, but when we talk about Ekman transport, we will often compute it with units of m<span class="math notranslate nohighlight">\(^2\)</span>/s.  If we compute the transport</p>
+<p>Note also that the meridional transport <span class="math notranslate nohighlight">\(V_e\)</span> depends on the zonal wind stress <span class="math notranslate nohighlight">\(\tau^x\)</span>, and the zonal transport <span class="math notranslate nohighlight">\(U_e\)</span> depends on the meridional wind stress.  In this way, the Ekman transport is <span class="math notranslate nohighlight">\(90^\circ\)</span> to the right of the wind in the northern hemisphere (and to the left of the wind in the southern hemisphere).</p>
+<!--![Surface Ekman layer.  Figure drawn for the Northern Hemisphere ($f>0$) with deflection to the right of the surface stress. BCR Fig 8.7.](../figures/bcr-fig8.7.png)-->
+<p><img alt="Surface Ekman layer.  Figure drawn for the Northern Hemisphere () with deflection to the right of the surface stress. BCR Fig 8.7." src="../_images/RegOz_ekman-diagram.png" />
+Surface Ekman layer.  Figure drawn for the Northern Hemisphere (<span class="math notranslate nohighlight">\(f&gt;0\)</span>) with deflection to the right of the surface stress. BCR Fig 8.7</p>
+<p>Ekman transport due to the winds may vary over different regions of the ocean.  This means that Ekman transport variations can cause water to pile up or be drawn down, something we call “Ekman pumping” or “Ekman suction”.</p>
+<p>This is a really cool thing where we find that while wind stresses apply to the top 100~m or so, through Ekman pumping, they can affect ocean circulation in the top 1000~m or more.  We’ll see this more when we talk about <em>Sverdrup transport</em>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="real-world">
+<h1>Real world<a class="headerlink" href="#real-world" title="Permalink to this heading">#</a></h1>
+<p>Ekman transport in the ocean is very robust.  If you know the wind stress in a particular location, you can calculate the Ekman transport in the surface layer of the ocean and know that it will be <span class="math notranslate nohighlight">\(90^\circ\)</span> to the right of the wind.</p>
+<p>Near coastlines, Ekman transport can generate on-shore or off-shore transports, which then drive upwelling or downwelling at the coast.  Upwelling can be favorable to biology, by bringing up nutrients to the euphotic (light-illuminated) zone.</p>
+<p>Over large scales (across ocean gyres), variations (gradients) in Ekman transport can also drive convergences or divergences, with associated downwelling or upwelling.  Large-scale gradients in wind stress (wind stress curl) forms the gyres pressent in nearly every ocean basin.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-8-geostrophy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Geostrophy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture-10-Sverdrup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Vorticity and Sverdrup balance</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ekman transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-layers-stresses-and-fluxes">Boundary layers, stresses and fluxes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-stress-horizontal-momentum-equations">Shear stress (horizontal momentum equations)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekman-spiral-not-to-be-covered-in-regoz">Ekman spiral (not to be covered in RegOz)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-ekman-layer">Surface Ekman layer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atmospheric-boundary-layer-wind-stress">Atmospheric boundary layer - wind stress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ekman transport</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world">Real world</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

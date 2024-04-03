@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Spatio-temporal data &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/practical-6';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Spatial data" href="practical-5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/practical-6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/practical-6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spatio-temporal data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spatio-temporal data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data-by-plotting-it">Explore the data by plotting it.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-change-in-ssh-label-q1">Calculate the change in SSH \label{q1}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-averages-of-the-3-dimensional-data">Working with averages of the 3-dimensional data.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-map-by-averaging-in-time">Creating a map by averaging in time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-time-series-by-averaging-in-space">Creating a time series by averaging in space.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-full-3-dimensional-data">Working with full 3-dimensional data.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-trend-for-a-single-location">Calculate the trend for a single location.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-trend-at-each-location">Calculate the trend at each location.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-movie-optional">Making a movie (optional)</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spatio-temporal-data">
+<h1>Spatio-temporal data<a class="headerlink" href="#spatio-temporal-data" title="Permalink to this heading">#</a></h1>
+<p>Satellite data often comes in the form of a map over a wide geographic area.  It also has repeat samples in time.  This combination of map-style data repeated in time results in 3-dimensional data (with the dimensions being x, y and t or lat, lon and t).  Here we will explore how to use loops to work with 3D data.</p>
+<p><strong>Aim:</strong>  In this lab, we will try handling 2- and 3-dimensional data, making maps and carrying out basic time series analysis using a loop.</p>
+<p><strong>Learning Outcomes:</strong>
+At the end of this lab, you will be able to:</p>
+<ol class="arabic simple">
+<li><p>Load data into Matlab (e.g. <code class="docutils literal notranslate"><span class="pre">mat</span></code>-files containing data variables)</p></li>
+<li><p>Extract data from variables of structure class in Matlab.</p></li>
+<li><p>Use booleans and <em>indices</em> in Matlab</p></li>
+<li><p>Apply the functions <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code>, <code class="docutils literal notranslate"><span class="pre">polyfit.m</span></code> and <code class="docutils literal notranslate"><span class="pre">polyval.m</span></code> for basic time series analysis.</p></li>
+<li><p>For the first time, apply time series analysis to data using a for-do loop.</p></li>
+</ol>
+<p><strong>Data:</strong>
+You will work with maps of sea surface height (SSH) from the North Atlantic, in filename <code class="docutils literal notranslate"><span class="pre">aviso_2maps.mat</span></code> and spatially- and temporally-varying SSH data from the North Atlantic, in filename <code class="docutils literal notranslate"><span class="pre">aviso_ssh_3d.mat</span></code>.  You can also use the file <code class="docutils literal notranslate"><span class="pre">coastlon.mat</span></code> to add coastlines to your figures.</p>
+<p><strong>Directions:</strong> Answer the questions, create an m-file, three figures and a movie.   <em>Recommended:</em> Open a copy of the last practical(s), so you can remember how to use the commands.</p>
+<p><strong>Check your answers:</strong> This is a formative assessment rather than summative (i.e. the results here do not contribute to your mark in the course.)  Several “self-check” answers are provided along the way so you can see whether your calculations were correct for each section.</p>
+<hr class="docutils" />
+<p><strong>Create an <code class="docutils literal notranslate"><span class="pre">m</span></code>-file.</strong> As before, create an <code class="docutils literal notranslate"><span class="pre">m</span></code>-file to record your work.  Thes solution file will be called <code class="docutils literal notranslate"><span class="pre">spatial_analysis_soln.m</span></code>.</p>
+<p><em>Recall: Matlab doesn’t like filenames with dashes or spaces in them, or names that start with a number.</em></p>
+<p><strong>Load the data.</strong> Load <code class="docutils literal notranslate"><span class="pre">aviso_2maps.mat</span></code> and check what has been loaded, using <code class="docutils literal notranslate"><span class="pre">whos</span></code> or, if necessary for structures, <code class="docutils literal notranslate"><span class="pre">disp</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">load</span><span class="w"> </span><span class="n">aviso_2maps</span><span class="p">.</span><span class="n">mat</span>
+<span class="nb">load</span><span class="w"> </span><span class="n">coastlon</span><span class="p">.</span><span class="n">mat</span>
+</pre></div>
+</div>
+<p>You should find several fields: <code class="docutils literal notranslate"><span class="pre">time</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>, and <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, and some strings describing the data.   Since the data field <code class="docutils literal notranslate"><span class="pre">ssh</span></code> has the same number of rows as the <code class="docutils literal notranslate"><span class="pre">altim.lat</span></code> vector, and the same number of columns as the <code class="docutils literal notranslate"><span class="pre">altim.lon</span></code> vector, we guess that <em>the data are a map of sea surface height values which vary in space.</em></p>
+<p><em>Note! Comment your work.  This is good practice and will make it easier for you to remember what you’ve done or why.</em></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="explore-the-data-by-plotting-it">
+<h1>Explore the data by plotting it.<a class="headerlink" href="#explore-the-data-by-plotting-it" title="Permalink to this heading">#</a></h1>
+<p>To see what you have loaded, you can start by plotting the two sets of map data, <code class="docutils literal notranslate"><span class="pre">altim1</span></code> and <code class="docutils literal notranslate"><span class="pre">altim2</span></code>.  For 2-dimensional map data, we can use the function <code class="docutils literal notranslate"><span class="pre">pcolor</span></code> or <code class="docutils literal notranslate"><span class="pre">contourf</span></code> commands rather than <code class="docutils literal notranslate"><span class="pre">plot</span></code> to visualise the data.</p>
+<p><strong>Create a figure.</strong> Recall the function <code class="docutils literal notranslate"><span class="pre">figure</span></code>.  Since you will have two subplots, use the <code class="docutils literal notranslate"><span class="pre">subplot</span></code> command to put two panels side-by-side in the same figure window.  For the spatial data, you can then use</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">pcolor</span><span class="p">(</span><span class="n">altim1</span><span class="p">.</span><span class="n">lon</span><span class="p">,</span><span class="n">altim1</span><span class="p">.</span><span class="n">lat</span><span class="p">,</span><span class="n">altim1</span><span class="p">.</span><span class="n">ssh</span><span class="p">)</span>
+<span class="nb">shading</span><span class="w"> </span><span class="n">flat</span>
+</pre></div>
+</div>
+<p>To better see where in the world the data are from, add some coastlines using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function and the variables <code class="docutils literal notranslate"><span class="pre">coastlon</span></code> and <code class="docutils literal notranslate"><span class="pre">coastlat</span></code>.  To see what colours represent what values, use the function <code class="docutils literal notranslate"><span class="pre">colorbar</span></code>,</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">colorbar</span><span class="p">(</span><span class="s">&#39;location&#39;</span><span class="p">,</span><span class="s">&#39;southoutside&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add an appropriate title to describe when the data were made.  You can use either the <code class="docutils literal notranslate"><span class="pre">datestr</span></code> command with the <code class="docutils literal notranslate"><span class="pre">altim1.time</span></code> value, or the <code class="docutils literal notranslate"><span class="pre">altim.timestr</span></code> which is already provided in string format.</p>
+<p><strong>Activate the other subplot.</strong> Now activate the other subplot, and plot the data from <code class="docutils literal notranslate"><span class="pre">altim2</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Overall, sea surface height looks higher in which of the two fields?</p></li>
+</ol>
+<!--altim1-->
+<ol class="arabic simple" start="2">
+<li><p>Does this suggest that sea level is</p>
+<ul class="simple">
+<li><p>rising? or</p></li>
+<li><p>falling? <!--falling--></p></li>
+</ul>
+</li>
+</ol>
+<section id="calculate-the-change-in-ssh-label-q1">
+<h2>Calculate the change in SSH \label{q1}<a class="headerlink" href="#calculate-the-change-in-ssh-label-q1" title="Permalink to this heading">#</a></h2>
+<p>Calculate the mean SSH in each of the two data structures.  For <code class="docutils literal notranslate"><span class="pre">altim1</span></code>, you should get 36.337 cm.</p>
+<ol class="arabic simple" start="3">
+<li><p>What is the average for <code class="docutils literal notranslate"><span class="pre">altim2</span></code>?\label{p1}</p></li>
+</ol>
+<!--30.094 cm-->
+<p><em>Note: This is a somewhat subtle question.  If you have the vector,
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[1</span> <span class="pre">1</span> <span class="pre">1;</span> <span class="pre">NaN</span> <span class="pre">2</span> <span class="pre">2];</span></code> what answers do you get for the averages</em></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nanmean</span><span class="p">(</span><span class="n">nanmean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">nanmean</span><span class="p">(</span><span class="n">x</span><span class="p">(:))</span>
+</pre></div>
+</div>
+<!--1.33-->
+<!--1.4-->
+<p>What has the <code class="docutils literal notranslate"><span class="pre">(:)</span></code> operator done to <code class="docutils literal notranslate"><span class="pre">x</span></code>?  (To see this, try writing <code class="docutils literal notranslate"><span class="pre">y=x(:)</span></code> and comparing <code class="docutils literal notranslate"><span class="pre">y</span></code> to <code class="docutils literal notranslate"><span class="pre">x</span></code>.)
+\vspace{.5in}</p>
+<!--
+It has turned the matrix `x` into a vector, with the same overall number of elements.-->
+<p>Which value is more representative of the average of all the values in <code class="docutils literal notranslate"><span class="pre">x</span></code>?</p>
+<!--1.4-->
+<p>Use this exercise with <code class="docutils literal notranslate"><span class="pre">x</span></code> to verify or improve your estimates of the average SSH in <code class="docutils literal notranslate"><span class="pre">altim1</span></code> and <code class="docutils literal notranslate"><span class="pre">altim2</span></code>.</p>
+<ol class="arabic simple" start="4">
+<li><p>How much has sea level changed?  Has it risen or fallen?</p></li>
+</ol>
+<!--6.244 cm, fallen-->
+<ol class="arabic simple" start="5">
+<li><p>How far apart are they in time?  Give your answer in years.</p></li>
+</ol>
+<!--7487 days, 20.5 years-->
+<ol class="arabic simple" start="6">
+<li><p>Using your values above, what is the rate of change of sea level in mm/yr?  \label{pp}</p></li>
+</ol>
+<!---3.046 mm/yr-->
+<!--Self-check: you should have gotten a rate of `-3.046+ mm/yr`.-->
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-averages-of-the-3-dimensional-data">
+<h1>Working with averages of the 3-dimensional data.<a class="headerlink" href="#working-with-averages-of-the-3-dimensional-data" title="Permalink to this heading">#</a></h1>
+<p><strong>Load the data and explore it.</strong>  As before, but for <code class="docutils literal notranslate"><span class="pre">aviso_ssh_3d.mat</span></code>.</p>
+<ol class="arabic simple" start="7">
+<li><p>How many dimensions does <code class="docutils literal notranslate"><span class="pre">altim.ssh</span></code> have?</p></li>
+</ol>
+<!--3-->
+<ol class="arabic simple" start="8">
+<li><p>Which dimension corresponds to the <code class="docutils literal notranslate"><span class="pre">altim.time</span></code> vector?</p></li>
+</ol>
+<!--the 3rd dimension-->
+<p>Use the <code class="docutils literal notranslate"><span class="pre">size</span></code> function to return the size of each dimension.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">AA</span><span class="p">,</span><span class="n">OO</span><span class="p">,</span><span class="n">TT</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">ssh</span><span class="p">);</span>
+</pre></div>
+</div>
+<!--143, 225, 247-->
+<section id="creating-a-map-by-averaging-in-time">
+<h2>Creating a map by averaging in time<a class="headerlink" href="#creating-a-map-by-averaging-in-time" title="Permalink to this heading">#</a></h2>
+<p>Create an average of the sea surface height by averaging the data in the time dimension.  Use <code class="docutils literal notranslate"><span class="pre">help</span></code> on the function <code class="docutils literal notranslate"><span class="pre">nanmean</span></code> to see how to specify which dimension you are averaging in.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">mean_map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nanmean</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">ssh</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Replace the second subplot in figure 1 with this new mean map.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span><span class="nb">cla</span>
+<span class="nb">pcolor</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">lon</span><span class="p">,</span><span class="n">altim</span><span class="p">.</span><span class="n">lat</span><span class="p">,</span><span class="n">mean_map</span><span class="p">);</span>
+<span class="n">shading</span><span class="w"> </span><span class="s">flat</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">coastlon</span><span class="p">,</span><span class="n">coastlat</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+<span class="nb">caxis</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="w"> </span><span class="mi">100</span><span class="p">])</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Time mean of SSH&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Comment on how the two maps look different.</p></li>
+</ol>
+<!--
+The time-averaged map is much smoother, while the instantaneous map for Oct 1992 has more wiggles and splotches ($\leftarrow$ not a technical term).
+-->
+</section>
+<section id="creating-a-time-series-by-averaging-in-space">
+<h2>Creating a time series by averaging in space.<a class="headerlink" href="#creating-a-time-series-by-averaging-in-space" title="Permalink to this heading">#</a></h2>
+<p>Now we would like each map of SSH to be represented by a single average value (similar to the averages that were created in question \ref{q1}(\ref{p1}).</p>
+<p><strong>Average the SSH data.</strong> Because there are some NaNs in the data field, we reshape the data before averaging as</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ssh_tseries_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">ssh</span><span class="p">,[</span><span class="n">AA</span><span class="o">*</span><span class="n">OO</span><span class="p">,</span><span class="n">TT</span><span class="p">]);</span>
+<span class="n">ssh_tseries_mean1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nanmean</span><span class="p">(</span><span class="n">ssh_tseries_mean</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Create Figure 2.</strong> and activate the top panel using <code class="docutils literal notranslate"><span class="pre">subplot(2,1,1)</span></code>.  Here, plot the time series <code class="docutils literal notranslate"><span class="pre">ssh_tseries_mean1</span></code> using a black line.  Make the x-axis human readable.  (Check your previous labs to see how you did this.)  Add a y-label with units describing the axis, e.g.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Sea surface height [cm]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Calculate the annual cycle</strong> using <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code>.  See your previous lab to see how you did this.  You should use the function <code class="docutils literal notranslate"><span class="pre">fit_harmonics</span></code> for the appropriate values in <code class="docutils literal notranslate"><span class="pre">nharm</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">cutoff=0</span></code>.  You can then reconstruct the seasonal cycle as</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seasonal_cycle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">amp</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">altim</span><span class="p">.</span><span class="n">time</span><span class="o">/</span><span class="n">L</span><span class="o">+</span><span class="n">pha</span><span class="p">)</span><span class="o">+</span><span class="n">offset</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Add the seasonal cycle to your plot in red.</p>
+<ol class="arabic simple" start="10">
+<li><p>In what month does the seasonal cycle peak?</p></li>
+</ol>
+<!--October-->
+<ol class="arabic simple" start="11">
+<li><p>When is it a minimum?</p></li>
+</ol>
+<!--April-->
+<ol class="arabic simple" start="12">
+<li><p>What is the seasonal range in SSH?</p></li>
+</ol>
+<!--9.43 cm, or 9.23 if you do max-min-->
+<p>Calculate the residual by subtracting the seasonal cycle from the full time series.  Call it <code class="docutils literal notranslate"><span class="pre">resid1</span></code>.  Plot this in the second subplot in black.</p>
+<p><strong>Fit a linear trend to the residual</strong> using the <code class="docutils literal notranslate"><span class="pre">polyfit</span></code> and <code class="docutils literal notranslate"><span class="pre">polyval</span></code> functions. Call it <code class="docutils literal notranslate"><span class="pre">trend2</span></code>. Add this to the second subplot in red.  Annotate your figure with appropriate x- and y-axis labels and legends.</p>
+<ol class="arabic simple" start="13">
+<li><p>Over the full record, how much has the value of <code class="docutils literal notranslate"><span class="pre">trend2</span></code> changed?</p></li>
+</ol>
+<!--3.704 cm-->
+<ol class="arabic simple" start="14">
+<li><p>The seasonal range is <strong>(greater / less than )</strong>  than the total range in <code class="docutils literal notranslate"><span class="pre">trend2</span></code>?</p></li>
+</ol>
+<!--greater-->
+<ol class="arabic simple" start="15">
+<li><p>Calculate the trend from the output from <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>.    What is the trend?  Give your answer in mm/yr.</p></li>
+</ol>
+<!--0.00049477~cm/day, 1.8071+ mm/yr-->
+<ol class="arabic simple" start="16">
+<li><p>Comment on why you think this answer differed from your answer in question \ref{q1}(\ref{pp}).
+\vspace{1in}</p></li>
+</ol>
+<!--
+The trend that you calculated in the previous section was based on two snapshots in time, one from October and one from April.  Since the seasonal cycle analysis has shown us that SSH peaks in October and is at a minimum in April, and the seasonal variability is large relative to the change over the 2 decades, this is what was estimated from the two snapshots.
+-->
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-full-3-dimensional-data">
+<h1>Working with full 3-dimensional data.<a class="headerlink" href="#working-with-full-3-dimensional-data" title="Permalink to this heading">#</a></h1>
+<p>In the previous section, we spatially-averaged our data to create a simple time series that we could work with as in the previous lab.  Here we will use what we know from loops to calculate the trend at each location in the map.</p>
+<section id="calculate-the-trend-for-a-single-location">
+<h2>Calculate the trend for a single location.<a class="headerlink" href="#calculate-the-trend-for-a-single-location" title="Permalink to this heading">#</a></h2>
+<p>Extract a time series of SSH from at or just north of <span class="math notranslate nohighlight">\(45^\circ\)</span>N and at or just east of <span class="math notranslate nohighlight">\(53^\circ\)</span>W.  Recall to find the index we can use</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">lat</span><span class="o">&gt;=</span><span class="mi">45</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#39;first&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>to identify the index of the latitude which has a value greater than or equal to 45.  Use similar code to find the index of the longitude, then create the individual time series as <code class="docutils literal notranslate"><span class="pre">ssh_tseries</span></code>.</p>
+<p>Note that the size of <code class="docutils literal notranslate"><span class="pre">ssh_tseries</span></code> is [1 x 1 x 247].  Though it only has 1 non-singleton dimension (and so is a vector) it is stored in Matlab as a 3-dimensional matrix.  To get rid of the extra dimension, use <code class="docutils literal notranslate"><span class="pre">squeeze</span></code>,</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ssh_tseries1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">squeeze</span><span class="p">(</span><span class="n">ssh_tseries</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now fit the annual cycle and remove the trend:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">amp</span><span class="p">,</span><span class="n">pha</span><span class="p">,</span><span class="n">frac</span><span class="p">,</span><span class="n">offset</span><span class="p">,</span><span class="n">yy</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fit_harmonics</span><span class="p">(</span><span class="n">ssh_tseries1</span><span class="p">,</span><span class="n">altim</span><span class="p">.</span><span class="n">time</span><span class="p">,</span><span class="n">nharm</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">seasonal_cycle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">amp</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">altim</span><span class="p">.</span><span class="n">time</span><span class="o">/</span><span class="n">L</span><span class="o">+</span><span class="n">pha</span><span class="p">)</span><span class="o">+</span><span class="n">offset</span><span class="p">;</span>
+<span class="n">resid1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ssh_tseries1</span><span class="o">-</span><span class="n">seasonal_cycle</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">P2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">polyfit</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">time</span><span class="p">,</span><span class="n">resid1</span><span class="o">&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">slope1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">P2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="o">*</span><span class="mf">365.25</span><span class="p">;</span><span class="w"> </span><span class="c">% in mm/yr</span>
+</pre></div>
+</div>
+<p>If you forget how <code class="docutils literal notranslate"><span class="pre">fit_harmonics.m</span></code> works, take a look at your previous practical.</p>
+</section>
+<section id="calculate-the-trend-at-each-location">
+<h2>Calculate the trend at each location.<a class="headerlink" href="#calculate-the-trend-at-each-location" title="Permalink to this heading">#</a></h2>
+<p>This is the trickiest part of the practical.</p>
+<p><strong>Create the loop.</strong> If you want to loop through all the latitudes and all the longitudes, you can create a loop shell like</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">ado</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">AA</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="n">odo</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="n">OO</span>
+<span class="w">            </span><span class="c">% Get the time series at the point given by indices ado and odo</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="c">% Calculate the seasonal cycle</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="c">% Remove the seasonal cycle</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="c">% Fit a polynomial to the residual</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="c">% Calculate the slope in mm/yr from the polynomial coefficients, call it slope1.</span>
+<span class="w">        </span>
+<span class="w">            </span><span class="c">% Store the slope</span>
+<span class="w">            </span><span class="n">all_slopes</span><span class="p">(</span><span class="n">ado</span><span class="p">,</span><span class="n">odo</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">slope1</span><span class="p">;</span>
+<span class="w">        </span>
+<span class="w">      </span><span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Fill in the gaps between the comment lines provided.</p>
+<p><strong>Create figure 3.</strong> a map of the trend in sea surface height at each location.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="nb">clf</span>
+<span class="nb">pcolor</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">lon</span><span class="p">,</span><span class="n">altim</span><span class="p">.</span><span class="n">lat</span><span class="p">,</span><span class="n">all_slopes</span><span class="p">)</span>
+<span class="nb">shading</span><span class="w"> </span><span class="n">flat</span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">coastlon</span><span class="p">,</span><span class="n">coastlat</span><span class="p">,</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c">% Annotate the figure</span>
+<span class="nb">colormap</span><span class="p">(</span><span class="nb">jet</span><span class="p">)</span>
+<span class="nb">caxis</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&#39;Trend in SSH after removing annual harmonic, in mm/yr&#39;</span><span class="p">)</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="nb">colorbar</span>
+</pre></div>
+</div>
+<p>Self-check: You should get something like the figure shown below.</p>
+<p><img alt="Trends" src="computing/gyre_fig3_trends.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="making-a-movie-optional">
+<h1>Making a movie (optional)<a class="headerlink" href="#making-a-movie-optional" title="Permalink to this heading">#</a></h1>
+<p>Sometimes the best way to visualise data is to create a movie and <em>watch it</em>.  Unfortunately, the code doesn’t seem to work on all computers in the PC labs, so you may need to fiddle with it.</p>
+<p><strong>Create a movie.</strong> Matlab has a handy set of functions called <code class="docutils literal notranslate"><span class="pre">VideoWriter</span></code> which you can find out about by doing a <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span> <span class="pre">help</span> <span class="pre">VideoWriter</span></code>.  To create a movie, we want to loop through time, and make a map of SSH at each time.  The following code may or may not work.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">VideoWriter</span><span class="p">(</span><span class="s">&#39;SSHmovie.avi&#39;</span><span class="p">,</span><span class="s">&#39;Motion JPEG 2000&#39;</span><span class="p">);</span>
+<span class="nb">open</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="nb">clf</span>
+<span class="k">for</span><span class="w"> </span><span class="n">tdo</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="c">%length(altim.time)</span>
+<span class="w">    </span><span class="nb">pcolor</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">lon</span><span class="p">,</span><span class="n">altim</span><span class="p">.</span><span class="n">lat</span><span class="p">,</span><span class="n">altim</span><span class="p">.</span><span class="n">ssh</span><span class="p">(:,:,</span><span class="n">tdo</span><span class="p">))</span>
+<span class="w">    </span><span class="nb">shading</span><span class="w"> </span><span class="n">flat</span>
+<span class="w">    </span><span class="nb">caxis</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="w"> </span><span class="mi">100</span><span class="p">])</span>
+<span class="w">    </span><span class="nb">title</span><span class="p">(</span><span class="nb">datestr</span><span class="p">(</span><span class="n">altim</span><span class="p">.</span><span class="n">time</span><span class="p">(</span><span class="n">tdo</span><span class="p">)))</span>
+<span class="w">    </span><span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">currFrame</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">getframe</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">writeVideo</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="n">currFrame</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="nb">close</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that in the example code, the loop index is set to run only from 1 to 10.<br />
+This is a good way to test that it is working, and then open up the video file which you should find in the same directory, called <code class="docutils literal notranslate"><span class="pre">SSHmove.avi</span></code>, and see whether you can play it.  Once you have something that works, you can change the loop index to run through all time values as <code class="docutils literal notranslate"><span class="pre">tdo=1:length(altim.time)</span></code>.</p>
+<p>Enjoy!</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="practical-5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spatial data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spatio-temporal data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data-by-plotting-it">Explore the data by plotting it.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-change-in-ssh-label-q1">Calculate the change in SSH \label{q1}</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-averages-of-the-3-dimensional-data">Working with averages of the 3-dimensional data.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-map-by-averaging-in-time">Creating a map by averaging in time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-time-series-by-averaging-in-space">Creating a time series by averaging in space.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-full-3-dimensional-data">Working with full 3-dimensional data.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-trend-for-a-single-location">Calculate the trend for a single location.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-trend-at-each-location">Calculate the trend at each location.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-movie-optional">Making a movie (optional)</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

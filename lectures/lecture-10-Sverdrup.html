@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Vorticity and Sverdrup balance &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-10-Sverdrup';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../exercises/overview.html" />
+    <link rel="prev" title="Ekman transport" href="lecture-9-Ekman.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-10-Sverdrup.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-10-Sverdrup.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vorticity and Sverdrup balance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vorticity and Sverdrup balance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-potential-vorticity">Conservation of potential vorticity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekman-pumping-and-suction">Ekman pumping and suction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-continuity-equation">Deriving the continuity equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continuity-to-describe-ekman-pumping">Using continuity to describe Ekman pumping</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sverdrup-relation">Sverdrup relation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sverdrup-transport">Sverdrup transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-problems">In-class problems</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="math notranslate nohighlight">\(\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\sW}{\mathrm{W}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sH}{\mathrm{H}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sU}{\mathrm{U}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sL}{\mathrm{L}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sT}{\mathrm{T}}\)</span></p>
+<p><strong>Main points:</strong></p>
+<ol class="arabic simple">
+<li><p>Conservation of <em>potential vorticity</em>.  Potential vorticity is a conserved quantity in the ocean and can be used to diagnose the ocean circulation.</p></li>
+<li><p>Large scale southward circulation (in the gyres) results from latitudinal variations in Ekman transport.  This is called <em>Sverdrup balance</em>.*</p></li>
+</ol>
+<section class="tex2jax_ignore mathjax_ignore" id="vorticity-and-sverdrup-balance">
+<h1>Vorticity and Sverdrup balance<a class="headerlink" href="#vorticity-and-sverdrup-balance" title="Permalink to this heading">#</a></h1>
+<section id="conservation-of-potential-vorticity">
+<h2>Conservation of potential vorticity<a class="headerlink" href="#conservation-of-potential-vorticity" title="Permalink to this heading">#</a></h2>
+<p>Here, we’ll consider one of the implications of potential vorticity conservation on the large scale ocean circulation.  Potential vorticity
+<span class="math notranslate nohighlight">\(\boxed{q=\frac{(f+\zeta)}{H}}\tag{potential vorticity}\)</span></p>
+<p>is a conserved quantity in the ocean, where <span class="math notranslate nohighlight">\(f\)</span> is Coriolis, <span class="math notranslate nohighlight">\(\zeta=\partial v/\partial x-\partial u/\partial y\)</span> is the vertical component of relative vorticity (spinniness of the fluid) of a partcel of water.  Conservation of a quantity means that it does not change in time, so</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial q}{\partial t} = \frac{\partial }{\partial t}\left(\frac{f+\zeta}{H}\right) = 0 \ .\]</div>
+<p>There are three parts of this equation:</p>
+<ul class="simple">
+<li><p>vorticity due to fluid circulation, <span class="math notranslate nohighlight">\(\zeta\)</span></p></li>
+<li><p>vorticity due to Earth’s rotation, <span class="math notranslate nohighlight">\(f\)</span>, which depends on latitude when considering a local vertical column</p></li>
+<li><p>Stretching (<span class="math notranslate nohighlight">\(1/H\)</span>) due to a fluid column stretching or shrinking.</p></li>
+</ul>
+<p>Conservation of vorticity means that if one component changes in the numerator (e.g., <span class="math notranslate nohighlight">\(f\)</span> increases or <span class="math notranslate nohighlight">\(\zeta\)</span> increases) then the denominator must also change to keep the ratio constant (e.g., <span class="math notranslate nohighlight">\(H\)</span> thickness must increase).</p>
+<p>This is analogous to the conservation of angular momentum for solid body physics, but applied to a fluid parcel.  If you recall the example of an ice skater spinning, when he/she pulls in his/her arms (gets narrower/taller), the angular velocity increases.</p>
+<!--\begin{figure}
+\includegraphics[width=.7\textwidth]{../figfiles/talley_dpo_vorticity_1.png}
+\includegraphics[width=.7\textwidth]{../figfiles/talley_dpo_vorticity_2.png}\\
+\includegraphics[width=.7\textwidth]{../figfiles/talley_dpo_vorticity_3.png}
+\caption{Draw the two columns with different spin, from Talley's text DPO}\label{fig1}
+\end{figure}-->
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ekman-pumping-and-suction">
+<h1>Ekman pumping and suction<a class="headerlink" href="#ekman-pumping-and-suction" title="Permalink to this heading">#</a></h1>
+<p>Variations in the stress on a surface lead to horizontal convergences and divergences of the Ekman transport, which is compensated for, by a vertical velocity divergence (i.e., stretching or shrinking). This process is called <strong>Ekman pumping</strong>.</p>
+<section id="deriving-the-continuity-equation">
+<h2>Deriving the continuity equation<a class="headerlink" href="#deriving-the-continuity-equation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Starting with the equation for conservation of mass - that mass cannot be created or destroyed</p></li>
+<li><p>Using scaling analysis, the assumption of a Boussinesq fluid (<span class="math notranslate nohighlight">\(\rho=\rho_0+\rho'(x,y,z,t)\)</span> where <span class="math notranslate nohighlight">\(\rho'\ll\rho_0\)</span>), and the advective timescale assumption</p></li>
+</ul>
+<p>We start with the equation for conservation of mass,</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\rho}\frac{D \rho}{D t}+\nabla\cdot\vec{u} = 0\]</div>
+<p>Multiplying through by <span class="math notranslate nohighlight">\(\rho\)</span> and expanding the divergence (<span class="math notranslate nohighlight">\(\nabla\cdot\)</span>), we get</p>
+<div class="math notranslate nohighlight">
+\[\frac{D\rho}{Dt} +\rho \left(\pfrac{u}{x}+\pfrac{v}{y}+\pfrac{w}{z}\right) = 0\]</div>
+<p>Expanding the material derivative <span class="math notranslate nohighlight">\(D/Dt\)</span>, and distributing the <span class="math notranslate nohighlight">\(\rho\)</span> gives us</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{\rho}{t} + u\pfrac{\rho}{x} + v\pfrac{\rho}{y} + w\pfrac{\rho}{z} + \rho\pfrac{u}{x}+\rho\pfrac{v}{y} + \rho\pfrac{w}{z} =0
+\]</div>
+<p>Because we have that <span class="math notranslate nohighlight">\(\rho(x,y,z,t)=\rho_0+\rho'(x,y,z,t)\)</span> (that variations in density are small relative to the magnitude of the density value), we can substitute it into the equation everywhere and drop small terms.  Since <span class="math notranslate nohighlight">\(\rho_0\)</span> is a constant, we can drop it anywhere it appears inside a derivative (e.g., in all the terms in <span class="math notranslate nohighlight">\(D\rho/Dt\)</span>).  This is because the derivative of a constant is identically (exactly) zero.</p>
+<p>For example, for the <span class="math notranslate nohighlight">\(\partial/\partial t\)</span> term,</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{t}(\rho) =\pfrac{}{t}(\rho_0+\rho')
+=\pfrac{\rho_0}{t}+\pfrac{\rho'}{t}
+=0+\pfrac{\rho'}{t}\]</div>
+<p>Then our equation becomes</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{\rho'}{t} + u\pfrac{\rho'}{x} + v\pfrac{\rho'}{y} + w\pfrac{\rho'}{z} + (\rho_0+\rho')\pfrac{u}{x}+(\rho_0+\rho')\pfrac{v}{y} + (\rho_0+\rho')\pfrac{w}{z}  =0\]</div>
+<p>Now, in the latter three terms (originating from the <span class="math notranslate nohighlight">\(\rho \nabla\cdot\vec{u}\)</span>), we are multiplying by <span class="math notranslate nohighlight">\(\rho_0+\rho'\)</span>.  However, we have defined the density decomposition such that  <span class="math notranslate nohighlight">\(\rho_0\gg\rho'\)</span>.  Then in each of these terms, we can drop the part multiplied by <span class="math notranslate nohighlight">\(\rho'\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[(\rho_0+\rho')\pfrac{u}{x}\approx\rho_0\pfrac{u}{x}\]</div>
+<p>since anything multiplied by <span class="math notranslate nohighlight">\(\rho'\)</span> is much smaller than the same thing multiplied by <span class="math notranslate nohighlight">\(\rho_0\)</span>.
+Cancelling out the terms which are multiplied by <span class="math notranslate nohighlight">\(\rho'\)</span>, we are left with</p>
+<!--\begin{align*}
+\underbrace{\pfrac{\rho'}{t}}_{\substack{\rho_1\frac{1}{\sT}\\\\0}} + \underbrace{u\pfrac{\rho'}{x}}_{\substack{\rho_1\frac{\sU}{\sL}\\\\1}} + \underbrace{v\pfrac{\rho'}{y}}_{\substack{\rho_1\frac{\sU}{\sL}\\\\1}} + \underbrace{w\pfrac{\rho'}{z}}_{\substack{\rho_1\frac{\sW}{\sH}\\\\2}}+ \underbrace{\rho_0\pfrac{u}{x}}_{\substack{\rho_{oo}\frac{\sU}{\sL}\\\\3}}+\underbrace{\rho_0\pfrac{v}{y}}_{\substack{\rho_{oo}\frac{\sU}{\sL}\\\\3}} + \underbrace{\rho_0\pfrac{w}{z}}_{\substack{\rho_{oo}\frac{\sW}{\sH}\\\\4}} & =0
+\end{align*}
+-->
+<p><img alt="figures/lectures/cancel_terms.png" src="../_images/cancel_terms.png" /></p>
+<p>We will apply an assumption called the <em>advective timescale assumption</em> to give us that the scale of the <span class="math notranslate nohighlight">\(\partial\rho/\partial t\)</span> term is the same as the <span class="math notranslate nohighlight">\(u\partial\rho/\partial x\)</span>.  This assumption says that the timescale <span class="math notranslate nohighlight">\(\sT\)</span> associated with the <span class="math notranslate nohighlight">\(\partial/\partial t\)</span> in the equation is set by the speed <span class="math notranslate nohighlight">\(\sU\)</span> and distance <span class="math notranslate nohighlight">\(\sL\)</span> under consideration.  Since rate times time equals distance, then</p>
+<div class="math notranslate nohighlight">
+\[\sU\sT=\sL\qquad\mbox{ or }\qquad\sT=\sL/\sU\]</div>
+<p>Applying this to our equation, this shows us that term 0 has the same scale as term 1.  Then comparing terms 1 and 3, and 2 and 4, we find that <span class="math notranslate nohighlight">\(1\ll3\)</span> and <span class="math notranslate nohighlight">\(2\ll4\)</span> since <span class="math notranslate nohighlight">\(\rho_1\ll\rho_{oo}\)</span>.</p>
+<p>So we are left with retaining terms 3 and 4 which gives us the “incompressibility” equation (also called the nondivergence equation)</p>
+<div class="math notranslate nohighlight">
+\[\underbrace{\pfrac{u}{x}}_3+\underbrace{\pfrac{v}{y}}_3 + \underbrace{\pfrac{w}{z}}_4 =0\]</div>
+</section>
+<section id="using-continuity-to-describe-ekman-pumping">
+<h2>Using continuity to describe Ekman pumping<a class="headerlink" href="#using-continuity-to-describe-ekman-pumping" title="Permalink to this heading">#</a></h2>
+<p>If we start from the continuity equation, but only consider velocities generated by Ekman processes <span class="math notranslate nohighlight">\(u_e\)</span>, <span class="math notranslate nohighlight">\(v_e\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[{\pfrac{u_e}{x}}+{\pfrac{v_e}{y}} + {\pfrac{w}{z}} =0\]</div>
+<p>We can integrate the equation with respect to <span class="math notranslate nohighlight">\(z\)</span> (i.e., integrate in the vertical),</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\delta}^0 \left({\pfrac{u_e}{x}}+{\pfrac{v_e}{y}} + {\pfrac{w}{z}}\right)\,\mathrm{d}z= 0\]</div>
+<p>Taking the integrals inside the derivatives,</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{x} \int_{-\delta}^0 u_e\, \mathrm{d}z+\pfrac{}{y}\int_{-\delta}^0 v_e\,\mathrm{d}z + \int_{-\delta}^0{\pfrac{w}{z}}\,\mathrm{d}z= 0\]</div>
+<p>Recall from the lecture on Ekman transport, that we defined variables</p>
+<div class="math notranslate nohighlight">
+\[U_e\ ,\ V_e=\int_{-\delta}^0u_e\ ,v_e\ dz\]</div>
+<p>where <span class="math notranslate nohighlight">\(U_e\)</span> and <span class="math notranslate nohighlight">\(V_e\)</span> were Ekman transport in units of m<span class="math notranslate nohighlight">\(^2\)</span>/s (rather than the standard units for transport of m<span class="math notranslate nohighlight">\(^3\)</span>/s).  Then we can replace these in our equation and get</p>
+<p>Integrating the continuity equation with respect to <span class="math notranslate nohighlight">\(z\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{U_e}{x}+\pfrac{V_e}{y}+w(z=0)-w(z=-\delta)=0\ ,\]</div>
+<p>We will assume that <span class="math notranslate nohighlight">\(w\)</span> is zero at the sea surface (or at least very small).  We then define <span class="math notranslate nohighlight">\(w_e\)</span> as the vertical velocity at the base of the surface Ekman layer (i.e.,  where <span class="math notranslate nohighlight">\(z=-\delta\)</span>), so <span class="math notranslate nohighlight">\(w(z=-\delta)=w_e\)</span>.  Then we can compute the value of this vertical velocity due to the horizontal convergence or divergence resulting from surface Ekman transport in the <span class="math notranslate nohighlight">\(x-\)</span> and <span class="math notranslate nohighlight">\(y-\)</span> directions:</p>
+<div class="math notranslate nohighlight">
+\[w_e = \pfrac{U_e}{x}+\pfrac{V_e}{y}\]</div>
+<p>Then replacing the <span class="math notranslate nohighlight">\(U_e\)</span> and <span class="math notranslate nohighlight">\(V_e\)</span> with the expressions based on stress by wind at the sea surface, we have</p>
+<div class="math notranslate nohighlight">
+\[\boxed{w_e=\frac{1}{\rho f}\left(\pfrac{\tau^y}{x}-\pfrac{\tau^x}{y}\right)}\tag{Ekman pumping}\]</div>
+<p>When the latitudinal gradients in Ekman transport (latitudinal gradients are the <span class="math notranslate nohighlight">\(\pfrac{}{y}\)</span> ones) are such that water is “piled up” (i.e. a convergence), then Ekman pumping is downwards <span class="math notranslate nohighlight">\(w_e&lt;0\)</span>.  This is the “pumping” direction.  Alternatively, if the water is pulled away (i.e., a divergence), then Ekman pumping is upwards to “fill the gap” left by waters being moved out of a region, and <span class="math notranslate nohighlight">\(w_e&gt;0\)</span> upwards.  This is called “Ekman suction”.  If signs are not known, and we are generally referring to the phenomenon, then we use “Ekman pumping”.</p>
+<p><img alt="Ekman suction (left) and Ekman pumping (right)." src="../_images/neils-ekman-pumping.png" />
+The figure on the left is Ekman suction - on the right is Ekman pumping.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sverdrup-relation">
+<h1>Sverdrup relation<a class="headerlink" href="#sverdrup-relation" title="Permalink to this heading">#</a></h1>
+<p>What is the effect of the Ekman pumping/suction on vorticity and large scale transports?</p>
+<p>In particular, we will consider the third part of the vorticity equation (stretching).  In this case, we are going to return to our geostrophic equations with variable (Boussinesq) density and <em>without</em> making the <span class="math notranslate nohighlight">\(f\)</span>-plane approximation (so <span class="math notranslate nohighlight">\(f\)</span> is not a constant but changes as a function of latitude).</p>
+<p><strong>Beta-plane approximation:</strong> For the Sverdrup relation, we will simplify the variation of <span class="math notranslate nohighlight">\(f\)</span> with latitude by using instead the <span class="math notranslate nohighlight">\(\beta\)</span>-plane approximation.  The <span class="math notranslate nohighlight">\(\beta\)</span>-plane approximation comes from the Taylor expansion of the sine in the equation for Coriolis, i.e.  <span class="math notranslate nohighlight">\(f=2\Omega\sin(\phi)\)</span>.  <span class="math notranslate nohighlight">\(f\)</span>-plane retains only the first (constant) term in the expansion, while the <span class="math notranslate nohighlight">\(\beta\)</span>-plane means also retaining the second term in the expansion.  Not shown here, but the result is:</p>
+<div class="math notranslate nohighlight">
+\[
+f=f_0+\beta_0 y
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_0=2\Omega\sin\psi\)</span> and <span class="math notranslate nohighlight">\(\beta_0 = 2(\Omega/a)\cos\psi\)</span> where <span class="math notranslate nohighlight">\(a\)</span> is the radius of the earth, and <span class="math notranslate nohighlight">\(\psi\)</span> is the reference latitude.  Note that <span class="math notranslate nohighlight">\(\partial f/\partial y \approx \beta_0\)</span>.  Often, the subscripts <span class="math notranslate nohighlight">\(0\)</span> for <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> will be dropped.</p>
+<p>So, we start with our simplified equations of motion using geostrophic balance for the horizontal momentum equations,</p>
+<div class="math notranslate nohighlight">
+\[\mbox{$x$-mom:\qquad} -fv = -\frac{1}{\rho_0}\pfrac{p}{x}\ ,\]</div>
+<div class="math notranslate nohighlight">
+\[\mbox{$y$-mom:\qquad} fu =-\frac{1}{\rho_0}\pfrac{p}{y}\ , \]</div>
+<p>and use hydrostatic approximation in the vertical,</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{p}{z} =-\rho g \ ,\]</div>
+<p>and the incompressibility form of the  continuity equation,</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{u}{x}+\pfrac{v}{y}+\pfrac{w}{z} = 0\ .\]</div>
+<p>The first step is to eliminate pressure from the momentum equations.</p>
+<p>From examining the horizontal momentum equations, this can be accomplished by calculating the curl (<span class="math notranslate nohighlight">\(\nabla\times\)</span>) of the horizontal momentum equations,</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{x}(\mbox{$y$-mom})-\pfrac{}{y}(\mbox{$x$-mom}) \ .\]</div>
+<p>This gives</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{x}(fu) - \pfrac{}{y}(-fv) = -\frac{1}{\rho_0}\pfrac{^2p}{x\partial y}-\left(-\frac{1}{\rho_0}\pfrac{^2p}{x\partial y}\right)\]</div>
+<p>where, as intended, the pressure terms are cancelled on the right hand side:</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{x}(fu)+\pfrac{}{y}(fv) = 0\ .\]</div>
+<p>Using the <span class="math notranslate nohighlight">\(\beta\)</span>-plane approximation,  <span class="math notranslate nohighlight">\(f\)</span> varies with <span class="math notranslate nohighlight">\(y\)</span> but  is not a function of <span class="math notranslate nohighlight">\(x\)</span>.  We can then apply the chain rule for derivatives, and then we have</p>
+<div class="math notranslate nohighlight">
+\[f\left(\pfrac{u}{x}\right)+\pfrac{f}{y}\left(v\right) + f\pfrac{v}{y} = 0\]</div>
+<p>Recalling that <span class="math notranslate nohighlight">\(\pfrac{f}{y}=\beta_0\)</span>, and rearranging the terms, we come to</p>
+<div class="math notranslate nohighlight">
+\[
+f\left(\pfrac{u}{x}+\pfrac{v}{y}\right) + \beta_0v = 0\ .
+\]</div>
+<p>Note that we don’t replace the <span class="math notranslate nohighlight">\(f\)</span>’s above by <span class="math notranslate nohighlight">\(f_0\)</span>, but instead retain the full <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Then, noting from the continuity equation that</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{u}{x}+\pfrac{v}{y} = -\pfrac{w}{z}\]</div>
+<p>we can replace the quantity in the brackets to give,</p>
+<div class="math notranslate nohighlight">
+\[f\left(-\pfrac{w}{z}\right) + \beta_0 v =0\]</div>
+<p>or, rearranging,</p>
+<div class="math notranslate nohighlight">
+\[\boxed{\beta_0v = f\pfrac{w}{z}\ .}\tag{Sverdrup relation}\]</div>
+<p>What is this telling us?  This says that as a column of water is stretching or squeezing (<span class="math notranslate nohighlight">\(\partial w/\partial z\)</span>), it needs to move meridionally (through a gradient in <span class="math notranslate nohighlight">\(f\)</span> to account for the change in height or thickness.  This is an application of the conservation of potential vorticity.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sverdrup-transport">
+<h1>Sverdrup transport<a class="headerlink" href="#sverdrup-transport" title="Permalink to this heading">#</a></h1>
+<p>We can see the effects more clearly by integrating in the vertical, between a depth near the surface (<span class="math notranslate nohighlight">\(-\delta\)</span>, we’ll see why in a minute) and the bottom of the ocean, <span class="math notranslate nohighlight">\(-h\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\int_{-h}^{-\delta} \beta_0v\, \mathrm{d}z = \int_{-h}^{-\delta}f\pfrac{w}{z}\, \mathrm{d}z\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_0\int_{-h}^{-\delta} v\,\mathrm{d}z = f\left[w\big\rvert_{z=-\delta}-w\big\rvert_{z=-h}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_0\int_{-h}^{-\delta} v\,\mathrm{d}z = fw\big\rvert_{z=-\delta}
+\]</div>
+<p>where we have assumed there is no vertical flow at the bottom of the ocean (called the “no normal flow” condition, i.e. that there is no flow normal (perpendicular) to the sea floor).</p>
+<p>So, what is this saying?</p>
+<p>It says that for the column of water between <span class="math notranslate nohighlight">\(-\delta\)</span> and the bottom, if there is a vertical velocity at <span class="math notranslate nohighlight">\(-d\)</span>, pressing the layer downwards, then it is squashing the layer of water beneath it.  So this layer is getting shorter (<span class="math notranslate nohighlight">\(H\)</span> in the potential vorticity equation is decreasing).  According to conservation of potential vorticity, either <span class="math notranslate nohighlight">\(f\)</span> must decrease, or <span class="math notranslate nohighlight">\(\zeta\)</span> must decrease (get more negative).   In this case, there is no relative vorticity (<span class="math notranslate nohighlight">\(\zeta=0\)</span>), so the column of water must adjust its planetary vorticity to reach a correct <span class="math notranslate nohighlight">\(f\)</span> and conserve potential vorticity.</p>
+<p><img alt="" src="../_images/talley_dpo_sverdrup_gyre.png" /></p>
+<p>Now, why was it convenient to use <span class="math notranslate nohighlight">\(-\delta\)</span>?  Because we had an expression for vertical velocity at a depth of <span class="math notranslate nohighlight">\(-\delta\)</span>, where <span class="math notranslate nohighlight">\(\delta\)</span> was the thickness of the Ekman layer.  This is related to the curl of the wind stress as,</p>
+<div class="math notranslate nohighlight">
+\[
+w_{e}=\frac{1}{\rho_0}\left[\pfrac{}{x}\left(\frac{\tau^y}{f}\right)-\pfrac{}{y}\left(\frac{\tau^x}{f}\right)\right]\ .
+\]</div>
+<p>Then our equation above becomes,</p>
+<div class="math notranslate nohighlight">
+\[\boxed{\beta \int_{-h}^{-\delta}v\,\mathrm{d}z = fw_{e}\ .}\tag{Geostrophic Sverdrup balance}
+\]</div>
+<p>We can illustrate this with a few examples/practice problem.</p>
+<p>This tells us about the meridional transport in the layer <em>beneath</em> the Ekman layer, but we already know about meridional transport in the Ekman layer due to the zonal wind stress.   Total Sverdrup balance is the sum of <em>geostrophic Sverdrup balance</em> and Ekman transport.</p>
+<p>This was</p>
+<div class="math notranslate nohighlight">
+\[V_{ek} = -\frac{\tau^x}{\rho_0f}\]</div>
+<p>Then we can write the total meridional transport as</p>
+<div class="math notranslate nohighlight">
+\[V_{total} = \frac{f}{\beta_0}w_{ek} -\frac{\tau^x}{\rho_0f}\]</div>
+<div class="math notranslate nohighlight">
+\[=\frac{f}{\beta_0}\frac{1}{\rho_0}\left[\pfrac{}{x}\left(\frac{\tau^y}{f}\right)-\pfrac{}{y}\left(\frac{\tau^x}{f}\right)\right] - \frac{\tau^x}{\rho_0f}\]</div>
+<div class="math notranslate nohighlight">
+\[=\frac{1}{\rho_0\beta_0}\left[f\pfrac{}{x}\left(\frac{\tau_y}{f}\right)-f\pfrac{}{y}\left(\frac{\tau^x}{f}\right)-\beta_0\frac{\tau^x}{f}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[=\frac{1}{\rho_0\beta_0}\left[\pfrac{\tau^y}{x}-\pfrac{\tau^x}{y}\right] =\frac{1}{\rho_0\beta_0}\nabla\cdot\tau\]</div>
+<p>The last line can be seen by noting that</p>
+<div class="math notranslate nohighlight">
+\[f\pfrac{}{y}\left(\frac{\tau^x}{f}\right)  = f\left(\frac{1}{f}\pfrac{\tau^x}{y}\right) + f\left(\tau^x\pfrac{}{y}\left(\frac{1}{f}\right)\right)\]</div>
+<div class="math notranslate nohighlight">
+\[= \pfrac{\tau^x}{y} -\beta_0\frac{\tau^x}{f}\]</div>
+<p>since</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{}{y}\left(f^{-1}\right)  = -f^{-2}\pfrac{f}{y} = -\frac{\beta_0}{f^2}\]</div>
+<p>Similarly, we should also have</p>
+<div class="math notranslate nohighlight">
+\[f\pfrac{}{x}\left(\frac{\tau^y}{f}\right)  = f\left(\frac{1}{f}\pfrac{\tau^y}{x}\right) + f\left(\tau^x\pfrac{}{x}\left(\frac{1}{f}\right)\right)= \pfrac{\tau^y}{x}\]</div>
+<p>since <span class="math notranslate nohighlight">\(f\)</span> doesn’t depend on <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Then returning to where we left off,</p>
+<div class="math notranslate nohighlight">
+\[V_{total} =\frac{1}{\rho_0\beta_0}\left[f\pfrac{}{x}\left(\frac{\tau_y}{f}\right)-f\pfrac{}{y}\left(\frac{\tau^x}{f}\right)-\beta_0\frac{\tau^x}{f}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[=\left[\pfrac{\tau^y}{x} - \left(\pfrac{\tau^x}{y} -\beta_0\frac{\tau^x}{f}\right) - \beta_0\frac{\tau^x}{f}\right]\]</div>
+<div class="math notranslate nohighlight">
+\[=\frac{1}{\rho_0\beta_0}\left[\pfrac{\tau^y}{x}-\pfrac{\tau^x}{y}\right] =\frac{1}{\rho_0\beta_0}\nabla\times\tau\]</div>
+<p>leaving us with Sverdrup balance (where <span class="math notranslate nohighlight">\(V_{total}\)</span> comprises both geostrophic transport and the surface Ekman transport),</p>
+<div class="math notranslate nohighlight">
+\[\boxed{V_{total}=\frac{1}{\rho_0\beta_0}\left[\pfrac{\tau^y}{x}-\pfrac{\tau^x}{y}\right]}\tag{Sverdrup balance}\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="in-class-problems">
+<h1>In-class problems<a class="headerlink" href="#in-class-problems" title="Permalink to this heading">#</a></h1>
+<ol class="arabic">
+<li><p><strong>Sverdrup transport.</strong> Suppose the Ekman transport at <span class="math notranslate nohighlight">\(30^\circ\)</span>N in the Atlantic is -2 Sv (southward) and the Ekman transport at <span class="math notranslate nohighlight">\(20^\circ\)</span>N is -5 Sv (southward).  Assume the Atlantic is 5000 km wide.</p>
+<p>(a) What is the average vertical velocity at the base of the Ekman layers between <span class="math notranslate nohighlight">\(20^\circ\)</span>N and <span class="math notranslate nohighlight">\(30^\circ\)</span>N?</p>
+<p>Answer: <span class="math notranslate nohighlight">\(5.4\times 10^{-7}\)</span> m/s</p>
+ <!--Solution:
+ If the transport in at 30N is 2 Sv (in because it is negative/southward) and the transport out at 20N is 5 (out because negative here is southward and out of the region), then the net transport is a loss of 3 Sv (divergence).  By volume conservation, 3 Sv must come up vertically through Ekman suction.  The vertical velocity is then the transport (in m3/s) divided by the area (m^2) which gives a velocity (m/s):
+ \begin{align}
+ w_e&=\frac{\mathbf{T}}{\mathcal{A}}\\
+ &=\frac{3,000,000\mbox{ m}^3{/s}}{(10 deg)(111 km/1 deg)(5000 km)}\\
+ &=\frac{3000000\mbox{ m}^3/\mbox{ s}}{(1110000\mbox{ m})(5000000\mbox{ m})}\\
+ &\approx 5.4\times 10^{-7}\mbox{ m/s}
+ \end{align}
+ -->
+<p>(b) Using the vertical velocity calculated above, calculate the southward Sverdrup interior transport.  Use a value for <span class="math notranslate nohighlight">\(\beta\)</span> estimated at the mid-point (<span class="math notranslate nohighlight">\(25^\circ\)</span>N).</p>
+<p>Answer: 8 Sv</p>
+</li>
+</ol>
+<!--Solution:
+
+Recalling the Sverdrup relation,
+\begin{equation}
+\beta\mathbf{V}=fw_e\ ,
+\end{equation}
+we can estimate the transport $\mathbf{T}=L\mathbf{V}$ where $L=5000$ km.  Using $\beta=2\Omega/r_e\cos\phi$, where $r_e=6371$ km and $\phi=25^\circ$N, then $\beta=2.07\times 10^{-11}\mbox{ s}^{-1}\mbox{m}^{-1}$.  Then
+\begin{align}
+\mathbf{T}=L\mathbf{V}&=\frac{fL}{\beta}w_e\\
+&=\frac{(6.16\times 10^{-5}\mbox{ s}^{-1})(5000000\mbox{ m})}{2.07\times 10^{-11}\mbox{ s}^{-1}\mbox{m}^{-1}}(5.4\times 10^{-7}\mbox{ m/s})
+\approx 8\mbox{ Sv}
+\end{align}
+-->
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-9-Ekman.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Ekman transport</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../exercises/overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vorticity and Sverdrup balance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservation-of-potential-vorticity">Conservation of potential vorticity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekman-pumping-and-suction">Ekman pumping and suction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-continuity-equation">Deriving the continuity equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continuity-to-describe-ekman-pumping">Using continuity to describe Ekman pumping</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sverdrup-relation">Sverdrup relation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sverdrup-transport">Sverdrup transport</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-problems">In-class problems</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

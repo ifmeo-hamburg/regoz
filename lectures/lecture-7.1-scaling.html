@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Hydrostatic approximation &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-7.1-scaling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geostrophy" href="lecture-8-geostrophy.html" />
+    <link rel="prev" title="Equations of motion" href="lecture-7-eqn-of-motion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-7.1-scaling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-7.1-scaling.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hydrostatic approximation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="math notranslate nohighlight">\(\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\sW}{\mathrm{W}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sH}{\mathrm{H}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sU}{\mathrm{U}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sL}{\mathrm{L}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sT}{\mathrm{T}}\)</span></p>
+<section id="hydrostatic-approximation">
+<h1>Hydrostatic approximation<a class="headerlink" href="#hydrostatic-approximation" title="Permalink to this heading">#</a></h1>
+<p>This is a demonstration of using scaling analysis to hydrostatic balance.  It will not be assessed in 63-716/63-717 RegOz.</p>
+<p>How we’ll do this:</p>
+<ol class="arabic simple">
+<li><p>We start with some equations of motion.</p></li>
+<li><p>Use scaling analysis to discard less important terms.  Use the remaining terms to determine relationships between the individual scales. (<em>This is like solving equations, but very inexactly!</em>)</p></li>
+<li><p>When necessary, impose relationships between individual scales in order to further simplify those equations.  Keep track of relationships imposed as the <em>assumptions</em> or <em>conditions</em> under which the final simplified balance is valid.</p></li>
+</ol>
+<!--_We left off here last time\ldots_-->
+<p><strong>1. Start with the equations of motion.</strong></p>
+<p>Start from the non-rotating (<span class="math notranslate nohighlight">\(f=0\)</span>), inviscid (frictionless <span class="math notranslate nohighlight">\((F_x,F_y,F_z)=0\)</span>) equations of motion where we’ve multiplied through by <span class="math notranslate nohighlight">\(\rho\)</span>:</p>
+<!--\begin{align*}
+\mbox{$x$,$y$-mom:} &\qquad & \rho\frac{Du}{Dt} &=-\pfrac{p}{x}\\
+&\qquad& \rho \frac{Dv}{Dt} & =-\pfrac{p}{y}\\
+\mbox{$z$-mom:}& \qquad & \rho\frac{Dw}{Dt} &= -\pfrac{p}{z}-\rho g\\
+\mbox{mass:}&\qquad & \frac{D\rho}{Dt} +\rho\pfrac{u}{x}&+\rho\pfrac{v}{y}+\rho\pfrac{w}{z}=0
+\end{align*}-->
+<p><img alt="figures/lectures/eom-equations.png" src="../_images/eom-equations.png" /></p>
+<p>Apply the Boussinesq approximation, that <span class="math notranslate nohighlight">\(\rho = \rho_0+\rho'(x,y,z,t)\)</span>, with <span class="math notranslate nohighlight">\(\rho_0\)</span> constant.</p>
+<p><strong>2. Scaling the mass equation.</strong></p>
+<p>Expanding the mass equation, we get:</p>
+<p>\begin{align*}
+\frac{1}{\rho}\frac{D\rho}{Dt} + \nabla\cdot\vec{u} &amp;= 0\
+\frac{D\rho}{Dt} +\rho \left(\pfrac{u}{x}+\pfrac{v}{y}+\pfrac{w}{z}\right) &amp;= 0\
+\pfrac{\rho}{t} + u\pfrac{\rho}{x} + v\pfrac{\rho}{y} + w\pfrac{\rho}{z} + \rho\pfrac{u}{x}+\rho\pfrac{v}{y} + \rho\pfrac{w}{z} &amp; =0
+\end{align*}</p>
+<p>Because we have that <span class="math notranslate nohighlight">\(\rho=\rho_0+\rho'\)</span>, we need to substitute it into the equation everywhere.  However, using <span class="math notranslate nohighlight">\(\rho_0\)</span> constant, allows it to drop from the <span class="math notranslate nohighlight">\(D\rho/Dt\)</span> term.  This is because the derivative of a constant is identically (exactly) zero.
+So</p>
+<p>\begin{align*}
+\pfrac{}{t}(\rho)&amp;=\pfrac{}{t}(\rho_0+\rho’)\
+&amp;=\pfrac{\rho_0}{t}+\pfrac{\rho’}{t}\
+&amp;=0+\pfrac{\rho’}{t}
+\end{align*}</p>
+<p>Then our equation becomes</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{\rho'}{t} + u\pfrac{\rho'}{x} + v\pfrac{\rho'}{y} + w\pfrac{\rho'}{z} + (\rho_0+\rho')\pfrac{u}{x}+(\rho_0+\rho')\pfrac{v}{y} + (\rho_0+\rho')\pfrac{w}{z}  =0\]</div>
+<p>Now, in the latter three terms, we are multiplying by <span class="math notranslate nohighlight">\(\rho_0+\rho'\)</span>, but <span class="math notranslate nohighlight">\(\rho_0\gg\rho'\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[(\rho_0+\rho')\pfrac{u}{x}\approx\rho_0\pfrac{u}{x}\]</div>
+<p>since anything multiplied by <span class="math notranslate nohighlight">\(\rho'\)</span> is much smaller than the same thing multiplied by <span class="math notranslate nohighlight">\(\rho_0\)</span>.
+Cancelling out the terms which are multiplied by <span class="math notranslate nohighlight">\(\rho'\)</span>, we are left with</p>
+<!--\begin{align*}
+\underbrace{\pfrac{\rho'}{t}}_{\substack{\rho_1\frac{1}{\sT}\\\\0}} + \underbrace{u\pfrac{\rho'}{x}}_{\substack{\rho_1\frac{\sU}{\sL}\\\\1}} + \underbrace{v\pfrac{\rho'}{y}}_{\substack{\rho_1\frac{\sU}{\sL}\\\\1}} + \underbrace{w\pfrac{\rho'}{z}}_{\substack{\rho_1\frac{\sW}{\sH}\\\\2}}+ \underbrace{\rho_0\pfrac{u}{x}}_{\substack{\rho_{oo}\frac{\sU}{\sL}\\\\3}}+\underbrace{\rho_0\pfrac{v}{y}}_{\substack{\rho_{oo}\frac{\sU}{\sL}\\\\3}} + \underbrace{\rho_0\pfrac{w}{z}}_{\substack{\rho_{oo}\frac{\sW}{\sH}\\\\4}} & =0
+\end{align*}
+-->
+<p><img alt="figures/lectures/cancel_terms.png" src="../_images/cancel_terms.png" /></p>
+<p>We will apply an assumption called the <em>advective timescale assumption</em> to give us that the scale of the <span class="math notranslate nohighlight">\(\partial\rho/\partial t\)</span> term is the same as the <span class="math notranslate nohighlight">\(u\partial\rho/\partial x\)</span>.  This assumption says that the timescale <span class="math notranslate nohighlight">\(\sT\)</span> associated with the <span class="math notranslate nohighlight">\(\partial/\partial t\)</span> in the equation is set by the speed <span class="math notranslate nohighlight">\(\sU\)</span> and distance <span class="math notranslate nohighlight">\(\sL\)</span> under consideration.  Since rate times time equals distance, then
+$<span class="math notranslate nohighlight">\(\sU\sT=\sL\qquad\mbox{ or }\qquad\sT=\sL/\sU\)</span>$</p>
+<p>Applying this to our equation, this shows us that term 0 has the same scale as term 1.  Then comparing terms 1 and 3, and 2 and 4, we find that <span class="math notranslate nohighlight">\(1\ll3\)</span> and <span class="math notranslate nohighlight">\(2\ll4\)</span> since <span class="math notranslate nohighlight">\(\rho_1\ll\rho_{oo}\)</span>.</p>
+<p>So we are left with retaining terms 3 and 4 which gives us the “incompressibility” equation
+\begin{align*}
+\underbrace{\pfrac{u}{x}}_3+\underbrace{\pfrac{v}{y}}_3 + \underbrace{\pfrac{w}{z}}_4 &amp; =0
+\end{align*}
+We have three options for how these terms will balance:</p>
+<ul class="simple">
+<li><p>option 1: <span class="math notranslate nohighlight">\(3\gg 4\)</span></p></li>
+<li><p>option 2: <span class="math notranslate nohighlight">\(3\sim 4\)</span></p></li>
+<li><p>option 3: <span class="math notranslate nohighlight">\(3\ll 4\)</span></p></li>
+</ul>
+<p>If option 1, then we can cancel the third term and we’re left with “horizontal non-divergence” or</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{u}{x}+\pfrac{v}{y}=0\ .\]</div>
+<p>If option 2, then all three terms must be retained.</p>
+<p>If option 3, then we say term 4 is much bigger than terms 3, and cancel both terms with scale <span class="math notranslate nohighlight">\(\sU/\sL\)</span>.  But then we are left with</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{w}{z}=0\ ,\]</div>
+<p>or, that term 4 is zero!  But we arrived at this result by assuming term 4 was big, not zero.  So option 3 is not possible.</p>
+<p>Then we only have options 1 or 2, that either</p>
+<p>\begin{align*}
+\frac{\sU}{\sL} &amp;\gg\frac{\sW}{\sH} &amp;\mbox{ or }&amp; \qquad&amp;\frac{\sU}{\sL} &amp;\sim\frac{\sW}{\sH}
+\end{align*}</p>
+<p>If we want them to balance (and not have 3 dominate 4, or vice versa) then we require their scales to match:</p>
+<p>\begin{align*}
+\frac{\sU}{\sL} &amp;\sim\frac{\sW}{\sH} &amp;\Rightarrow&amp; \qquad&amp;\sW\sim\frac{\sU\sH}{\sL}
+\end{align*}
+which actually tells us that the material derivative (all terms in it, not just <span class="math notranslate nohighlight">\(\partial/\partial t\)</span>) scale like
+\begin{equation}
+\left[\frac{D}{Dt}\right] \sim \frac{\sU}{\sL}
+\end{equation}</p>
+<p><em>Question for thought: How does this differ from the advective timescale assumption?</em></p>
+<p><strong>2. Scaling the <span class="math notranslate nohighlight">\(x\)</span>-momentum equation.</strong></p>
+<p><span class="math notranslate nohighlight">\(\blacklozenge\)</span> Refer to the example problem at the end of the notes to try scaling the <span class="math notranslate nohighlight">\(x\)</span>-momentum equation to determine a scale for <span class="math notranslate nohighlight">\([p']\)</span>.  You should arrive at <span class="math notranslate nohighlight">\([p']
+=\rho_{oo}\sU^2\)</span>.</p>
+<!--$x$- (or $y$-momentum) equations:
+\begin{align*}
+\rho\frac{Du}{Dt} &= -\pfrac{p}{x}
+\end{align*}
+Perform scale analysis (i.e. compare the relative sizes of terms) to determine a scaling for $p'$:
+\begin{align*}
+\underbrace{\rho\frac{Du}{Dt}}_{\rho_{oo}\frac{\sU^2}{\sL}} &= \underbrace{-\pfrac{p}{x}}_{\frac{[\rho']}{\sL}} &\Rightarrow\qquad& [p']=\rho_{oo}\sU^2
+\end{align*}-->
+<p><strong>2. Scaling the <span class="math notranslate nohighlight">\(z\)</span>-momentum equation.</strong></p>
+<p>To scale the <span class="math notranslate nohighlight">\(z\)</span>-momentum equation, we’ll use four things:</p>
+<ol class="arabic simple">
+<li><p>The advective timescale assumption</p></li>
+<li><p>Boussinesq approximation</p></li>
+<li><p>And <strong>define</strong> <span class="math notranslate nohighlight">\(\bar{p}{z}\)</span> to satisfy the equation
+<span class="math notranslate nohighlight">\(\pfrac{\bar{p}}{z}=-\rho_0g\)</span></p></li>
+<li><p>The scaling we found above for <span class="math notranslate nohighlight">\([p']\)</span></p></li>
+</ol>
+<p>These will get us nearly there, but for the last step, we’ll find that if we really want the equations to simplify down to the hydrostatic approximation, we’ll need to make one more assumption.  We’ll use the scaling to determine what that assumption must be.  In the end, these assumptions tell us the conditions that a flow must satisfy in order for the final result (in this case, hydrostatic approximation) to be valid.</p>
+<p>Let’s try it out<span class="math notranslate nohighlight">\(\ldots\)</span></p>
+<p>(Recalling   <span class="math notranslate nohighlight">\(\rho=\rho_0 + \rho'(x,y,z,t)\)</span> and <span class="math notranslate nohighlight">\(p=\bar{p}(z)+p'(x,y,z,t)\)</span>\ldots)
+Then the <span class="math notranslate nohighlight">\(z\)</span>-momentum equation is</p>
+<p>\begin{equation*}
+\rho\frac{Dw}{Dt} = \cancel{-\pfrac{\bar{p}}{z}} - \pfrac{p’}{z} - \cancel{\rho_0 g} - \rho’g\ .
+\end{equation*}</p>
+<p>We can strike through the terms shown by defining <span class="math notranslate nohighlight">\(\bar{p}(z)\)</span> to be exactly hydrostatic pressure due to the background density <span class="math notranslate nohighlight">\(\rho_0\)</span>,</p>
+<p>\begin{equation*}
+\pfrac{\bar{p}(z)}{z} = -\rho_0g\ .
+\end{equation*}</p>
+<p>This is allowed because both <span class="math notranslate nohighlight">\(\bar{p}\)</span> and <span class="math notranslate nohighlight">\(p'\)</span> vary with <span class="math notranslate nohighlight">\(z\)</span>, and we haven’t assumed that <span class="math notranslate nohighlight">\(p'\ll \bar{p}\)</span>.  Any leftover variations of <span class="math notranslate nohighlight">\(p\)</span> with depth can be taken up by <span class="math notranslate nohighlight">\(p'\)</span>.</p>
+<p>\begin{equation*}
+\underbrace{\rho\frac{Dw}{Dt}}_1 = \cancel{-\pfrac{\bar{p}}{z}} - \underbrace{\pfrac{p’}{z}}_2 - \cancel{{\rho_0}g} -  \underbrace{\rho’g}_3
+\end{equation*}</p>
+<p>Perform scale analysis on the remaining terms:</p>
+<!--\begin{equation*}%\underbrace{\rho\frac{Dw}{Dt}}_{\rho_{oo}\frac{\sW\sU}{\sL}} = \cancel{-\pfrac{\bar{p}}{z}} - \underbrace{\pfrac{p'}{z}}_{\frac{[p']}{\sH}} - \cancel{\bar{\rho}g} - \underbrace{\rho'g}_{[p']g}
+\underbrace{\rho\frac{Dw}{Dt}}_{\substack{\rho_{oo}\frac{\sW\sU}{\sL}\\\\1}} = \cancel{-\pfrac{\bar{p}}{z}} - \underbrace{\pfrac{p'}{z}}_{\substack{\frac{[p']}{\sH}\\\\2}} - \cancel{{\rho_0}g} - \underbrace{\rho'g}_{\substack{[\rho']g\\\\3}}
+\end{equation*}-->
+<p><img alt="figures/lectures/scale_analysis_remaining.png" src="../_images/scale_analysis_remaining.png" /></p>
+<p>Then substituting in for <span class="math notranslate nohighlight">\(\sW\sim \sU\sH/\sL\)</span> (which we got from incompressibility above) and <span class="math notranslate nohighlight">\([p']\sim\rho_{oo}\sU^2\)</span> (which you can derive in the in-class examples at the end of the lecture)</p>
+<p>\begin{align*}
+1: &amp; \rho_{oo}\frac{\sU^2\sH}{\sL^2} &amp; 2: &amp; \rho_{oo}\frac{\sU^2}{\sH} &amp; 3: &amp; [\rho’]g
+\end{align*}</p>
+<p>Ok, now we have a problem.  We have 3 terms left:</p>
+<ul class="simple">
+<li><p>Vertical acceleration</p></li>
+<li><p>Vertical pressure gradient</p></li>
+<li><p>Gravity</p></li>
+</ul>
+<p>It’s now time to invoke step 3!</p>
+<p><strong>3. Impose conditions to achieve a meaningful balance</strong></p>
+<p>The balance we are looking for is to be able to throw out the term on the left-hand-side.  If we want that, we’ll need to find a condition that results in the scale of term 1 being much less than the scale of term 2 (leaving only term 3 to balance term 2).</p>
+<p>Terms 1 and 2 look kind of similar, but differ by how many <span class="math notranslate nohighlight">\(\sH\)</span> and <span class="math notranslate nohighlight">\(\sL\)</span> are there. Can we use that?</p>
+<p><em>Condition: If <span class="math notranslate nohighlight">\(\sH\ll \sL\)</span>, then <span class="math notranslate nohighlight">\(1\ll 2\)</span>.</em></p>
+<p>This would allow us to drop term 1, and left with requiring terms 2 and 3 to balance:
+\begin{equation}
+\boxed{\pfrac{p’}{z} = -\rho’g}\tag{Hydrostatic approximation}
+\end{equation}
+This is the <em>hydrostatic approximation</em>, that even perturbations in pressure are governed by perturbations in density.</p>
+<p><em>Question for thought: Did we need to make the assumption that <span class="math notranslate nohighlight">\(\sH\ll\sL\)</span>?  In fact, if <span class="math notranslate nohighlight">\(\sH\ll\sL\)</span> then term 1 is much much smaller than 2.  To see why, consider if <span class="math notranslate nohighlight">\(\sH\)</span> and <span class="math notranslate nohighlight">\(\sL\)</span> are one order of magnitude different, e.g. <span class="math notranslate nohighlight">\(\sH=0.1\)</span> and <span class="math notranslate nohighlight">\(\sL=1\)</span>.  How does <span class="math notranslate nohighlight">\(\sH^2\)</span> compare to <span class="math notranslate nohighlight">\(\sL^2\)</span>?</em></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-7-eqn-of-motion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Equations of motion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture-8-geostrophy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Geostrophy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

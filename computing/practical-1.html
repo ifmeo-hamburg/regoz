@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Matlab Introductory lab &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/practical-1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Profile data" href="practical-2.html" />
+    <link rel="prev" title="Mini project" href="../exercises/mini-project.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/practical-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/practical-1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matlab Introductory lab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-matlab">Getting started with Matlab:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-practical-files">Setting up the practical files:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-in-matlab">Arithmetic in Matlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-a-csv-file">Loading data from a CSV file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables">Working with variables</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matlab-introductory-lab">
+<h1>Matlab Introductory lab<a class="headerlink" href="#matlab-introductory-lab" title="Permalink to this heading">#</a></h1>
+<p><strong>Directions:</strong>
+Follow the instructions on this worksheet and write your answers as you go along.  Have the Blackboard website open since you will need it to download the data files, view the additional teaching videos and to check your answers.  If you have any trouble, check to be sure you followed the instructions.  If you still need assistance, ask a demonstrator during the timetabled Matlab practicals.</p>
+<p><strong>Aim:</strong> This practical assumes <em>no prior Matlab knowledge</em>.  By following the steps below, you’ll learn how to access Matlab on a University computer, how to load some simple <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> files, and carry out basic arithmetic.  We’ll introduce the concepts of scalars, vectors and matrices in Matlab.</p>
+<p><strong>Learning outcomes:</strong> At the end of this lab, you will be able to:</p>
+<ol class="arabic simple">
+<li><p>Load data into Matlab (e.g. <code class="docutils literal notranslate"><span class="pre">csv</span></code>-files containing numerical values only).</p></li>
+<li><p>Create variables in Matlab from numbers, i.e. simple <em>scalars</em>, <em>vectors</em> (using the colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>) and <em>matrices</em>, so that you can perform calculations on the variables after.</p></li>
+<li><p>Perform simple averages of the data and arithmetic operations, using  functions <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>,  operators <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and <code class="docutils literal notranslate"><span class="pre">/</span></code>, and transpose vectors and matrices using apostrophe, <code class="docutils literal notranslate"><span class="pre">'</span></code>.</p></li>
+<li><p>Use Matlab commands <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">whos</span></code> to investigate files and variables, and see how the special character, semicolon, <code class="docutils literal notranslate"><span class="pre">;</span></code>, works in Matlab to suppress output to the screen.</p></li>
+</ol>
+<p><strong>Data:</strong> Use the <code class="docutils literal notranslate"><span class="pre">data_vector.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">data_matrix.csv</span></code> data files, available on Blackboard.</p>
+<p><strong>Check your answers:</strong> This is a formative assessment rather than summative (i.e. the results here do not contribute to your mark in the course).  Answers will be available for you to check on Blackboard.</p>
+<hr class="docutils" />
+<section id="getting-started-with-matlab">
+<h2>Getting started with Matlab:<a class="headerlink" href="#getting-started-with-matlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Log on to a PC &amp; Find Matlab.</strong> Log into a machine in the 68/121/02 computer lab (or anywhere on campus) with your username and password.</p>
+<p>On the PCs in 121, you find it under “all programs”.  You can either search, or click the start menu and find it.  Last year, it was under “numerical modeling”.  Click or double click to open.</p>
+</li>
+</ol>
+</section>
+<section id="setting-up-the-practical-files">
+<h2>Setting up the practical files:<a class="headerlink" href="#setting-up-the-practical-files" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="3">
+<li><p><strong>Download files from Blackboard.</strong> Go to the Blackboard website and find the files for the first Matlab practical (two <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> files).  Click them to download.  If when you first click it, you get a page where it says “if it didn’t download, click here”, use the right mouse button to click.  In the menu that drops down, select “save target as” and save it to your Downloads.  If files  are in a zip archive, unarchive this (by double clicking) and they will now be located in a subdirectory (subfolder).  You can move these files up a directory (folder) into the same folder with everything else.</p></li>
+<li><p><strong>Move the files to a folder in your My Documents.</strong>
+<em>This step is  important!</em> If you don’t put your files in the right place, they will be deleted when you log off the machine.   There are two <em>My Documents</em> folders on your machine. One is a general one (don’t use this!), and the other is for your work in particular.  Find yours within a folder that has your username.  Inside this My Documents folder (inside the folder with your username), create a new folder for this module.  Move the files   from Blackboard into this folder.</p></li>
+<li><p><strong>Move Matlab to work inside your new folder.</strong>
+If you want Matlab to see the new files you’ve downloaded, you need to change it to work in that new folder.
+Within Matlab, this means changing the <code class="docutils literal notranslate"><span class="pre">Current</span> <span class="pre">Folder</span></code>.  You can find the current folder at the top middle of the Matlab interface (see Fig. 1).  After the <code class="docutils literal notranslate"><span class="pre">Current</span> <span class="pre">Folder:</span></code> and folder name, there is a button with three dots.  Click this button then navigate to the folder where you put the data files.</p></li>
+</ol>
+<p><img alt="Matlab interface (on a Mac)" src="../_images/gettingstarted_fig1b-eps-converted-to.pdf" /></p>
+</section>
+<hr class="docutils" />
+<section id="arithmetic-in-matlab">
+<h2>Arithmetic in Matlab<a class="headerlink" href="#arithmetic-in-matlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="6">
+<li><p>Matlab can carry out all basic kinds of arithmetic.  Most of the <em>operators</em> are the same as you’d expect.  Try typing the following mathematical expressions after the command prompt, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> in your Matlab Command window.  Press enter and Matlab will <em>evaluate</em> or carry out your <em>command</em>.</p></li>
+</ol>
+<p>a. Try the following in your Matlab command window.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 13 -->
+<p>b. Recall <em>order of operations</em> for arithmetic.  It applies in Matlab as well.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 16 -->
+<p>c. Fractions or division</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span>
+</pre></div>
+</div>
+<!-- 0.6000 -->
+<p>d. Raise numbers to powers (i.e. squaring numbers)</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">5</span>^<span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 25-->
+<p>e. Irrational numbers</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">pi</span>
+</pre></div>
+</div>
+<!--3.1416-->
+<p>f. Trigonometric functions</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="nb">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--0-->
+<p><em>Note: that due to machine or numeric precision, this may not be exact.</em></p>
+<p>g. More functions</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">log10</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--1-->
+<ol class="arabic simple" start="7">
+<li><p><strong>Create a <em>variable</em> in Matlab.</strong>  One of the powerful things about programming languages is that you can “name” your data.  Rather than carrying out a stream of calculations in the command window, you can work with different numbers at the same time, save partial answers, and combine them later.</p></li>
+</ol>
+<p>a. <strong>Create a <em>scalar</em> variable.</strong>  To create a variable, you choose a name for it which starts with a character, e.g. <code class="docutils literal notranslate"><span class="pre">a</span></code>, and then put it at the left of the equal sign in your command window.  Put the value you’d like to assign to that variable to the right of the equal sign.    A scalar variable is a single number.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Then execute a `&gt;&gt; whos a` to see the attributes of `a`.  Examine `a` in your Matlab Workspace.
+</pre></div>
+</div>
+<p>b. <strong>Vector variables.</strong> Create a vector.  In Matlab, we call a string of numbers held together a <em>vector</em>.  In Matlab, square brackets do the holding together (not brackers or curly braces).  This can be confusing terminology, because it differs from the word <em>vector</em> for math, which is something with both direction and magnitude.
+`&gt;&gt; x=[1 2 3]</p>
+<p>c. Repeat this using <code class="docutils literal notranslate"><span class="pre">y</span></code> instead, but “suppress the output” by using a semi-colon (<code class="docutils literal notranslate"><span class="pre">;</span></code>)</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">=[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>*Note: The only difference between (b) and (c) is that in (c), the output is not printed to the screen; the variable is still created.  It can be useful to suppress large output.*
+</pre></div>
+</div>
+<p>d. <strong>Manipulating vector orientation.</strong> Change the orientation of <code class="docutils literal notranslate"><span class="pre">y</span></code> by <em>transposing</em> the vector using an apostrophe (<code class="docutils literal notranslate"><span class="pre">'</span></code>)</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Use the `whos` command to see how `z` and `y` differ.  
+_Recall: that the transpose of a matrix means to switch the rows and columns._
+</pre></div>
+</div>
+<p>e. <strong>Using functions on variables.</strong> Calculate the mean of your variable <code class="docutils literal notranslate"><span class="pre">y</span></code>.  Use the Matlab <em>function</em> <code class="docutils literal notranslate"><span class="pre">mean</span></code>.  Note: the brackets are required!</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--2-->
+</section>
+<section id="loading-data-from-a-csv-file">
+<h2>Loading data from a CSV file<a class="headerlink" href="#loading-data-from-a-csv-file" title="Permalink to this heading">#</a></h2>
+<p>Matlab would be rather tedious if you needed to type everything into it by hand.  If you have a spreadsheet of data handy, you can load the whole spreadsheet into a variable in Matlab.</p>
+<ol class="arabic simple" start="8">
+<li><p><strong>Loading a <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> file into Matlab.</strong></p></li>
+</ol>
+<p>a. Load the data</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">data_vector</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">csvread</span><span class="p">(</span><span class="s">&#39;data_vector.csv&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>b. <strong>Where did the data go?</strong> <em>Method 1: the whos command.</em>  Do a <code class="docutils literal notranslate"><span class="pre">whos</span></code> to see what variables were created.  In your command window, type</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">whos</span>
+</pre></div>
+</div>
+<p><em>Method 2: the Matlab Workspace window.</em>  Check the variables that you have loaded and active in your Workspace window.  It also tells you the size of the variables, and their class (numeric, character).</p>
+<p>c. <strong>Size of the variable.</strong>  The size of a vector refers to how many <em>elements</em> are in it.   You will need to use a Matlab function <code class="docutils literal notranslate"><span class="pre">size</span></code>.  To see how to use it, use the Matlab command <code class="docutils literal notranslate"><span class="pre">help</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="nb">size</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>*Note: Reading Matlab help  is difficult to start with, but you should get in the habit of trying to skim the help information--first read the top line and paragraph.  The top line tells you what the function does, and the first paragraph describes the simplest way it can be used.   Then, near the bottom of the help information, you can often find an example of how to use the function.*
+
+What is the size of the `data_vector`?  (Give  an answer as [number $\times$ another number].)
+</pre></div>
+</div>
+<!--11x1-->
+<p>d. <strong>Dimensionality of the variable.</strong>  In Matlab, we call a variable a 2-dimensional matrix if it has 2 non-singleton <em>dimensions</em>.  A vector which is <code class="docutils literal notranslate"><span class="pre">100x1</span></code> is still 1-dimensional.  It has one <em>non-singleton</em> dimension (the first dimension is 100 elements long) and one <em>singleton</em> dimension (the second dimension is singular or 1 element long), while a matrix that is <code class="docutils literal notranslate"><span class="pre">2x2</span></code> is 2-dimensional.  Is this new variable a matrix or a vector?</p>
+<!--a vector-->
+<p>e. <strong>Extract data from the vector.</strong>  What is the value in the 4th element of the vector?  You can answer this by looking in your Workspace window, but you should learn to access the information using <em>indices</em>.  We’ll cover what an <em>index</em> is in a future practical.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">data_vector</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--2-->
+</section>
+<section id="working-with-variables">
+<h2>Working with variables<a class="headerlink" href="#working-with-variables" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="9">
+<li><p><strong>Basic calculations.</strong>  Matlab has standard commands to calculate the mean or median of a dataset.</p></li>
+</ol>
+<p>a. <strong>Mean.</strong> Calculate the mean of the data using the <code class="docutils literal notranslate"><span class="pre">mean</span></code> command.  This command takes one <em>input</em> or piece of information that the function uses in its calculation.  In this case, the input is the name of the variable that you’d like to average.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">data_vector</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--6.1818-->
+<p>b. Now instead of the command above, try the command</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">mean</span><span class="w"> </span><span class="n">data_vector</span>
+</pre></div>
+</div>
+<p>Is the answer the same?<br />
+<strong><span class="math notranslate nohighlight">\(\therefore\)</span> Brackets (parentheses) are important!</strong></p>
+<!--No, the one with brackets is correct-->
+<p>c. <strong>Addition.</strong> Add two elements together using the `` operator:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">data_vector</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data_vector</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--4-->
+<p>Note how the elements of the column are accessed in Matlab, using brackets and the row number.</p>
+<p>d. <strong>Median.</strong> Calculate the median using the <code class="docutils literal notranslate"><span class="pre">median</span></code> command.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">median</span><span class="p">(</span><span class="n">data_vector</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--3-->
+<ol class="arabic simple" start="10">
+<li><p><strong>Working with a matrix in Matlab.</strong></p></li>
+</ol>
+<p>a. Load the file <code class="docutils literal notranslate"><span class="pre">data_matrix.csv</span></code>.  What is the <code class="docutils literal notranslate"><span class="pre">size</span></code> of the variable loaded? (Recall: the <code class="docutils literal notranslate"><span class="pre">whos</span></code> command.)</p>
+<!--11x2-->
+<p>b. <strong>Vector vs Matrix.</strong> In Matlab, we call a variable a 2-dimensional matrix if it has 2 non-singleton dimensions.  Is this new variable a matrix or a vector?</p>
+<!--Matrix-->
+<p>c. <strong>Mean of a matrix.</strong> Calculate the mean of this matrix,</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--[6.1818 and 3.7273]-->
+<p>d. What was averaged here?</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- The average of each of the rows was calculated? or
+- The average of each of the columns was calculated.
+</pre></div>
+</div>
+<p>e. The first dimension in Matlab (i.e. the <code class="docutils literal notranslate"><span class="pre">R</span></code> in the <code class="docutils literal notranslate"><span class="pre">RxC</span></code> of the size) is the number of rows and the second dimension is the number of columns.  Is this the same as in Excel?  (Load the <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> file into Excel to check.)</p>
+<!--the same-->
+<ol class="arabic simple" start="11">
+<li><p><strong>More complex operations and variables.</strong></p></li>
+</ol>
+<p>a. <strong>Repeating calculations for each element of a vector.</strong> Some calculations can be carried out on individual elements of a vector rather than on the whole thing. Calculate the square of the individual elements in the vector <code class="docutils literal notranslate"><span class="pre">x</span></code>.  In Matlab, this is accomplished by using the dot operator, as</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!--1  4  9-->
+<p>b. <strong>Create a matrix.</strong> Create a 2-dimensional matrix <code class="docutils literal notranslate"><span class="pre">w</span></code>.  How many rows and columns does <code class="docutils literal notranslate"><span class="pre">w</span></code> have?</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">]]</span>
+</pre></div>
+</div>
+<!--2 rows, 3 cols-->
+<p>c. <strong>Create a vector using the colon.</strong>  For regular vectors, like the vector containing the numbers 1 through 10, you can use a special operator to write it quickly.  Create a vector containing the numbers from 1 to 10 using a colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>). How long is  <code class="docutils literal notranslate"><span class="pre">c</span></code>?</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
+</pre></div>
+</div>
+<!--10-->
+<p>d. In the previous example, the numbers were spaced by 1, which is the default.  You can also space them by an arbitrary value.  Create a vector containing the numbers from 1 to 10 but spaced by 0.5.  How long is the 1-dimensional vector <code class="docutils literal notranslate"><span class="pre">d</span></code>?</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mf">.5</span><span class="p">:</span><span class="mi">10</span>
+</pre></div>
+</div>
+<!--19-->
+<p>e.  Create a time vector called <code class="docutils literal notranslate"><span class="pre">time</span></code> that is 3 years long, on a daily time resolution.\label{time1}</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">365</span><span class="o">*</span><span class="mi">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>How long is the vector?</p>
+<!--1096-->
+<p><strong>Glossary:</strong> New terms introduced during today’s practical.</p>
+<p>Words to describe numeric variables in Matlab:</p>
+<ul class="simple">
+<li><p><strong>variable</strong>-</p></li>
+<li><p><strong>scalar</strong>-</p></li>
+<li><p><strong>vector</strong>-</p></li>
+<li><p><strong>matrix</strong>-</p></li>
+<li><p><strong>dimension</strong>-</p></li>
+<li><p><strong>element</strong>-</p></li>
+</ul>
+<p>Words related to programming:</p>
+<ul class="simple">
+<li><p><strong>evaluate</strong>-</p></li>
+<li><p><strong>command</strong>-</p></li>
+<li><p><strong>operator</strong>-</p></li>
+<li><p><strong>function</strong>-</p></li>
+<li><p><strong>input</strong>-</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../exercises/mini-project.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mini project</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="practical-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Profile data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-matlab">Getting started with Matlab:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-practical-files">Setting up the practical files:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-in-matlab">Arithmetic in Matlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-a-csv-file">Loading data from a CSV file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables">Working with variables</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
