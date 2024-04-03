@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Overview &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'general/syllabus';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SuSe 2023" href="SuSe-2023.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fgeneral/syllabus.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/general/syllabus.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims-learning-objectives">Aims &amp; Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-student-background">Expected student background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-exam">Final exam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project">Mini-project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coursework-exercises">Coursework/ Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books">Books</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#java-ocean-atlas">Java Ocean Atlas:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seawater-properties">Seawater properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-ocean">Surface ocean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-ocean">Deep ocean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics">Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-oceanography">Regional oceanography</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h1>
+<!---  Course Outline: The approach of the course will follow a general sequence of themes that will 1) introduce the notion of the Earth as a “water-planet”, 2) set the boundaries of ocean basins (upper and lower limits), and describe the properties of the water element (physical and chemical), 3) put in motion the oceanic system (horizontal and vertical circulation), --->
+<section id="aims-learning-objectives">
+<h2>Aims &amp; Learning objectives<a class="headerlink" href="#aims-learning-objectives" title="Permalink to this heading">#</a></h2>
+<p>This is a module on regional oceanography.  It builds on what was covered in Introduction to Physical Oceanography, but with a stronger focus on the physical properties of seawater, how those properties are changed, and how those properties can be used to calculate the stratification and circulation of seawater.  We will also look at how different properties and processes are active in regions of the world’s oceans.</p>
+<p>The aim of this course is to:</p>
+<ol class="arabic simple">
+<li><p>describe hydrography and circulation in different parts of the world’s oceans, highlighting similarities and differences,</p></li>
+<li><p>quantify the surface heat, freshwater and momentum fluxes</p></li>
+<li><p>explain the vertical structure of the water column,</p></li>
+<li><p>illustrate ocean dynamcis by means of regional examples</p></li>
+</ol>
+<p><strong>Learning objectives:</strong> At the end of this module, you should be able to</p>
+<ol class="arabic simple">
+<li><p>Use hydrographic properties (temperature and salinity) of seawater to explain the vertical structure of the ocean and to identify watermasses. (Physical description of the sea)</p></li>
+<li><p>Summarise the major processes by which physical ocean properties and circulation are set or changed, including describing the major surface and deep currents in the oceans and explaining their causes. (Processes of change)</p></li>
+<li><p>Outline the distinguishing characteristics (properties, circulation patterns, processes) of different regional oceans (Atlantic, Pacific, Arctic, Southern Ocean and marginal seas). (Regional Oceanography)</p></li>
+</ol>
+</section>
+<section id="expected-student-background">
+<h2>Expected student background<a class="headerlink" href="#expected-student-background" title="Permalink to this heading">#</a></h2>
+<p>This is a course intended for Bachelor students of oceanography and geophysics (typically in their 4th semester).  It is also suitable as an elective or supplementary module for geography, meteorology, geology, hydro-biology or other earth sciences.</p>
+</section>
+<section id="assessment">
+<h2>Assessment<a class="headerlink" href="#assessment" title="Permalink to this heading">#</a></h2>
+<p>Your grade will be based on the final exam, mini-project (more information in week 8) and coursework (exercise sheets).</p>
+<p>Your grade in the class will be determined by the highest calculation:</p>
+<ol class="arabic simple">
+<li><p>Final exam 100%</p></li>
+<li><p>Mini-project 20% + Final exam 80%</p></li>
+<li><p>Coursework 30% + Mini-project 20% + Final Exam 50%</p></li>
+</ol>
+<p>You should plan at the start of the course whether it will be advantageous to you to complete the coursework component of the assessment.  However, you do not need to make a decision - I will use the calculation which gives you the highest score.</p>
+<section id="final-exam">
+<h3>Final exam<a class="headerlink" href="#final-exam" title="Permalink to this heading">#</a></h3>
+<p>The final exam will be written, in English and part multiple choice and part problem-based, with problems similar to the coursework/exercise sheets provided in class (but without any computer-based exercises).</p>
+</section>
+<section id="mini-project">
+<h3>Mini-project<a class="headerlink" href="#mini-project" title="Permalink to this heading">#</a></h3>
+<p>A mini-project of your choice will be completed during the term and due in the final week of class.  You may choose between</p>
+<ul class="simple">
+<li><p>Presentation on a regional ocean and process of your choice, in English.  Presentations should be 5-8 minutes long and pre-recorded.   Presentations will be graded for style (organisation, slide layout and legibility) and content (accuracy and suitability of material), but not for English language or grammar.</p></li>
+<li><p>Data project with individual or group* presentation, written report (about 3-5 pages, double spaced of text, and 2-4 pages of figures).  The grade will be based on the written report.  Reports will be graded for style (organisation at the report and paragraph level, figure legibility) and content (accuracy and suitability of material, choice of data plots to show), but not for English language or grammar.  *Expectations for content will be higher if group.</p></li>
+</ul>
+</section>
+<section id="coursework-exercises">
+<h3>Coursework/ Exercises<a class="headerlink" href="#coursework-exercises" title="Permalink to this heading">#</a></h3>
+<p>(optional) Exercises/coursework are due during the term, with 5 pieces of assigned exercise sheets.  This work can be discussed with others, but must be completed individually and turned in online.</p>
+<p>Generally, exercise sheets will be available on a Wednesday or Thursday, with the following Wednesday (Uebungen) to work on them in class.   Unless otherwise specified, assignments are due Fridays at noon, online (preferred - <a class="reference external" href="https://lernen.min.uni-hamburg.de/course/view.php?id=3087">Moodle</a>) or by e-mail to <a class="reference external" href="mailto:eleanor&#46;frajka&#37;&#52;&#48;uni-hamburg&#46;de">eleanor<span>&#46;</span>frajka<span>&#64;</span>uni-hamburg<span>&#46;</span>de</a>.</p>
+<p>A detailed schedule can be found in <a class="reference internal" href="SuSe-2023.html"><span class="doc std std-doc">SuSe-2023</span></a>.</p>
+<p><strong>Late exercises:</strong></p>
+<p>The good news is, you can turn in your answers to an exercise sheet late (up to 5 days late).  The bad news is, you will lose points (10% for each day late).   So if you turn it 1-24 hours after the deadline, your score on the assignment will be multiplied by 0.9, if you turn it in 24-48 hours after the deadline, your score will be multipled by 0.8).  After 5 days, it is not possible to turn in a late assignment as we will go over the solutions in the next Uebungen.</p>
+<p>If you have a good reason (such as being sick) for being unable to complete an assignment in time, please let me know as soon as is practicable.</p>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<p>A recommended reading list for the course.  See assigned readings on the <span class="xref myst">syllabus</span>.</p>
+<section id="books">
+<h3>Books<a class="headerlink" href="#books" title="Permalink to this heading">#</a></h3>
+<p>A comprehensive resource for this course is:</p>
+<ul class="simple">
+<li><p>Talley et al. (2011) - Descriptive Physical Oceanography (DPO) is available with full text access from the Univ. Hamburg website.  This link may or may not work:  <a class="reference external" href="https://katalogplus.sub.uni-hamburg.de/vufind/Record/679005536?rank=1">UHH library: full text access</a>.  You will want chapters 2-5, 9, 10, 12-13.</p></li>
+</ul>
+<p>Note that for DPO chapter 7, we will use the extended supplementary edition available from the publisher’s website here:</p>
+<ul class="simple">
+<li><p>Supplementary ch. 7 from Talley et al. (2011): <a class="reference external" href="http://booksite.academicpress.com/DPO/chapter7.php">http://booksite.academicpress.com/DPO/chapter7.php</a>.  (Note: other supplementary chapters can also be found <a class="reference external" href="http://booksite.academicpress.com/DPO/suppchapters.php">here</a>.</p></li>
+</ul>
+<p>Other recommended textbooks available to download:</p>
+<ul class="simple">
+<li><p>Regional Oceanography - Tomczak and Godfrey (2001).  Available in the library or from this link: <a class="reference external" href="http://www.physocean.icm.csic.es/regoc/pdfversion-ca.html">http://www.physocean.icm.csic.es/regoc/pdfversion-ca.html</a></p></li>
+<li><p>Dynamical Oceanography - Cushman-Roisin and Beckers (2011) - “Introduction to geophysical fluid dynamics” <a class="reference external" href="https://katalogplus.sub.uni-hamburg.de/vufind/Record/681287349?rank=1">UHH library: full text access</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Introduction to Oceanography - Webb (online), very basic overview - <a class="reference external" href="https://rwu.pressbooks.pub/webboceanography/*">https://rwu.pressbooks.pub/webboceanography/*</a></p></li>
+</ul>
+</section>
+<section id="java-ocean-atlas">
+<h3>Java Ocean Atlas:<a class="headerlink" href="#java-ocean-atlas" title="Permalink to this heading">#</a></h3>
+<p>We will be using the display tool “Java Ocean Atlas (JOA)” to work with hydrographic data from the oceans.  These will follow the examples associated with the textbook DPO (Descriptive Physical Oceanography).  The website can be found here <a class="reference external" href="https://joa.ucsd.edu/dpo/dpo_joa_examples">JOA for DPO</a>.  Installation instructions are <a class="reference external" href="https://joa.ucsd.edu/joa">https://joa.ucsd.edu/joa</a>.</p>
+<p>The required exercises will appear on the exercise sheets for 63-717, but you may want to look through the online examples:</p>
+<p><a class="reference external" href="https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_2/index.html">JOA for DPO Chapter 2</a></p>
+<ul class="simple">
+<li><p>Gain familiarity with the basic geography of the principal ocean basins</p></li>
+<li><p>Locate typical ocean sub-regions</p></li>
+<li><p>Locate major features of the ocean bottom</p></li>
+</ul>
+<p><a class="reference external" href="https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_3/index.html">JOA for DPO Chapter 3</a></p>
+<ul class="simple">
+<li><p>Explore the physical and chemical characteristics of seawater</p></li>
+<li><p>Understand parameters which are calculated from basic measured characteristics</p></li>
+<li><p>Explore vertical distributions at a single location in the South Atlantic Ocean</p></li>
+</ul>
+<p><a class="reference external" href="https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_4/index.html">JOA for DPO Chapter 4</a></p>
+<ul class="simple">
+<li><p>Make a surface map colored by data points (WOA09)</p></li>
+<li><p>Make a surface map with color contours (WOA09)</p></li>
+<li><p>Make vertical sections</p></li>
+</ul>
+<p><a class="reference external" href="https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_7/index.html">JOA for DPO Chapter 7</a></p>
+<ul class="simple">
+<li><p>Map the dynamic topography of ocean regions</p></li>
+</ul>
+</section>
+</section>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this heading">#</a></h2>
+<p>The general topics we will cover in the course are listed below, along with their associated readings and exercises.  Please note, if there are any deviations between the following list and the <a class="reference internal" href="SuSe-2023.html"><span class="doc std std-doc">SuSe23</span></a> list, then the ones for 2023 supercede.</p>
+<section id="seawater-properties">
+<h3>Seawater properties<a class="headerlink" href="#seawater-properties" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lecture(s) on Physical properties of seawater</p></li>
+</ul>
+<ul class="simple">
+<li><p>Assigned reading: DPO Chaper 1.2, 2.1, 3.1 - 3.6</p></li>
+<li><p>Assigned exercise:  <a class="reference internal" href="../exercises/exercise-1.html"><span class="doc std std-doc">Exercise sheet 1</span></a></p></li>
+</ul>
+</section>
+<section id="surface-ocean">
+<h3>Surface ocean<a class="headerlink" href="#surface-ocean" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lectures on Air-sea interactions and the Surface mixed layer</p></li>
+<li><p>Assigned reading: DPO Chapter 5.1-5.4, Chapter 7.5</p></li>
+<li><p>Assigned exercise: <a class="reference internal" href="../exercises/exercise-2.html"><span class="doc std std-doc">Exercise sheet 2</span></a></p></li>
+</ul>
+</section>
+<section id="deep-ocean">
+<h3>Deep ocean<a class="headerlink" href="#deep-ocean" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lectures on Watermass formation and transformation, ocean ventilation</p></li>
+<li><p>Assigned reading: DPO Chapter 4, S7.10</p></li>
+<li><p>Assigned exercise: <a class="reference internal" href="../exercises/exercise-3.html"><span class="doc std std-doc">Exercise sheet 3</span></a></p></li>
+</ul>
+</section>
+<section id="dynamics">
+<h3>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lectures on Equations of motion, scaling and geostrophy, Ekman layer, Sverdrup transport and western boundary currents.  Some of this may be recorded and made available online.</p></li>
+<li><p>Assigned reading: DPO Chapter S7</p></li>
+<li><p>Assigned exercise: <span class="xref myst">Exercise sheet 4</span></p></li>
+<li><p>Assigned exercise: <span class="xref myst">Exercise sheet 5</span></p></li>
+</ul>
+</section>
+<section id="regional-oceanography">
+<h3>Regional oceanography<a class="headerlink" href="#regional-oceanography" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Lectures on a subset of: Atlantic, Pacific, Indian Ocean, Arctic, Southern Ocean, marginal seas</p></li>
+<li><p>Assigned reading: DPO Chapter 9.1-9.3, 9.5 (Atlantic); Chapter 10.1-2, 3.1.1-3.1.4 (Pacific/Indian); Chapter 12.1-12.5, 12.7 (Arctic), Chapter 13.1-13.5 (Southern Ocean)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./general"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SuSe-2023.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SuSe 2023</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims-learning-objectives">Aims &amp; Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-student-background">Expected student background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-exam">Final exam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project">Mini-project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coursework-exercises">Coursework/ Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books">Books</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#java-ocean-atlas">Java Ocean Atlas:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seawater-properties">Seawater properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-ocean">Surface ocean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-ocean">Deep ocean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics">Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-oceanography">Regional oceanography</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

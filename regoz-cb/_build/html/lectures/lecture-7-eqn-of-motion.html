@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Equations of motion &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-7-eqn-of-motion';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hydrostatic approximation" href="lecture-7.1-scaling.html" />
+    <link rel="prev" title="Watermasses" href="lecture-5-watermasses.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-7-eqn-of-motion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-7-eqn-of-motion.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equations of motion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Equations of motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#four-forces-for-the-ocean">Four forces for the ocean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-newtonian-physics-to-fluids">Applying Newtonian physics to fluids</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Equations of Motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-equations">Momentum equations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-analysis-for-information-not-to-be-examined-in-regoz">Scaling analysis (for information, not to be examined in RegOz)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-scales-for-velocity-independent-variables">Typical scales for velocity/independent variables</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="equations-of-motion">
+<h1>Equations of motion<a class="headerlink" href="#equations-of-motion" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\sW}{\mathrm{W}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sH}{\mathrm{H}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sU}{\mathrm{U}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sL}{\mathrm{L}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sT}{\mathrm{T}}\)</span></p>
+<p><strong>Main ideas: Dynamics</strong></p>
+<ol class="arabic simple">
+<li><p>There are 4 main equations that describe fluid flow, 3 of which describe momentum (velocity) in the 3 spatial directions, and the 4th which describes evolution of water density.</p></li>
+<li><p>The  forces are due to pressure gradients, Coriolis, gravity and friction.</p></li>
+<li><p>Pressure in the ocean is due mostly to the weight of water above it (<em>hydrostatic pressure</em>\footnote{Know this equation.  We will apply it in coursework.}), but if there is more or heavier water in one location compared to another, this will drive an acceleration.</p></li>
+</ol>
+<p>In the next few lectures, we will examine the equations that govern ocean circulation.   What makes the ocean go?  starting from the forces that are acting on the fluid. These tend arise from interactions between the water and boundaries (friction at the bottom or surface, and interaction with the atmosphere which generates density anomalies).</p>
+<p>Key quantities will feature throughout: pressure (due to the weight of water above), seawater density, rotation of the earth.  We’ll start with a generic set of equations (called the equations of motion), and will use various techniques to simplify the equations to better understand how the ocean behaves.</p>
+<section id="four-forces-for-the-ocean">
+<h2>Four forces for the ocean<a class="headerlink" href="#four-forces-for-the-ocean" title="Permalink to this heading">#</a></h2>
+<p>We are going to look at (1) the forces that govern fluid flow, (2) how we modify Newton’s second law for fluids, and (3) the form of these four forces in the equations of motion for the ocean.</p>
+<p>In physical oceanography, there are <strong>four basic forces</strong> that act on the fluid.</p>
+<ol class="arabic simple">
+<li><p>gravity</p></li>
+<li><p>the pressure gradient force</p></li>
+<li><p>rotation (Coriolis)  <em>(Note: Coriolis is not a true “force” but an
+apparent force.  We use it to account for the rotation of the Earth and that we are interested in how fluids behave relative to the Earth’s surface (i.e. in a rotating frame of reference).</em></p></li>
+<li><p>friction</p></li>
+</ol>
+<p>We will see how the different forces combine to produce typical fluid behavior, whether the fluid is in static (unmoving) or dynamic (moving) equilibrium.  We will also see how the effect of rotation modifies ocean circulation.</p>
+<p><strong>Force = mass <span class="math notranslate nohighlight">\(\times\)</span> acceleration (Newton’s second law)</strong></p>
+<p>From physics, recall that the relationship between the force applied and an object’s response (acceleration) depends on the mass of the object.  This is given by Newton’s second law: Force = mass <span class="math notranslate nohighlight">\(\times\)</span> acceleration (“force equals mass times acceleration”), or</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F_m}=m\vec{a}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{F_m}\)</span> is the force on an object, <span class="math notranslate nohighlight">\(m\)</span> is the mass of the object and <span class="math notranslate nohighlight">\(\vec{a}\)</span> is its acceleration.</p>
+<p><em>Note: we use the arrow <span class="math notranslate nohighlight">\(\vec{a}\)</span> to denote that acceleration is a vector quantity, typically 3-dimensional (in the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> dimensions).  In the case of acceleration, <span class="math notranslate nohighlight">\(\vec{a}=(\partial u/\partial t,\partial v/\partial t,\partial w/\partial t)\)</span>.</em></p>
+<p>A classic example is the gravitational force which can be written</p>
+<div class="math notranslate nohighlight">
+\[F = mg\]</div>
+<p>where <span class="math notranslate nohighlight">\(g\)</span> is the gravitational acceleration, approximately 9.8 m <span class="math notranslate nohighlight">\(\mathrm{s}^{-2}\)</span>.</p>
+</section>
+<section id="applying-newtonian-physics-to-fluids">
+<h2>Applying Newtonian physics to fluids<a class="headerlink" href="#applying-newtonian-physics-to-fluids" title="Permalink to this heading">#</a></h2>
+<p>For fluids rather than solid bodies, we modify Newton’s second law.</p>
+<p><strong>Density vs. mass</strong></p>
+<p>For solid physics, the mass of an object (or planet) <span class="math notranslate nohighlight">\(m\)</span> is the important variable for force.  In the case of a fluid, it may be difficult to define a piece of the fluid with fixed mass.  Since fluids can change shape and the volume under consideration may vary, it becomes convenient to use density instead of mass in the equations governing fluid physics.  Density is related to mass as mass per unit volume.</p>
+<p>Rewriting Newton’s second law, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F_f} = \rho\vec{a}\]</div>
+<p>where now <span class="math notranslate nohighlight">\(\mathbf{F_f}\)</span> is the force per unit volume (note the change in units!  Exercise for you: what are the units on <span class="math notranslate nohighlight">\(\mathbf{F_f}\)</span>?) and <span class="math notranslate nohighlight">\(\rho\)</span> is density.   We will now drop the subscript <span class="math notranslate nohighlight">\(_f\)</span> and refer to forces as forces per unit volume.</p>
+<p><strong>Material derivative</strong></p>
+<p>This is an important concept in fluid dynamics of the oceans.  The ``material derivative’’ is the change in time of a quantity <em>following the fluid parcel</em>.  What does this mean?</p>
+<p>When we consider the rate of change of the velocity or a chemical concentration in the ocean, we measure this rate of change at a fixed point:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt}\]</div>
+<p>This fixed-location approach is an “Eulerian” description of changes.  Now suppose we were measuring the concentration of a chemical in the ocean and that chemical (e.g., nitrate) was higher concentration at depth than near the surface, and a big subsurface wave came by lifting up some of the nitrate-rich waters passed our sensor,</p>
+<div class="math notranslate nohighlight">
+\[w\frac{dN}{dz}\]</div>
+<p>we might see a big change at our fixed point</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dt}=\mbox{ big!}\ .\]</div>
+<p>This is fine, and the measurement is real, but what it represents in the ocean is better interpreted as “advection of nitrate-rich waters passed the sensor” rather than “large increase in nitrate with time”.</p>
+<p>We can talk about this quantitatively with the <strong>material derivative</strong> or particle derivative. This can be written for an arbitrary quantity <span class="math notranslate nohighlight">\(C\)</span> as</p>
+<p>\begin{align}
+\frac{DC}{Dt} &amp;= \frac{\partial C}{\partial t} + \vec{u}\cdot\nabla C\
+&amp;=\frac{\partial C}{\partial t} + u\frac{\partial C}{\partial x} + v\frac{\partial C}{\partial y}+w\frac{\partial C}{\partial z}
+\end{align}</p>
+<p>With this formulation, the <span class="math notranslate nohighlight">\(\partial C/\partial t\)</span> is the local rate-of-change of the quantity C “following the fluid particle”, while <span class="math notranslate nohighlight">\(DC/Dt\)</span> is the Eulerian rate-of-change of C at a fixed point which may be due both to a local rate-of-change and the advection of waters with a different concentration passed the measurement location.</p>
+<p><em>Here, we are using the notation <span class="math notranslate nohighlight">\(D/Dt\)</span> instead of <span class="math notranslate nohighlight">\(d/dt\)</span> because it is easier to distinguish when writing on the board (or in your assessments).  Textbooks may use the lowercase <span class="math notranslate nohighlight">\(d\)</span>, but should always be distinguished from the partial derivative, written with the curly <span class="math notranslate nohighlight">\(\partial\)</span>.  <strong>In this class, please use capital <span class="math notranslate nohighlight">\(D\)</span> for the material derivative.</strong></em></p>
+<!-- $\blacklozenge$ If you are shaky on vector notation, e.g. the dot product used above, or the gradient of C (written $\nabla C$), please review the handbook from SOES2028, available on this blackboard website.-->
+</section>
+</section>
+<section id="id1">
+<h1>Equations of Motion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Ok–the momentum equations or Newton’s second law are modified for fluids where we write</p>
+<div class="math notranslate nohighlight">
+\[a = F_f/\rho\]</div>
+<p>or acceleration is given by force-per-unit-volume per density.  Acceleration is the rate-of-change of fluid flow (velocity) with time, where the rate-of-change is using the material derivative.</p>
+<p>Here are the equations of motion, in the notation that you should plan to use for this class.  We will use <span class="math notranslate nohighlight">\(v\)</span> positive in the northward direction (negative in the southward direction), <span class="math notranslate nohighlight">\(u\)</span> positive in the eastward direction, and <span class="math notranslate nohighlight">\(w\)</span> positive upwards.</p>
+<section id="momentum-equations">
+<h2>Momentum equations<a class="headerlink" href="#momentum-equations" title="Permalink to this heading">#</a></h2>
+<p>The momentum equations for fluid motion describe how the circulation evolves (given by the time derivative of velocities on the left hand side) under the effect of various forces (the terms on the right hand side).  For much of the course, we will actually consider the balances of the forces (right hand side) in steady state, meaning with no evolution or acceleration (left hand side is zero).</p>
+<!--$$\underbrace{\frac{Du}{Dt}}_{\text{Eastward accel.}} =\underbrace{-\frac{1}{\rho}\frac{\partial p}{\partial x}}_{\text{Pressure Gradient Accel.}}  \underbrace{+fv}_{\text{Coriolis Accel. }}  \underbrace{+F_x}_\text{Frictional Accel.}$$
+
+$$\underbrace{\frac{Dv}{Dt}}_\text{Northward Accel.} =\underbrace{-\frac{1}{\rho}\frac{\partial p}{\partial y}}_\text{Pressure Gradient Accel.}  \underbrace{-fu}_\text{Coriolis Accel. }  \underbrace{+F_y}_\text{Frictional Accel.}$$
+
+$$\underbrace{\frac{Dw}{Dt}}_\text{Upward Accel.} = \underbrace{-\frac{1}{\rho}\frac{\partial p}{\partial z}}_\text{Pressure Gradient Accel.} \underbrace{-g}_\text{Gravit. Accel. } \underbrace{+F_z}_\text{Frictional Accel.}$$-->
+<p><img alt="Momentum equations" src="../_images/momeqns.png" />
+where <span class="math notranslate nohighlight">\(p\)</span> is pressure, <span class="math notranslate nohighlight">\(f\)</span> the Coriolis parameter, and <span class="math notranslate nohighlight">\((F_x,F_y,F_z)\)</span> the frictional acceleration in 3-directions.</p>
+</section>
+</section>
+<section id="scaling-analysis-for-information-not-to-be-examined-in-regoz">
+<h1>Scaling analysis (for information, not to be examined in RegOz)<a class="headerlink" href="#scaling-analysis-for-information-not-to-be-examined-in-regoz" title="Permalink to this heading">#</a></h1>
+<p>Scale analysis is a technique to determine which terms in an equation are bigger and which are small enough to be ignored.  This helps us simplify the equations of motion (i.e., when it is valid and acceptable to throw out terms) under certain assumptions and approximations.</p>
+<p>We will not cover this in detail in this course, but you should be aware that for regional ocean processes, when we are talking about whether <code class="docutils literal notranslate"><span class="pre">offshore</span> <span class="pre">Ekman</span> <span class="pre">transport'</span> <span class="pre">or</span> </code>Sverdrup gyres’ are a reasonable representation of what we see in observations, what we are really doing is starting with the full equations of motion, then simplifying them by making assumptions (or using empirical evidence) to decide which terms are large or small.</p>
+<section id="typical-scales-for-velocity-independent-variables">
+<h2>Typical scales for velocity/independent variables<a class="headerlink" href="#typical-scales-for-velocity-independent-variables" title="Permalink to this heading">#</a></h2>
+<p>See also Table 4.1 in BCR.</p>
+<p><em>Recall: Independent variables are things like the axes, x, y, t.  Dependent variables are ones which vary in those directions.</em></p>
+<p>Set the scales:</p>
+<div class="math notranslate nohighlight">
+\[[u,v] \sim \mathrm{U}  \ ,\qquad\qquad [w]\sim \mathrm{W}\]</div>
+<div class="math notranslate nohighlight">
+\[\left[\pfrac{}{x},\pfrac{}{y}\right] \sim \frac{1}{\mathrm{L}} \ ,\qquad\qquad \left[\pfrac{}{z}\right] \sim \frac{1}{\mathrm{H}} 
+\ ,\qquad\qquad\left[\pfrac{}{t}\right] \sim \frac{1}{\mathrm{T}}
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\rho=\rho_0 + \rho'(x,y,z,t)\)</span> according to the Boussinesq approximation, then
+\begin{align*}
+[\rho,\rho_0]&amp;\sim\rho_{oo} &amp; [\rho’]&amp;\sim \Delta\rho
+\end{align*}
+where <span class="math notranslate nohighlight">\(|\rho'|\ll\rho_0\)</span>.</p>
+<p><strong>Notation:</strong> Square brackets <span class="math notranslate nohighlight">\([\cdot]\)</span> denote <em>scale of</em>, which is like the order of magnitude.</p>
+<p>We will also let <span class="math notranslate nohighlight">\(p=\bar{p}(z)+p'(x,y,z,t)\)</span>, where though <span class="math notranslate nohighlight">\(\rho_0\)</span> was a constant, <span class="math notranslate nohighlight">\(\bar{p}\)</span> depends on <span class="math notranslate nohighlight">\(z\)</span> (which we expect from the background hydrostatic pressure/<span class="math notranslate nohighlight">\(z\)</span>-momentum equation: the deeper you go, the higher pressure gets even if density is constant). We will refer to the scale of pressure perturbations as using the <span class="math notranslate nohighlight">\([\cdot]\)</span> notation as <span class="math notranslate nohighlight">\([p']\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-5-watermasses.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Watermasses</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture-7.1-scaling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hydrostatic approximation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Equations of motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#four-forces-for-the-ocean">Four forces for the ocean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-newtonian-physics-to-fluids">Applying Newtonian physics to fluids</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Equations of Motion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-equations">Momentum equations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-analysis-for-information-not-to-be-examined-in-regoz">Scaling analysis (for information, not to be examined in RegOz)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-scales-for-velocity-independent-variables">Typical scales for velocity/independent variables</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

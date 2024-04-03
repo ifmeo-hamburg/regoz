@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Geostrophy &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-8-geostrophy';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ekman transport" href="lecture-9-Ekman.html" />
+    <link rel="prev" title="Hydrostatic approximation" href="lecture-7.1-scaling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-4-mixedlayer.html">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-8-geostrophy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-8-geostrophy.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Geostrophy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geostrophy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nondimensional-numbers">Nondimensional  numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-the-equations-of-motion-for-ro-ll-1-geostrophic-balance">Scaling the equations of motion for <span class="math notranslate nohighlight">\(Ro\ll 1\)</span>: Geostrophic Balance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-wind">Thermal wind</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geostrophic-balance-for-constant-density">Geostrophic balance for constant density</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world">Real world</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-examples">In-class examples</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="geostrophy">
+<h1>Geostrophy<a class="headerlink" href="#geostrophy" title="Permalink to this heading">#</a></h1>
+<p>In this lecture, we will come up with a simplified version of the <span class="math notranslate nohighlight">\(z\)</span>-momentum equation, using <em>scale analysis</em>.</p>
+<p><em>If you’d like to read this topic in a textbook, I recommend the text “Geophysical Fluid Dyanmics” by Benoit Cushman-Roisin and Jean Beckers.  Copies should be available in the library.</em></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\sW}{\mathrm{W}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sH}{\mathrm{H}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sU}{\mathrm{U}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sL}{\mathrm{L}}\)</span>
+<span class="math notranslate nohighlight">\(\newcommand{\sT}{\mathrm{T}}\)</span></p>
+<p><strong>Overview:</strong> Scaling analysis can be performed on the equations of motion as is, or the equations can be manipulated to eliminate dimensions, and create fundamental ratios between the magnitudes of two terms in the equation.  Some of these ratios are provide important conditions on how equations can or cannot be simplified.  These ratios (nondimensional numbers) are given names like ``Rossby number’’, so that they can be referred to quickly.  The assumption we used for the hydrostatic approximation was that <span class="math notranslate nohighlight">\(H\ll L\)</span>.  Both <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(L\)</span> have dimension (units) of meters.  We can nondimensionalise this by dividing both sides by <span class="math notranslate nohighlight">\(L\)</span> and then referring to the condition</p>
+<div class="math notranslate nohighlight">
+\[\frac{H}{L}\ll 1 \ .\]</div>
+<p>The ratio <span class="math notranslate nohighlight">\(H/L\)</span> is nondimensional.</p>
+<p><strong>Main points of lecture:</strong></p>
+<ol class="arabic simple">
+<li><p>By non-dimensionalising the equations of motion, and then applying scaling analysis, we can determine conditions under which the equations simplify to a balance between rotation and the pressure gradient force.  This is called <strong>geostrophic balance</strong> and describes much of the large-scale ocean circulation.</p></li>
+<li><p>Replacing pressure with density by using the hydrostatic approximation, we can derive the <em>thermal wind relation</em> between density gradients and vertical shear of horizontal velocity.</p></li>
+<li><p>Replacing Boussinesq density (small variations) with constant density, we can derive a surface geostrophic relationship between sea surface height gradients and currents.</p></li>
+</ol>
+<section id="nondimensional-numbers">
+<h2>Nondimensional  numbers<a class="headerlink" href="#nondimensional-numbers" title="Permalink to this heading">#</a></h2>
+<p>aka. dimensionless numbers are a useful way to distill equations down to their fundamental relationships.</p>
+<p>An important aspect of the equations we’ve seen so far (and all equations) is that the units for each term in an equation must be the same.  There is no situation where you would have</p>
+<div class="math notranslate nohighlight">
+\[1\mbox{ metre} = 1\mbox{ kg}\ ,\qquad\mbox{ or }\qquad 1\mbox{ m/s} = 1\mbox{ m}^{2}/\mbox{s}\]</div>
+<p>What this also means is that if we compare two terms in the equation by looking at their ratio, we end up with a number that has no units.  We call this a “nondimensional” number.</p>
+<p>As an example, starting with the horizontal momentum equation,</p>
+<div class="math notranslate nohighlight">
+\[\frac{Du}{Dt}=-\frac{1}{\rho_0}\pfrac{p}{x}+fv+F_x\]</div>
+<p>and considering only inviscid flows (<span class="math notranslate nohighlight">\(F_x=0\)</span>), we can expand the equation and write the scales associated with the terms:</p>
+<!--$$\underbrace{\frac{\partial u}{\partial t}}_{\frac{\mathrm{U}}{\mathrm{T}}}+\underbrace{u\frac{\partial u}{\partial x}}_{\frac{\mathrm{U}^2}{\mathrm{L}}}+\underbrace{v\frac{\partial u}{\partial y}}_{\frac{\mathrm{U}^2}{\mathrm{L}}}+\underbrace{w\frac{\partial u}{\partial z}}_{\frac{\mathrm{W}\mathrm{U}}{\mathrm{H}}}=\underbrace{-\frac{1}{\rho_0}\frac{\partial p}{\partial x}}_{\frac{P}{\rho_0\mathrm{L}}}+\underbrace{fv}_{\Omega\mathrm{U}}$$-->
+<p><img alt="" src="../_images/scales_xmom.png" /></p>
+<p>We can then consider how each term in the equation relates to the rotation term, with scale <span class="math notranslate nohighlight">\(\Omega\sU\)</span> by dividing scales through by <span class="math notranslate nohighlight">\(\Omega\sU\)</span>.  The scales of the terms are now non-dimensional:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\Omega T}\ ,\qquad\frac{\sU}{\Omega\sL}\ ,\qquad\frac{\sU}{\Omega\sL}\ ,\qquad \frac{\sW\sL}{\sU\sH}\cdot\frac{\sU}{\Omega\sL}\ ,\qquad\frac{P}{\rho_0\Omega\sL\sU}\ ,\qquad 1\]</div>
+<p>To check that they are non-dimensional, we can see that in the first term, the units of rotation (<span class="math notranslate nohighlight">\(\Omega\)</span>) are 1/s and the units of the scale for time <span class="math notranslate nohighlight">\(\sT\)</span> are s.  So these two things multipled together give s/s which is unitless.  Similarly, the second term <span class="math notranslate nohighlight">\(\sU/\Omega L\)</span> has a numerator with units m/s and a denominator with the units of <span class="math notranslate nohighlight">\(\Omega\)</span> (1/s) multipled by the units of length <span class="math notranslate nohighlight">\(\sL\)</span> (m) or m/s.  So the units of the whole term (numerator divided by denominator) are (m/s)/(m/s) or 1, unitless.</p>
+<p>Some of these unitless numbers have special names, and in the case of the second term, we have the Rossby number:</p>
+<div class="math notranslate nohighlight">
+\[Ro=\frac{\sU}{\Omega \sL}\]</div>
+<p>which is the ratio between the advection term (<span class="math notranslate nohighlight">\(u\partial u/\partial x\)</span>) and the rotation term (<span class="math notranslate nohighlight">\(fv\)</span>).  If this number is big (that is, if <span class="math notranslate nohighlight">\(Ro\gg 1\)</span>), it tells us that advection is much bigger than rotation.  In terms of scaling, this would mean that</p>
+<div class="math notranslate nohighlight">
+\[\left[fv\right] \ll \left[u\pfrac{u}{x}\right]\]</div>
+<p>which from last time, we would have used to say “let’s throw out the rotating term” since it’s much smaller than another term in the equation.</p>
+<p><em>Note: Non-dimensional numbers are useful because they do not depend on the scale or size of things.  Typically when we look at flows in a rotating table, we would use non-dimensional numbers to relate the sizes we see to that of the Earth. For instance, because <span class="math notranslate nohighlight">\(f\)</span> is much larger on a rotating table than on the earth, the horizontal scales <span class="math notranslate nohighlight">\(L\)</span> are correspondingly smaller.</em></p>
+<p><strong>Alternatively, when the Rossby number (<span class="math notranslate nohighlight">\(Ro\)</span>) is small, rotation is important.</strong></p>
+<p>In the next section, we will assume that <span class="math notranslate nohighlight">\(Ro\ll 1\)</span> and apply this to another scaling analysis of the equations of motion.</p>
+</section>
+<section id="scaling-the-equations-of-motion-for-ro-ll-1-geostrophic-balance">
+<h2>Scaling the equations of motion for <span class="math notranslate nohighlight">\(Ro\ll 1\)</span>: Geostrophic Balance<a class="headerlink" href="#scaling-the-equations-of-motion-for-ro-ll-1-geostrophic-balance" title="Permalink to this heading">#</a></h2>
+<p>We start with the momentum equations, inviscid &amp; under the Boussinesq approximation (<span class="math notranslate nohighlight">\(\rho=\rho_0+\rho'(x,y,z,t)\)</span> and <span class="math notranslate nohighlight">\(\rho'\ll\rho\)</span>), where</p>
+<!--\begin{align*}
+\frac{Du}{Dt}& = -\frac{1}{\rho_0}\pfrac{p}{x}+fv\\ 
+\frac{Dv}{Dt} &=-\frac{1}{\rho_0}\pfrac{p}{y}-fu\\
+0  &=-\frac{1}{\rho}\pfrac{p}{z}-{g}
+\end{align*}-->
+<p><img alt="" src="../_images/momeqns_inviscid_bouss.png" /></p>
+<p><strong>Take a closer look at the Coriolis parameter (<span class="math notranslate nohighlight">\(f\)</span>):</strong>  The part of the Earth’s rotation that the ocean typically feels is given by <span class="math notranslate nohighlight">\(f\)</span>.  (Note, this representation of rotation is already making a couple assumptions.  See BCR for more information.)  At the poles, the component of rotation that the water feels is the greatest.  At the equator, it is essentially absent.  Our expression for <span class="math notranslate nohighlight">\(f\)</span> is
+$<span class="math notranslate nohighlight">\(f=2\Omega\sin\varphi\)</span><span class="math notranslate nohighlight">\( where \)</span>\varphi$ is latitude.</p>
+<p>We can approximate <span class="math notranslate nohighlight">\(f\)</span> as as constant value for a given latitude, <span class="math notranslate nohighlight">\(\varphi_0\)</span>, and call it the constant <span class="math notranslate nohighlight">\(f_0\)</span>.  What this means is that the motion under consideration is not large, relative to the scales over which <span class="math notranslate nohighlight">\(f\)</span> varies.  This is called the <em><span class="math notranslate nohighlight">\(f\)</span>-plane approximation</em>.</p>
+<p><span class="math notranslate nohighlight">\(\blacklozenge\)</span> In your reading, you can familiarise yourself with the <span class="math notranslate nohighlight">\(\beta\)</span>-plane approximation.  The actual process behind this approximation is a Taylor series expansion for <span class="math notranslate nohighlight">\(\sin\)</span>, and <span class="math notranslate nohighlight">\(\beta\)</span> is an approximation to the second term in that expansion.  This is one level more complicated than the <span class="math notranslate nohighlight">\(f\)</span>-plane, and becomes important when we talk about large-scale things like gyres, and for Rossby waves.</p>
+<p><strong>Equations of motion under the <span class="math notranslate nohighlight">\(f\)</span>-plane approximation:</strong>  Now let’s assume <span class="math notranslate nohighlight">\(f\)</span>-plane, still no friction (inviscid) and Boussinesq.  Our <span class="math notranslate nohighlight">\(x\)</span>-momentum equation becomes</p>
+<div class="math notranslate nohighlight">
+\[\frac{Du}{Dt} -f_0v = -\frac{1}{\rho_0}\pfrac{p}{x}\]</div>
+<p>Scale the terms (let <span class="math notranslate nohighlight">\([f_0]=\Omega\)</span>) and use the advective timescale assumptions (which let us scale the full material derivative as <span class="math notranslate nohighlight">\(\sU^2/\sL\)</span>).  Then we have</p>
+<!--$$\underbrace{\frac{Du}{Dt}}_{\frac{\mathrm{U}^2}{\mathrm{L}}}  = -\underbrace{\frac{1}{\rho_0}\frac{\partial p}{\partial x}}_{\frac{[p']}{\rho_{00}\mathrm{L}}} + \underbrace{f_0v}_{\Omega\mathrm{U}}\ .$$-->
+<p><img alt="" src="../_images/scaled_z.png" /></p>
+<p><em>Recall: From last time (Hydrostatic), we had non-rotating (<span class="math notranslate nohighlight">\(f=0\)</span>), so the first and third terms balanced.</em></p>
+<p>If we now assume the Rossby number is small (<span class="math notranslate nohighlight">\(Ro=\sU/\Omega\sL\ll 1\)</span>), then we have that the rotation term is much larger than the material derivative.</p>
+<p><em>Is this a good assumption for the ocean?</em> For a mid-latitude mesoscale eddy, the diameter is typically 100-200 km across, and the radial velocity around the edge of the eddy is up to 1 m <span class="math notranslate nohighlight">\(\mbox{s}^{-1}\)</span> flows,</p>
+<!--$$
+\left. \begin{array}{ll}
+         \mathrm{U}\sim 1\mbox{ m~s$^{-1}$} \\
+        \mathrm{L}\sim100\mbox{ km}\end{array}\quad \right\} \quad Ro=0.1\mbox{ small}
+$$-->
+<p><img alt="" src="../_images/rossby_scaling_wide.png" /></p>
+<p>How big is <span class="math notranslate nohighlight">\(Ro\)</span>? Then we can neglect the first term.</p>
+<p><strong>Small <span class="math notranslate nohighlight">\(Ro\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> Geostrophic balance:</strong> Neglecting the first term, we are left with a balance between the Coriolis  and  pressure gradient terms:
+\begin{equation*}
+\boxed{ -f_0 v=-\frac{1}{\rho_0}\pfrac{p}{x}\ ,\qquad  f_0u =-\frac{1}{\rho_0}\pfrac{p}{y}}\tag{Geostrophic balance}
+\end{equation*}</p>
+<p><strong>What have we done here?</strong></p>
+<p>We have created a fundamental relationship between pressure and velocity.  In order for this to hold, we require <span class="math notranslate nohighlight">\(Ro\)</span> to be small (so we can drop the first <span class="math notranslate nohighlight">\(D/Dt\)</span> term.  For this formulation, we also assumed inviscid and <span class="math notranslate nohighlight">\(f\)</span>-plane.</p>
+<p><em>Question for thought: For a pressure gradient in the <span class="math notranslate nohighlight">\(x\)</span>-direction, in which direction will there be a flow?</em></p>
+<p><em>Question for thought: We assumed that <span class="math notranslate nohighlight">\(f_0v\gg \frac{Du}{Dt}\)</span>.  When might this not be true?</em></p>
+<p><strong>Why is this totally awesome?</strong>  (A few words about the RAPID project, <a class="reference external" href="http://www.rapid.ac.uk">http://www.rapid.ac.uk</a>)</p>
+<!--$\blacklozenge$ See "in class" handout for an overview of the RAPID project which applies geostrophy across 6000~km in the subtropical North Atlantic.-->
+</section>
+</section>
+<section id="thermal-wind">
+<h1>Thermal wind<a class="headerlink" href="#thermal-wind" title="Permalink to this heading">#</a></h1>
+<p>A variation on geostrophic balance using density instead of pressure, via the hydrostatic approximation.</p>
+<p>Using the <span class="math notranslate nohighlight">\(f\)</span>-plane and hydrostatic approximations,</p>
+<!--\begin{align*}
+&\mbox{$x$-mom:} &-f_0 v&=-\frac{1}{\rho_0}\pfrac{p}{x} \\
+&\mbox{$z$-mom:}&\pfrac{p}{z} &=-\rho g
+\end{align*}-->
+<p><img alt="" src="../_images/fplane_hydro_start.png" /></p>
+<p>Combine these two equations by taking the <span class="math notranslate nohighlight">\(\pfrac{}{z}(x-\mbox{mom})\)</span> and <span class="math notranslate nohighlight">\(\pfrac{}{x}(\)</span>z<span class="math notranslate nohighlight">\(-\mbox{mom})\)</span>: (<em>Try it here<span class="math notranslate nohighlight">\(\ldots\)</span></em>)
+<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/></p>
+<!--\begin{equation*}
+\left.\begin{array}{ll}
+-f\pfrac{v}{z} &=-\frac{1}{\rho_0}\pfrac{^2p}{x\partial z}\\
+\pfrac{^2p}{x\partial z} &= -\pfrac{\rho}{x} g
+\end{array}\right\}
+-f\pfrac{v}{z} = \frac{g}{\rho_0}\pfrac{\rho}{x}
+\end{equation*}-->
+<p><em>What we’ve done here is a technique we’ll be using throughout the rest of the class: applying derivatives to different equations in order to match terms and combine them.</em></p>
+</section>
+<section id="geostrophic-balance-for-constant-density">
+<h1>Geostrophic balance for constant density<a class="headerlink" href="#geostrophic-balance-for-constant-density" title="Permalink to this heading">#</a></h1>
+<p>Suppose that the fluid is no longer Boussinesq, but instead the density is a constant, <span class="math notranslate nohighlight">\(\rho=\rho_0\)</span>.  Using this, pressure is given by</p>
+<div class="math notranslate nohighlight">
+\[p = p_{atm}+\rho_0 g h\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is the height of the fluid.  Recalling last time, the height of the fluid imparts a big pressure everywhere, but for a constant density, that pressure is the same at each level below the surface. In other words, if you consider the ocean to be a big tub of water with a flat surface, then the pressure at depth <span class="math notranslate nohighlight">\(z\)</span> below the surface is</p>
+<div class="math notranslate nohighlight">
+\[p(z) = p_{atm}-\rho_0 g z\]</div>
+<p>with <span class="math notranslate nohighlight">\(z\)</span> defined as negative downwards.  If on the other hand the surface of the water varies in space (<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions) and time (<span class="math notranslate nohighlight">\(t\)</span> dimension) as <span class="math notranslate nohighlight">\(\eta(x,y,t)\)</span>, then the pressure at depth <span class="math notranslate nohighlight">\(z\)</span> will instead be given by
+$<span class="math notranslate nohighlight">\(p(x,y,z,t) = p_{atm}-\rho_0 gz+\rho_0g\eta(x,y,t)\ .\)</span>$</p>
+<p>If we are interested in horizontal gradients in pressure only, then horizontal gradient of the pressure in the <span class="math notranslate nohighlight">\(x\)</span>-direction is</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{p}{x} = \pfrac{p_{atm}}{x}-\pfrac{\rho_0 g z}{x}+\pfrac{\rho_0 g\eta}{x}\]</div>
+<p>Considering that <span class="math notranslate nohighlight">\(\rho_0\)</span> does not vary, <span class="math notranslate nohighlight">\(g\)</span> does not vary (in our use of it), assume that any variations of <span class="math notranslate nohighlight">\(p_{atm}\)</span> (already small relative to oceanic pressures) are small, and the derivative of <span class="math notranslate nohighlight">\(z\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> is zero (independent variables do not vary in another direction).  Then we are left with</p>
+<div class="math notranslate nohighlight">
+\[\pfrac{p}{x} = \rho_0g\pfrac{\eta}{x}\ .\]</div>
+<p>All of this is to say that the pressure that is responsible for flow (the dynamic pressure) can be given by
+$<span class="math notranslate nohighlight">\(p=\rho_0 g\eta\ .\)</span>$</p>
+<p>Then our <span class="math notranslate nohighlight">\(x\)</span>-momentum equation for geostrophic balance for a constant density fluid becomes</p>
+<!--\begin{align*}
+&\mbox{$x$-mom:} &-f_0 v&=-\frac{1}{\rho_0}\pfrac{(\rho_0 g\eta)}{x} \\
+&&&=-\frac{1}{\rho_0}\frac{\rho_0 g}{1}\pfrac{\eta}{x}\\
+&&&=-g\pfrac{\eta}{x}
+\end{align*}-->
+<p><img alt="" src="../_images/xmom_constant_density.png" /></p>
+<p>Combined, these two equations give geostrophic balance for the shallow water equations (constant density), or in the case of varying density, geostrophic currents at the surface.
+\begin{equation*}
+\boxed{fv=g\pfrac{\eta}{x}\ ,\qquad f u=-g\pfrac{\eta}{y}}\tag{Surface geostrophy}
+\end{equation*}</p>
+<p>This is actually kind of astounding.  If we know the sea surface height anomalies, and density is a constant (where even though it varies, it’s kind of like a constant because <span class="math notranslate nohighlight">\(\rho'\ll \rho_0\)</span>), then we can determine the velocity of the geostrophic flow field.</p>
+<p>But how big a sea surface height difference are we talking about here, to generate a typical oceanic flow?</p>
+<!--$\blacklozenge$ See "in class" sheet on calculating geostrophic velocities from sea surface height.-->
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="real-world">
+<h1>Real world<a class="headerlink" href="#real-world" title="Permalink to this heading">#</a></h1>
+<p>In the real world, we use all of these methods to determine ocean circulation.  Geostrophic is <em>extremely</em> powerful.  Sea surface height maps are used to make 2-d and time-evolving maps of how the currents at the surface of the ocean are evolving.  The thermal wind relation underpins the RAPID array observations at <span class="math notranslate nohighlight">\(26^\circ\)</span>N which are used to measure the time-varying meridional overturning circulation.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="in-class-examples">
+<h1>In-class examples<a class="headerlink" href="#in-class-examples" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><strong>Relating pressure and velocity through geostrophy.</strong>
+Geostrophic balance can be adapted for sea surface height.  We will use the symbol <span class="math notranslate nohighlight">\(\eta\)</span> or “eta” for sea surface height. In this case, the relationship between dynamic pressure <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> is given by
+<span class="math notranslate nohighlight">\(p=\rho_0 g\eta\ .\)</span>  Then our equation for meridional (north-south) velocity in terms of zonal (east-west) pressure gradient becomes</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\mbox{$y$-mom (using $p$):}\qquad f u=-\frac{1}{\rho_0}\pfrac{p}{y}\]</div>
+<div class="math notranslate nohighlight">
+\[\mbox{$y$-mom (using $\eta$):}\qquad f u=-g\pfrac{\eta}{y}\]</div>
+<p><img alt="Mean dynamic ocean topography (like mean sea level)." src="../_images/mdot.png" /></p>
+<p>a. Using the figure, can you estimate the average surface velocity between 20 and <span class="math notranslate nohighlight">\(60^\circ\)</span>N at <span class="math notranslate nohighlight">\(50^\circ\)</span>W?  Use <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(40^\circ\)</span>N.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Answer: 10 cm/s
+</pre></div>
+</div>
+<!--_Solution:_
+$f(40^\circ\mbox{N})\approx 1\times 10^{-4}\mbox{ s}^{-1}$.
+
+The average velocity will be given by 
+\begin{equation*}
+\bar{u} \approx -\frac{g}{f_0}\frac{\Delta\eta}{\Delta y}
+\end{equation*}
+The distance between 20 and 60$^\circ$N is about 40$^\circ$.  One degree is about 111~km, so $\Delta y\approx 40\times 100\mbox{ km}=4\times 10^6\mbox{ m}$.  From the colour scale, we can estimate the difference in sea level as $\Delta\eta \approx (-80)-(20)$ cm or -1~m.  Since $g\approx 10$~m/s, we have 
+\begin{equation*}
+u \approx -\frac{10}{10^{-4}}\frac{-1}{4\times 10^6} = 0.03\mbox{ m/s or }3\mbox{ cm/s eastward}
+\end{equation*}-->
+<p>b. How about between 30 and <span class="math notranslate nohighlight">\(60^\circ\)</span>S at <span class="math notranslate nohighlight">\(40^\circ\)</span>W? (Use <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(45^\circ\)</span>S.)</p>
+<!--    Answer: 7 cm/s-->
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-7.1-scaling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hydrostatic approximation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture-9-Ekman.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ekman transport</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geostrophy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nondimensional-numbers">Nondimensional  numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-the-equations-of-motion-for-ro-ll-1-geostrophic-balance">Scaling the equations of motion for <span class="math notranslate nohighlight">\(Ro\ll 1\)</span>: Geostrophic Balance</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-wind">Thermal wind</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geostrophic-balance-for-constant-density">Geostrophic balance for constant density</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world">Real world</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-examples">In-class examples</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

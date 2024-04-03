@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Vertical structure of the ocean &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture-4-mixedlayer';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Watermasses" href="lecture-5-watermasses.html" />
+    <link rel="prev" title="Air-sea fluxes" href="lecture-3-airsea.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/SuSe-2023.html">SuSe 2023</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-1-seawater.html">Physical properties of seawater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-3-airsea.html">Air-sea fluxes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vertical structure of the ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-5-watermasses.html">Watermasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-7-eqn-of-motion.html">Equations of motion</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-7.1-scaling.html">Hydrostatic approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-8-geostrophy.html">Geostrophy</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-9-Ekman.html">Ekman transport</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lecture-10-Sverdrup.html">Vorticity and Sverdrup balance</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-1.html">Exercise sheet 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-2.html">Exercise sheet 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exercise-3.html">Exercise sheet 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mini-project.html">Mini project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing (optional)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-1.html">Matlab Introductory lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-2.html">Profile data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-3.html">Trends</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-4.html">Seasons</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-5.html">Spatial data</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../computing/practical-6.html">Spatio-temporal data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Flectures/lecture-4-mixedlayer.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture-4-mixedlayer.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vertical structure of the ocean</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-haline-and-density-profiles-in-week-2">Thermal, haline and density profiles (in week 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-mixed-layer-week-4">Surface mixed layer (week 4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-sea-interaction">Air-sea interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertical-mixing">Vertical mixing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-diffusion">Turbulent diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convection">Convection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langmuir-circulation-cells">Langmuir circulation cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inertial-oscillations">Inertial oscillations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-shear-instability">Current shear instability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-ocean-profiles">Upper ocean profiles</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="vertical-structure-of-the-ocean">
+<h1>Vertical structure of the ocean<a class="headerlink" href="#vertical-structure-of-the-ocean" title="Permalink to this heading">#</a></h1>
+<section id="thermal-haline-and-density-profiles-in-week-2">
+<h2>Thermal, haline and density profiles (in week 2)<a class="headerlink" href="#thermal-haline-and-density-profiles-in-week-2" title="Permalink to this heading">#</a></h2>
+<p>Globally-averaged profiles provide a first general idea into the ocean’s <strong>stratification.</strong> The vertical structure of the ocean is characterized by downward decreasing temperature, increasing density and varying salinity:
+<img alt="Average profiles of temperature, salinity , potential temperature and in situ density" src="../_images/fig-beckmann-avg-profiles.png" /></p>
+<p>Pointwise observations confirm this picture, with some exceptions: a vertically homogeneous layer at the surface, and unusual profiles in high latitudes.</p>
+<p><img alt="Typical potential temperature (°C)/depth (m) profiles for the open ocean in (a) the tropical western North Pacific (5°N), (b) the western and eastern subtropical North Pacific (24°N), and (c) the western subpolar North Pacific (47°N). Corresponding salinity profiles are shown in Figure 4.16." src="../_images/fig-talley-dpo-fig4.3.png" />
+<em>Figure: Typical potential temperature (°C)/depth (m) profiles for the open ocean in (a) the tropical western North Pacific (5°N), (b) the western and eastern subtropical North Pacific (24°N), and (c) the western subpolar North Pacific (47°N). Corresponding salinity profiles are shown in Figure 4.16.</em></p>
+<p><img alt="Typical salinity (psu) profiles for the tropical, subtropical, and subpolar regions of the North Pacific. Corresponding temperature profiles are shown in Figure 4.2." src="../_images/fig-dpo-4.16-salinity-profs.png" />
+<em>Figure from DPO 4.16: Typical salinity (psu) profiles for the tropical, subtropical, and subpolar regions of the North Pacific. Corresponding temperature profiles are shown in Figure 4.2.</em></p>
+<p>Meridional sections through the Atlantic Ocean reveal the large-scale pattern of layers of different T-S characteristics.
+<img alt="Atlantic sections - (a) Potential temperature (°C), (b) salinity (psu), (c) potential density sq (top) and potential density s4 (bottom) (kg m–3), and (d) oxygen (mmol/kg) in the Atlantic Ocean at longitude 20° to 25°W. Data from the World Ocean Circulation Experiment. This figure can also be found in the color insert." src="../_images/fig-dpo-4.11-Atlantic-sxn.png" />
+<em>Figure from DPO 4.11: (a) Potential temperature (°C), (b) salinity (psu), (c) potential density sq (top) and potential density s4 (bottom) (kg m–3), and (d) oxygen (mmol/kg) in the Atlantic Ocean at longitude 20° to 25°W. Data from the World Ocean Circulation Experiment. This figure can also be found in the color insert.</em></p>
+</section>
+<section id="surface-mixed-layer-week-4">
+<h2>Surface mixed layer (week 4)<a class="headerlink" href="#surface-mixed-layer-week-4" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="air-sea-interaction">
+<h2>Air-sea interaction<a class="headerlink" href="#air-sea-interaction" title="Permalink to this heading">#</a></h2>
+<p>The ocean is driven by atmospheric conditions (momentum, heat and freshwater fluxes), and the exchange occurs on a molecular level, directly affecting only a very thin (mm thick) surface layer.</p>
+<p>Due to vertical mixing, a quasi-homogeneous layer of a few tens of meters thickness forms that is in direct contact with the atmosphere.  The depth of this <strong>surface mixed layer</strong> (SML) is set by the strength of various mixing processes, in combination with surface heating and freshwater fluxes.</p>
+</section>
+<section id="vertical-mixing">
+<h2>Vertical mixing<a class="headerlink" href="#vertical-mixing" title="Permalink to this heading">#</a></h2>
+<section id="turbulent-diffusion">
+<h3>Turbulent diffusion<a class="headerlink" href="#turbulent-diffusion" title="Permalink to this heading">#</a></h3>
+<p>Consider vertical temperature diffusion</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial T}{\partial t} = A_v\frac{\partial^2 T}{\partial z^2}\]</div>
+<p>with a temporally-varying (periodic) surface boundary condition</p>
+<div class="math notranslate nohighlight">
+\[T(t)|_{z=0} = T_m + T_0\sin(\omega t)\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[T_{z=-\infty} = 0\]</div>
+<p>as the lower boundary condition.  The analytical solution for <span class="math notranslate nohighlight">\(T=T_0\exp(i\omega t+mz)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[T(z,t)=T_m+T_0\exp\left(\frac{z}{D}\right)\sin\left(\omega t+\frac{z}{D}\right)\]</div>
+<p>where the penetration depth is</p>
+<div class="math notranslate nohighlight">
+\[D=\sqrt{\frac{2A_v}{\omega}}\ .\]</div>
+<p>For a typical turbulent mixing coefficient (<span class="math notranslate nohighlight">\(A_v=10^{-4}\)</span> m<span class="math notranslate nohighlight">\(^{2}\)</span>s<span class="math notranslate nohighlight">\(^{-1}\)</span>), this leads to</p>
+<div class="math notranslate nohighlight">
+\[D_{diurnal}=1.6\mbox{ m, and}\]</div>
+<div class="math notranslate nohighlight">
+\[D_{annual}=31\mbox{ m\ .}\]</div>
+<p>Note that in general,
+<span class="math notranslate nohighlight">\(\frac{D_{annual}}{D_{diurnal}} = 19.1\ .\)</span></p>
+<p>The solution of the diffusion equation for seasonal forcing may look like this:</p>
+</section>
+<section id="convection">
+<h3>Convection<a class="headerlink" href="#convection" title="Permalink to this heading">#</a></h3>
+<p>Static instability (i.e., when <span class="math notranslate nohighlight">\(N^2&lt;0\)</span>) is  removed by <strong>convective mixing</strong> almost instantaneously (i.e., you will not often see static instability in measurements of CTD data).  The associated vigorous vertical velocities lead to high levels of turbulence and the end product is a quasi-homogeneous fluid.  Hence convection is often seen as an essentially diffusive process with a very large mixing coefficient <span class="math notranslate nohighlight">\(A_v=1\)</span> m<span class="math notranslate nohighlight">\(^2\)</span>s<span class="math notranslate nohighlight">\(^{-1}\)</span>.
+Taking convection into account, the seasonal cycle becomes asymmetric and dominated by deep penetration in winter.</p>
+<p>In three dimensions, convection takes place in locally-confined areas (often only 100 m wide), so-called <em>chimneys</em>.</p>
+<p><img alt="Convective plumes or chimneys, from Marshall and Schott 2001" src="../_images/conv-scales-DIAGRAM.pdf" /></p>
+<p><img alt="Stages of ocean convection where (a) is preconditioning, (b) convection, (c) sinking and (d) spreading, from Marshall and Schott 2001" src="../_images/conv-stages-DIAGRAM.pdf" /></p>
+</section>
+<section id="langmuir-circulation-cells">
+<h3>Langmuir circulation cells<a class="headerlink" href="#langmuir-circulation-cells" title="Permalink to this heading">#</a></h3>
+<p>Another mechanism to vertically mix the surface layer are <strong>Langmuir circulation cells,</strong> counterrotating rolls of water motion in the upper few meters of the ocean (top 50 m or so), caused by wind.  Their presence can be inferred from streaks of floating material or bubbles on the water surface.</p>
+<p><img alt="Langmuir cells, from Thorpe 2004" src="../_images/fig-thorpe-etal-2004-langmuir-diagram.png" /></p>
+</section>
+<section id="inertial-oscillations">
+<h3>Inertial oscillations<a class="headerlink" href="#inertial-oscillations" title="Permalink to this heading">#</a></h3>
+<p>Strong winds have another direct effect: the passage of a storm or hurricane will excite inertial oscillations that effectively mix the upper water column:</p>
+</section>
+<section id="current-shear-instability">
+<h3>Current shear instability<a class="headerlink" href="#current-shear-instability" title="Permalink to this heading">#</a></h3>
+<p>Another source of energy for mixing is the vertical shear of horizontal currents (<span class="math notranslate nohighlight">\(u_0(z)\)</span>).  In a stratified ocean, an instability may develop</p>
+<p>and leads to mixing (through the breaking of waves):</p>
+<p>This so-called <strong>Kelvin-Helmholtz instability</strong> can be nicely observed in the atmosphere, or using inductively linked thermistors at high resolution on a mooring as in van Haren and Gostiaux 2010.
+<img alt="KH-instability" src="../_images/fig-vanHaren-Gostiaux-etal-2010.png" /></p>
+</section>
+</section>
+<section id="upper-ocean-profiles">
+<h2>Upper ocean profiles<a class="headerlink" href="#upper-ocean-profiles" title="Permalink to this heading">#</a></h2>
+<p>In summary, turbulent and convective mixing often lead to a distinct surface layer, the <em>surface mixed layer,</em> often with a sharp gradient zone at its base, the thermocline (pycnocline).  In some cases, thermo-, halo- and pycnocline coincide, but the determination of the mixed layer depth (MLD) can also be more difficult.</p>
+<p>Hence there are several definitions for the depth of the surface mixed layer (SML).</p>
+<ul class="simple">
+<li><p><strong>MLD</strong> (mixed layer depth): depth where the absolute difference between temperature (potential density) and SST (SS<span class="math notranslate nohighlight">\(_{\sigma_T}\)</span>) has a certain value; (in case where salinity is important) depth where the density is greater than the suerface density by an amoutn equivalent to a certain temperature change.</p></li>
+<li><p><strong>ILD</strong> (isothermal layer depth): depth at which the temperature has changed by an absolute temperature difference of 0.8 degrees C from the temperature 10 m below the surface.</p></li>
+<li><p><strong>MgLD</strong> (<em>mixing</em> layer depth): surface layer that has been continuously turbulent during the previous 24 hours (the turbocline is the depth where the turbulence drops significantly).</p></li>
+</ul>
+<p>The global distribution of MLD depends on season.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-3-airsea.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Air-sea fluxes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture-5-watermasses.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Watermasses</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-haline-and-density-profiles-in-week-2">Thermal, haline and density profiles (in week 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-mixed-layer-week-4">Surface mixed layer (week 4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-sea-interaction">Air-sea interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertical-mixing">Vertical mixing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turbulent-diffusion">Turbulent diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convection">Convection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langmuir-circulation-cells">Langmuir circulation cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inertial-oscillations">Inertial oscillations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-shear-instability">Current shear instability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-ocean-profiles">Upper ocean profiles</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
