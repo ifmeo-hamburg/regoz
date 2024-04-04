@@ -8,7 +8,7 @@ parts:
   - caption: Syllabus
     chapters:
     - file: general/syllabus
-    - file: general/SuSe-2024
+    - file: general/schedule
   - caption: Lectures
     chapters:
     - file: lectures/lecture-1-seawater
@@ -31,11 +31,11 @@ parts:
 #    - file: exercises/mini-project
   - caption: Computing 
     chapters:
-    - file: computing/practical-1.md
+    - file: computing/computing-regoz-1.ipynb
 #    - file: computing/practical-2.md
 #    - file: computing/practical-3.md
 #    - file: computing/practical-4.md
-#    - file: computing/practical-5.md
+#    - file: computing/practical-5.md    
 #    - file: computing/practical-6.md
 
 
