@@ -179,7 +179,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/overview.html">Overview of exercises</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
 <ul class="nav bd-sidenav">
@@ -386,16 +385,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-notebook-in-jupyter">Open the notebook in jupyter</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-file-with-xarray">Load the data file with <code class="docutils literal notranslate"><span class="pre">xarray</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-look-at-your-data">Take a look at your data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-teos-10-parameters">Calculate TEOS-10 parameters</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-basic-plot">Create a basic plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-standard-parameters">Plot standard parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-pycnv-already-did-the-teos-10-conversion-to-sa-for-you-using-gsw">Note that pycnv already did the TEOS-10 conversion to SA for you using gsw</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-file-with-xarray">Load the data file with <code class="docutils literal notranslate"><span class="pre">xarray</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-look-at-your-data">Take a look at your data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-the-data-look-like">What do the data look like?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-basic-profile-plot">Create a basic profile plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-plot">Setting up the plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-your-variable-names">Find out your variable names</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gsw-calculate-teos-10-parameters">GSW: Calculate TEOS-10 parameters</a></li>
 </ul>
 
             </nav>
@@ -417,7 +419,7 @@ document.write(`
 <li><p>Adjust figure settings</p></li>
 </ol>
 <p><strong>Data:</strong> You will work with one <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> file from the MSM121 cruise off of 47°N.</p>
-<p><strong>Directions:</strong> Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> and 1 figure.  This should be submitted along with your answers to the exercises.</p>
+<p><strong>Directions:</strong> Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> and 1 figure.  This will form your answer to question 1 of the exercise sheet.</p>
 <hr></section>
 <section class="tex2jax_ignore mathjax_ignore" id="start-a-new-code-cell">
 <h1>Start a new code cell.<a class="headerlink" href="#start-a-new-code-cell" title="Permalink to this heading">#</a></h1>
@@ -431,6 +433,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 </pre></div>
 </div>
+<p>Note that if you are having trouble importing one of the packages, you will need to install that package.  If the only package you cannot import is <code class="docutils literal notranslate"><span class="pre">gsw</span></code> then you can do most of this exercise without that package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -452,13 +455,73 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="take-a-look-at-your-data">
+<h2>Take a look at your data<a class="headerlink" href="#take-a-look-at-your-data" title="Permalink to this heading">#</a></h2>
+<p>Recall the <code class="docutils literal notranslate"><span class="pre">print</span></code> command.</p>
+<section id="what-do-the-data-look-like">
+<h3>What do the data look like?<a class="headerlink" href="#what-do-the-data-look-like" title="Permalink to this heading">#</a></h3>
+<p>What are the variable names for temperature? For salinity? for depth or pressure?</p>
+<p>How long are the variables?  You can see this from the <code class="docutils literal notranslate"><span class="pre">print</span></code> or by using the <code class="docutils literal notranslate"><span class="pre">len</span></code> command.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="take-a-look-at-your-data">
-<h1>Take a look at your data<a class="headerlink" href="#take-a-look-at-your-data" title="Permalink to this heading">#</a></h1>
-<p>Recall the <code class="docutils literal notranslate"><span class="pre">print</span></code> command</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="calculate-teos-10-parameters">
-<h1>Calculate TEOS-10 parameters<a class="headerlink" href="#calculate-teos-10-parameters" title="Permalink to this heading">#</a></h1>
+<section id="create-a-basic-profile-plot">
+<h2>Create a basic profile plot<a class="headerlink" href="#create-a-basic-profile-plot" title="Permalink to this heading">#</a></h2>
+<p>Here we will use commands from the package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to make some basic plots.</p>
+<p>Some helpful links:</p>
+<ul class="simple">
+<li><p>Getting started (quickstart): <a class="reference external" href="https://matplotlib.org/stable/users/explain/quick_start.html">https://matplotlib.org/stable/users/explain/quick_start.html</a></p></li>
+<li><p>Remembering command names (cheatsheet): <a class="reference external" href="https://matplotlib.org/cheatsheets/">https://matplotlib.org/cheatsheets/</a></p></li>
+</ul>
+<section id="setting-up-the-plot">
+<h3>Setting up the plot<a class="headerlink" href="#setting-up-the-plot" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="find-out-your-variable-names">
+<h3>Find out your variable names<a class="headerlink" href="#find-out-your-variable-names" title="Permalink to this heading">#</a></h3>
+<p>You used <code class="docutils literal notranslate"><span class="pre">xarray</span></code> above to load your <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> file containing vertical profile data.  You now need to know what the variable names within the dataArray are.  Try using the <code class="docutils literal notranslate"><span class="pre">print</span></code> command to find out the exact variable name for pressure, temperature and salinity.</p>
+<p>Note that there are a lot of different ways to name these variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">DA</span><span class="o">.</span><span class="n">salinity</span><span class="p">,</span><span class="n">DA</span><span class="o">.</span><span class="n">pressure</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Practical salinity [ ]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [dbar]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># Question: What happens if you comment out this line?</span>
+</pre></div>
+</div>
+<p>Note that in the above commands, it assumes you named your dataset <code class="docutils literal notranslate"><span class="pre">DA</span></code> (when you loaded the <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> file using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> above).  In the plot command, you need to replace <code class="docutils literal notranslate"><span class="pre">DA</span></code> with whatever you chose to name your dataset.  Additionally, the variable names for variables contained with the <code class="docutils literal notranslate"><span class="pre">DA</span></code> dataset are written in the plot command above as <code class="docutils literal notranslate"><span class="pre">salinity</span></code> and <code class="docutils literal notranslate"><span class="pre">pressure</span></code>, but you will need to replace these with whatever you found the variables names to be when you did a <code class="docutils literal notranslate"><span class="pre">print(DA)</span></code> on your dataset.</p>
+<p>Modify your plot:</p>
+<ol class="arabic simple">
+<li><p>Add grid lines</p></li>
+<li><p>Limit the top of the plot to the surface (p=0)</p></li>
+<li><p>Add a second plot for temperature, to the right of the salinity plot</p></li>
+</ol>
+<p>Try the command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What does this do for you?</p>
+<ol class="arabic simple" start="4">
+<li><p>Try adding a title to your figure.  This could be the station number, or location (lat/lon) or your name.  For this exercise, the only purpose of adding a title is so you find the command for title.</p></li>
+<li><p>Print the figure to a <code class="docutils literal notranslate"><span class="pre">*.png</span></code> file with a useful name for sending in as part of your assignment, like <code class="docutils literal notranslate"><span class="pre">regoz-fig1-&lt;Lastname&gt;.png</span></code> where you replace <code class="docutils literal notranslate"><span class="pre">&lt;Lastname&gt;</span></code> with your last name.</p></li>
+</ol>
+<p>Try the command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;regoz-fig1-Lastname.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gsw-calculate-teos-10-parameters">
+<h1>GSW: Calculate TEOS-10 parameters<a class="headerlink" href="#gsw-calculate-teos-10-parameters" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Calculate absolute salinity and conservative temperature</p></li>
 <li><p>(Optional) Repeat for both primary and secondary channels</p></li>
@@ -468,6 +531,8 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">CT_from_t</span></code> which means, compute conservative temperature from temperature.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SA_from_SP</span></code> which means, compute absolute salinity from practical salinity.</p></li>
 </ul>
+<p><em>Note: if you were unable to load the <code class="docutils literal notranslate"><span class="pre">gsw</span></code> package, then you can skip this step for now.</em></p>
+<p>Once you’ve calculated absolute salinity and conservative temperature, repeat your profile plot from above, and save it as a <code class="docutils literal notranslate"><span class="pre">png</span></code> file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
@@ -475,43 +540,6 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="create-a-basic-plot">
-<h2>Create a basic plot<a class="headerlink" href="#create-a-basic-plot" title="Permalink to this heading">#</a></h2>
-<section id="plot-standard-parameters">
-<h3>Plot standard parameters<a class="headerlink" href="#plot-standard-parameters" title="Permalink to this heading">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>plt.figure(1)
-plt.clf()
-plt.subplot(1,2,1)
-</pre></div>
-</div>
-</section>
-<section id="note-that-pycnv-already-did-the-teos-10-conversion-to-sa-for-you-using-gsw">
-<h3>Note that pycnv already did the TEOS-10 conversion to SA for you using gsw<a class="headerlink" href="#note-that-pycnv-already-did-the-teos-10-conversion-to-sa-for-you-using-gsw" title="Permalink to this heading">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>plt.plot(cnv.SA,cnv.p)
-plt.xlabel(&#39;Absolute salinity [ ]&#39;)
-plt.ylabel(&#39;Pressure [dbar]&#39;)
-plt.gca().invert_yaxis()  # Question: What happens if you comment out this line?
-</pre></div>
-</div>
-<p>Here, you are using some plotting commands from <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.  Read more here: <a class="reference external" href="https://matplotlib.org/cheatsheets/">https://matplotlib.org/cheatsheets/</a>
-Note that in the above commands, it assumes you have a dataset named <code class="docutils literal notranslate"><span class="pre">cnv</span></code>.  However, this will need to match what you called your dataset above.</p>
-<p>Modify your plot:</p>
-<ol class="arabic simple">
-<li><p>Add grid lines</p></li>
-<li><p>Limit the top of the plot to the surface (p=0)</p></li>
-<li><p>Add a second plot for temperature, to the right of the salinity plot</p></li>
-<li><p>Add a title to your figure, perhaps the station number, latitude and longitude</p></li>
-<li><p>Print the figure to a <code class="docutils literal notranslate"><span class="pre">*.png</span></code> file in the subdirectory <code class="docutils literal notranslate"><span class="pre">figures/</span></code></p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -564,16 +592,19 @@ Note that in the above commands, it assumes you have a dataset named <code class
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-notebook-in-jupyter">Open the notebook in jupyter</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-file-with-xarray">Load the data file with <code class="docutils literal notranslate"><span class="pre">xarray</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-look-at-your-data">Take a look at your data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-teos-10-parameters">Calculate TEOS-10 parameters</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-basic-plot">Create a basic plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-standard-parameters">Plot standard parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-that-pycnv-already-did-the-teos-10-conversion-to-sa-for-you-using-gsw">Note that pycnv already did the TEOS-10 conversion to SA for you using gsw</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-file-with-xarray">Load the data file with <code class="docutils literal notranslate"><span class="pre">xarray</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-a-look-at-your-data">Take a look at your data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-the-data-look-like">What do the data look like?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-basic-profile-plot">Create a basic profile plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-plot">Setting up the plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-your-variable-names">Find out your variable names</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gsw-calculate-teos-10-parameters">GSW: Calculate TEOS-10 parameters</a></li>
 </ul>
 
   </nav></div>

@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -180,7 +182,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises/overview.html">Overview of exercises</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
 <ul class="current nav bd-sidenav">
@@ -415,24 +416,21 @@ document.write(`
 <h1>Python Introductory lab<a class="headerlink" href="#python-introductory-lab" title="Permalink to this heading">#</a></h1>
 <p><strong>Directions:</strong>
 Follow the instructions on this worksheet and write your answers as you go along.   If you have any trouble, check to be sure you followed the instructions.  If you still need assistance, ask an instructor during the timetabled exercise session.</p>
-<p><strong>Aim:</strong> This practical assumes <em>no prior Python knowledge</em>.  By following the steps below, you’ll learn how to access Python, how to load some simple <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> files, and carry out basic calculations. We’ll introduce the concepts of scalars, vectors and matrices in Matlab.</p>
+<p><strong>Aim:</strong> This practical assumes <em>no prior Python knowledge</em>.  By following the steps below, you’ll learn how to access Python, how to load some simple <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> files, and carry out basic calculations.</p>
 <p><strong>Learning outcomes:</strong> At the end of this lab, you will be able to:</p>
 <ol class="arabic simple">
-<li><p>Load data into Python (e.g. <code class="docutils literal notranslate"><span class="pre">csv</span></code>-files containing numerical values only).</p></li>
-<li><p>Create variables in Python from numbers, i.e. simple <em>scalars</em>, <em>vectors</em> (using the colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>) and <em>matrices</em>, so that you can perform calculations on the variables after.</p></li>
-<li><p>Perform simple averages of the data and arithmetic operations, using  functions <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>,  operators <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and <code class="docutils literal notranslate"><span class="pre">/</span></code>, and transpose vectors and matrices using apostrophe, <code class="docutils literal notranslate"><span class="pre">'</span></code>.</p></li>
-<li><p>Use Matlab commands <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">whos</span></code> to investigate files and variables, and see how the special character, semicolon, <code class="docutils literal notranslate"><span class="pre">;</span></code>, works in Matlab to suppress output to the screen.</p></li>
+<li><p>Create variables in Python from numbers, i.e. simple <em>scalars</em>, <em>vectors</em>  and <em>matrices</em>, so that you can perform calculations on the variables after.</p></li>
+<li><p>Perform simple averages of the data and arithmetic operations, using  functions <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>,  operators <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code></p></li>
+<li><p>Use commands <code class="docutils literal notranslate"><span class="pre">help</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code> to investigate functions and variables.</p></li>
 </ol>
-<p><strong>Data:</strong> Use the <code class="docutils literal notranslate"><span class="pre">data_vector.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">data_matrix.csv</span></code> data files, available on Moodle.</p>
-<p><strong>Check your answers:</strong> This is a formative assessment rather than summative (i.e. the results here do not contribute to your mark in the course).  Answers will be available for you to check on Blackboard.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="start-a-new-code-cell">
 <h1>Start a new code cell.<a class="headerlink" href="#start-a-new-code-cell" title="Permalink to this heading">#</a></h1>
-<p>In a jupyter notebook, you use the <code class="docutils literal notranslate"><span class="pre">plus</span></code> or ‘+’ symbol</p>
+<p>In a jupyter notebook, you use the <code class="docutils literal notranslate"><span class="pre">plus</span></code> or ‘+’ symbol which can be found along the top bar of this window.  Alternatively, within each cell (block of code or text), there is a little bar with a + over or under it.  This will add a cell above or below the current cell.</p>
 <section id="arithmetic-in-python">
 <h2>Arithmetic in Python<a class="headerlink" href="#arithmetic-in-python" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple" start="6">
-<li><p>Python can carry out all basic kinds of arithmetic.  Most of the <em>operators</em> are the same as you’d expect.  Try typing the following mathematical expressions after the command prompt, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> in your code cell.  Press “shift+Enter” or click the “&gt;” play button along the top bar, and Python will <em>evaluate</em> or carry out your <em>command</em>.</p></li>
+<li><p>Python can carry out all basic kinds of arithmetic.  Most of the <em>operators</em> are the same as you’d expect.  Try typing the following mathematical expressions in your code cell.  Press “shift+Enter” or click the “&gt;” play button along the top bar, and Python will <em>evaluate</em> or carry out your <em>command</em>.</p></li>
 </ol>
 <p>a. Try the following in your code cell above.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="mi">2</span>
@@ -450,25 +448,10 @@ Follow the instructions on this worksheet and write your answers as you go along
 </div>
 <!-- 0.6000 -->
 <p>d. Raise numbers to powers (i.e. squaring numbers)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">^</span><span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 <!-- 25-->
-<p>e. Irrational numbers</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span>
-</pre></div>
-</div>
-<!--3.1416-->
-<p>f. Trigonometric functions</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
-</pre></div>
-</div>
-<!--0-->
-<p><em>Note: that due to machine or numeric precision, this may not be exact.</em></p>
-<p>g. More functions</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log10</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
 <section id="for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen">
 <h3>For each of the lines above, if you entered more than one in a single cell and then ran or executed the cell, which output was printed to the screen?<a class="headerlink" href="#for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen" title="Permalink to this heading">#</a></h3>
 <ol class="arabic" start="7">
@@ -514,7 +497,7 @@ Follow the instructions on this worksheet and write your answers as you go along
 </section>
 <section id="numeric-operations-packages">
 <h2>Numeric operations + packages<a class="headerlink" href="#numeric-operations-packages" title="Permalink to this heading">#</a></h2>
-<p>Now we’d like to do some more numeric operations.  Basic python has a lot of functionality, but to add additional capabiltiies, we import “packages”.  The packages must be installed on the computer or system already (see <a class="reference external" href="https://numpy.org/install/">installation instructions</a>), but in order for your python notebook to know about those capabilities, you need to <code class="docutils literal notranslate"><span class="pre">import</span></code> the packages.</p>
+<p>Now we’d like to do some more numeric operations.  Basic python has a lot of functionality, but to add additional capabilities, we import “packages”.  The packages must be installed on the computer or system already (see <a class="reference external" href="https://numpy.org/install/">installation instructions</a>), but in order for your python notebook to know about those capabilities, you need to <code class="docutils literal notranslate"><span class="pre">import</span></code> the packages.</p>
 <p>A common package for numeric operations is <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  To import this package, we use the command <code class="docutils literal notranslate"><span class="pre">import</span></code> and then the package name, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  Then to call operations from the package, we would use the commands from within <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by writing <code class="docutils literal notranslate"><span class="pre">numpy.COMMAND</span></code>.  Some packages (like <code class="docutils literal notranslate"><span class="pre">numpy</span></code>) are so commonly used that we get lazy to write <code class="docutils literal notranslate"><span class="pre">numpy</span></code> all the time, and we want to shorten it.  We do this by renaming the package as we import it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -524,6 +507,27 @@ Follow the instructions on this worksheet and write your answers as you go along
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we&#39;d like to do some more numeric calculations</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With numpy, we also have access to basic functions and irrational numbers.</p>
+<p>e. Irrational numbers</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+<!--3.1416-->
+<p>f. Trigonometric functions.  Try to calculate <span class="math notranslate nohighlight">\(\sin(\pi)\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will produce an error message.  Can you use the error message to fix the command?</p>
+<!--0-->
+<p><em>Note: that due to machine or numeric precision, this may not be exact.</em></p>
+<p>g. More functions.  How about <span class="math notranslate nohighlight">\(\log_{10}(10)\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -603,12 +607,11 @@ Follow the instructions on this worksheet and write your answers as you go along
 </div>
 <p>Calculate the mean <em>of the rows</em>.</p>
 <p>Want to find out more about how to use a function in python?  There are three ways.  Try them below</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
-<span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or “np.mean?”</p>
-<p>To calculate the mean of the rows, you will need to use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> option for the function.</p>
+<p>Use the information in the function help file to figure out how to calculate the mean of the rows.  (Look for the <code class="docutils literal notranslate"><span class="pre">axis</span></code> option.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.mean<span class="o">?</span>
