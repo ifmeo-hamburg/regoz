@@ -8,6 +8,11 @@ tag: priority
 ---
 
 # Overview of exercises
+<<<<<<< Updated upstream
+=======
+
+Exercises are paper-based and also using Java Ocean Atlas.  These do not require scientific programming.
+>>>>>>> Stashed changes
 
 Exercises are paper-based and also using Python.
 

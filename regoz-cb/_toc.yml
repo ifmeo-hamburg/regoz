@@ -8,7 +8,11 @@ parts:
   - caption: Syllabus
     chapters:
     - file: general/syllabus
+<<<<<<< Updated upstream
     - file: general/schedule
+=======
+    - file: general/SuSe-2024
+>>>>>>> Stashed changes
   - caption: Lectures
     chapters:
     - file: lectures/lecture-1-seawater
@@ -31,11 +35,19 @@ parts:
 #    - file: exercises/mini-project
   - caption: Computing 
     chapters:
+<<<<<<< Updated upstream
     - file: computing/computing-regoz-1.ipynb
 #    - file: computing/practical-2.md
 #    - file: computing/practical-3.md
 #    - file: computing/practical-4.md
 #    - file: computing/practical-5.md    
+=======
+    - file: computing/practical-1.md
+#    - file: computing/practical-2.md
+#    - file: computing/practical-3.md
+#    - file: computing/practical-4.md
+#    - file: computing/practical-5.md
+>>>>>>> Stashed changes
 #    - file: computing/practical-6.md
 
 
