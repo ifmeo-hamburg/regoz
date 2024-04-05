@@ -9,10 +9,10 @@ weight: 10
 
 # Schedule (SuSe24)
 
-### Instruction
+### Instructors
 
-+ **Coordinator:** Eleanor Frajka-Williams (eleanor.frajka@uni-hamburg.de)
-+ **Exercise tutorials:** Dr. Simon Wett
++ **Coordinator esp. Lectures:** Eleanor Frajka-Williams (eleanor.frajka@uni-hamburg.de)
++ **Instructor esp. Exercises:** Dr. Simon Wett
 
 ### Times & Location
 

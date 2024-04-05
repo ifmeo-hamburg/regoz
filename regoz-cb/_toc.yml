@@ -9,9 +9,21 @@ parts:
     chapters:
     - file: general/syllabus
     - file: general/schedule
-  - caption: Lectures
+
+  - caption: Computing 
     chapters:
-    - file: lectures/lecture-1-seawater
+    - file: computing/computing-regoz-1.ipynb
+    - file: computing/computing-regoz-2.ipynb
+#    - file: computing/practical-2.md
+#    - file: computing/practical-3.md
+#    - file: computing/practical-4.md
+#    - file: computing/practical-5.md    
+#    - file: computing/practical-6.md
+
+
+#  - caption: Lectures
+#    chapters:
+#    - file: lectures/lecture-1-seawater
 #    - file: lectures/lecture-3-airsea
 #    - file: lectures/lecture-4-mixedlayer
 #    - file: lectures/lecture-5-watermasses
@@ -20,22 +32,12 @@ parts:
 #    - file: lectures/lecture-8-geostrophy
 #    - file: lectures/lecture-9-Ekman
 #    - file: lectures/lecture-10-Sverdrup
-  - caption: Exercises
-    chapters:
-    - file: exercises/overview
+#  - caption: Exercises
+#    chapters:
+#    - file: exercises/overview
 #    - file: exercises/exercise-1
 #    - file: exercises/exercise-2
 #    - file: exercises/exercise-3
 #    - file: exercises/exercise-4
 #    - file: exercises/exercise-5
 #    - file: exercises/mini-project
-  - caption: Computing 
-    chapters:
-    - file: computing/computing-regoz-1.ipynb
-#    - file: computing/practical-2.md
-#    - file: computing/practical-3.md
-#    - file: computing/practical-4.md
-#    - file: computing/practical-5.md    
-#    - file: computing/practical-6.md
-
-
