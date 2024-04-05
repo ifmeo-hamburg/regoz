@@ -1,4 +1,9 @@
 jupyter-book
 matplotlib
 numpy
+pandas
+datetime
+xarray
+scipy
 ghp-import
+docutils>=0.8,!=0.18.*,!=0.19.*
