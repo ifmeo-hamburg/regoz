@@ -1,11 +1,3 @@
-# Welcome to your Jupyter Book
+# BSc Regional Oceanography
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
-
-Check out the content pages bundled with this sample book to see more.
-
-```{tableofcontents}
-```
+This is a module on regional oceanography.  It builds on what was covered in Introduction to Physical Oceanography, but with a stronger focus on the physical properties of seawater, how those properties are changed, and how those properties can be used to calculate the stratification and circulation of seawater.  We will also look at how different properties and processes are active in regions of the world's oceans.

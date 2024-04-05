@@ -2,13 +2,13 @@
 # Title, summary, and page position.
 title: Syllabus
 linktitle: Syllabus 🤖 
-summary: Course overview, schedule of topics, resources and other SuSe2023 details.
+summary: Course overview, schedule of topics, resources and other course details.
 weight: 1
 # icon: book
 # icon_pack: fas
 
 # Page metadata.
-date: '2023-03-20T09:26:00Z'
+date: '2024-04-03T09:26:00Z'
 toc: true
 ---
 
@@ -49,43 +49,37 @@ This is a course intended for Bachelor students of oceanography and geophysics (
 
 ### Assessment
 
-Your grade will be based on the final exam, mini-project (more information in week 8) and coursework (exercise sheets).
+Your grade will be based on the final exam and coursework (exercises).
 
-Your grade in the class will be determined by the highest calculation:
-1. Final exam 100%
-2. Mini-project 20% + Final exam 80%
-3. Coursework 30% + Mini-project 20% + Final Exam 50%
+Your grade in the class will be determined as the highest calculation:
+1. Coursework 20% + Final exam 80%
+2. Final exam 100%
 
 You should plan at the start of the course whether it will be advantageous to you to complete the coursework component of the assessment.  However, you do not need to make a decision - I will use the calculation which gives you the highest score.
 
+#### Coursework/ Exercises
+
+Exercises/coursework are due during the term, with 5 pieces of assigned exercise sheets.  This work can be discussed with others, but must be completed individually and turned in online.  Each piece of coursework will have one exercise which is computer-based (python).
+
+Generally, exercise sheets will be available in the middle of the week, with one exercise session to work on them in class.  Unless otherwise specified, assignments are due Fridays at noon, online on the course Moodle.
+
+<!--
+#### Mini-project (group)
+
+ A mini-project of your choice will be completed during the term and due in the final week of class.  You may choose between
+- Presentation on a regional ocean and process of your choice, in English.  Presentations should be 5-8 minutes long.   Presentations will be graded for style (organisation, slide layout and legibility) and content (accuracy and suitability of material), but not for English language or grammar.
+- Data project with individual or group* presentation, written report (about 3-5 pages, double spaced of text, and 2-4 pages of figures).  The grade will be based on the written report.  Reports will be graded for style (organisation at the report and paragraph level, figure legibility) and content (accuracy and suitability of material, choice of data plots to show), but not for English language or grammar.  *Expectations for content will be higher if group.
+-->
 
 #### Final exam
 
-The final exam will be written, in English and part multiple choice and part problem-based, with problems similar to the coursework/exercise sheets provided in class (but without any computer-based exercises).
-
-
-
-#### Mini-project
-
- A mini-project of your choice will be completed during the term and due in the final week of class.  You may choose between
-- Presentation on a regional ocean and process of your choice, in English.  Presentations should be 5-8 minutes long and pre-recorded.   Presentations will be graded for style (organisation, slide layout and legibility) and content (accuracy and suitability of material), but not for English language or grammar.
-- Data project with individual or group* presentation, written report (about 3-5 pages, double spaced of text, and 2-4 pages of figures).  The grade will be based on the written report.  Reports will be graded for style (organisation at the report and paragraph level, figure legibility) and content (accuracy and suitability of material, choice of data plots to show), but not for English language or grammar.  *Expectations for content will be higher if group.
-
-
-#### Coursework/ Exercises
-
-(optional) Exercises/coursework are due during the term, with 5 pieces of assigned exercise sheets.  This work can be discussed with others, but must be completed individually and turned in online. 
-
-Generally, exercise sheets will be available on a Wednesday or Thursday, with the following Wednesday (Uebungen) to work on them in class.   Unless otherwise specified, assignments are due Fridays at noon, online (preferred - [Moodle](https://lernen.min.uni-hamburg.de/course/view.php?id=3087)) or by e-mail to eleanor.frajka@uni-hamburg.de.  
-
-A detailed schedule can be found in [SuSe-2023](../general/SuSe-2023).  
+We currently plan for the final exam to be written.  If written, it will be in English and part multiple choice and part problem-based, with problems similar to the coursework/exercise sheets provided in class (but without any computer-based exercises).  It may span two sessions (2 x 1.5 hours).
 
 **Late exercises:**
 
 The good news is, you can turn in your answers to an exercise sheet late (up to 5 days late).  The bad news is, you will lose points (10% for each day late).   So if you turn it 1-24 hours after the deadline, your score on the assignment will be multiplied by 0.9, if you turn it in 24-48 hours after the deadline, your score will be multipled by 0.8).  After 5 days, it is not possible to turn in a late assignment as we will go over the solutions in the next Uebungen.
 
-If you have a good reason (such as being sick) for being unable to complete an assignment in time, please let me know as soon as is practicable.
-
+If you have a good reason (such as being sick) for being unable to complete an assignment in time, please let us know as soon as is practicable.
 
 ### Resources 
 
@@ -108,39 +102,6 @@ Other recommended textbooks available to download:
 
 * Introduction to Oceanography - Webb (online), very basic overview - https://rwu.pressbooks.pub/webboceanography/*
 
-#### Java Ocean Atlas:
-
-We will be using the display tool "Java Ocean Atlas (JOA)" to work with hydrographic data from the oceans.  These will follow the examples associated with the textbook DPO (Descriptive Physical Oceanography).  The website can be found here [JOA for DPO](https://joa.ucsd.edu/dpo/dpo_joa_examples).  Installation instructions are [https://joa.ucsd.edu/joa](https://joa.ucsd.edu/joa).  
-
-The required exercises will appear on the exercise sheets for 63-717, but you may want to look through the online examples:
-
-[JOA for DPO Chapter 2](https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_2/index.html)
-
-- Gain familiarity with the basic geography of the principal ocean basins
-
-- Locate typical ocean sub-regions
-
-- Locate major features of the ocean bottom
-
-[JOA for DPO Chapter 3](https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_3/index.html)
-
-- Explore the physical and chemical characteristics of seawater
-
-- Understand parameters which are calculated from basic measured characteristics
-
-- Explore vertical distributions at a single location in the South Atlantic Ocean
-
-[JOA for DPO Chapter 4](https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_4/index.html)
-
-- Make a surface map colored by data points (WOA09)
-
-- Make a surface map with color contours (WOA09)
-
-- Make vertical sections
-
-[JOA for DPO Chapter 7](https://joa.ucsd.edu/dpo/dpo_joa_examples/chapter_7/index.html)
-
-- Map the dynamic topography of ocean regions
 
 
 ### Topics
@@ -151,26 +112,29 @@ The general topics we will cover in the course are listed below, along with thei
 
 - Lecture(s) on Physical properties of seawater
 * Assigned reading: DPO Chaper 1.2, 2.1, 3.1 - 3.6
-* Assigned exercise:  [Exercise sheet 1](../exercises/exercise-1)
+* Assigned exercise:  Exercise sheet 1
+<!--[Exercise sheet 1](../exercises/exercise-1)-->
 
 #### Surface ocean
 
 * Lectures on Air-sea interactions and the Surface mixed layer
 * Assigned reading: DPO Chapter 5.1-5.4, Chapter 7.5
-* Assigned exercise: [Exercise sheet 2](../exercises/exercise-2)
+* Assigned exercise: Exercise sheet 2
+<!--[Exercise sheet 2](../exercises/exercise-2)-->
 
 #### Deep ocean
 
 * Lectures on Watermass formation and transformation, ocean ventilation
 * Assigned reading: DPO Chapter 4, S7.10
-* Assigned exercise: [Exercise sheet 3](../exercises/exercise-3)
+* Assigned exercise: Exercise sheet 3
+<!--[Exercise sheet 3](../exercises/exercise-3)-->
 
 #### Dynamics
 
 * Lectures on Equations of motion, scaling and geostrophy, Ekman layer, Sverdrup transport and western boundary currents.  Some of this may be recorded and made available online.
 * Assigned reading: DPO Chapter S7
-* Assigned exercise: [Exercise sheet 4](../exercises/exercise-4)
-* Assigned exercise: [Exercise sheet 5](../exercises/exercise-5)
+* Assigned exercise: Exercise sheet 4 <!--[Exercise sheet 4](../exercises/exercise-4)-->
+* Assigned exercise: Exercise sheet 5 <!--[Exercise sheet 5](../exercises/exercise-5)-->
 
 #### Regional oceanography
 

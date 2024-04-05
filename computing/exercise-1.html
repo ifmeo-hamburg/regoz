@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Python Introductory lab &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/exercise-1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Overview of exercises" href="../exercises/overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    BSc Regional Oceanography
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/schedule.html">Schedule (SuSe24)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture-1-seawater.html">Physical properties of seawater</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises/overview.html">Overview of exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python Introductory lab</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/exercise-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/exercise-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python Introductory lab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Python Introductory lab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start-a-new-code-cell">Start a new code cell.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-in-python">Arithmetic in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen">For each of the lines above, if you entered more than one in a single cell and then ran or executed the cell, which output was printed to the screen?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-operations-packages">Numeric operations + packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-reference">Useful reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-yourself-how-did-these-differ-from-the-list-x-above">Check for yourself - how did these differ from the list <code class="docutils literal notranslate"><span class="pre">x</span></code> above?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-of-the-vector">Calculate the average of the vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-try-creating-a-2-dimensional-array-matrix">Now try creating a 2 dimensional array (matrix)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-introductory-lab">
+<h1>Python Introductory lab<a class="headerlink" href="#python-introductory-lab" title="Permalink to this heading">#</a></h1>
+<p><strong>Directions:</strong>
+Follow the instructions on this worksheet and write your answers as you go along.   If you have any trouble, check to be sure you followed the instructions.  If you still need assistance, ask an instructor during the timetabled exercise session.</p>
+<p><strong>Aim:</strong> This practical assumes <em>no prior Python knowledge</em>.  By following the steps below, you’ll learn how to access Python, how to load some simple <code class="docutils literal notranslate"><span class="pre">*.nc</span></code> files, and carry out basic calculations. We’ll introduce the concepts of scalars, vectors and matrices in Matlab.</p>
+<p><strong>Learning outcomes:</strong> At the end of this lab, you will be able to:</p>
+<ol class="arabic simple">
+<li><p>Load data into Python (e.g. <code class="docutils literal notranslate"><span class="pre">csv</span></code>-files containing numerical values only).</p></li>
+<li><p>Create variables in Python from numbers, i.e. simple <em>scalars</em>, <em>vectors</em> (using the colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>) and <em>matrices</em>, so that you can perform calculations on the variables after.</p></li>
+<li><p>Perform simple averages of the data and arithmetic operations, using  functions <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>,  operators <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and <code class="docutils literal notranslate"><span class="pre">/</span></code>, and transpose vectors and matrices using apostrophe, <code class="docutils literal notranslate"><span class="pre">'</span></code>.</p></li>
+<li><p>Use Matlab commands <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">whos</span></code> to investigate files and variables, and see how the special character, semicolon, <code class="docutils literal notranslate"><span class="pre">;</span></code>, works in Matlab to suppress output to the screen.</p></li>
+</ol>
+<p><strong>Data:</strong> Use the <code class="docutils literal notranslate"><span class="pre">data_vector.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">data_matrix.csv</span></code> data files, available on Moodle.</p>
+<p><strong>Check your answers:</strong> This is a formative assessment rather than summative (i.e. the results here do not contribute to your mark in the course).  Answers will be available for you to check on Blackboard.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="start-a-new-code-cell">
+<h1>Start a new code cell.<a class="headerlink" href="#start-a-new-code-cell" title="Permalink to this heading">#</a></h1>
+<p>In a jupyter notebook, you use the <code class="docutils literal notranslate"><span class="pre">plus</span></code> or ‘+’ symbol</p>
+<section id="arithmetic-in-python">
+<h2>Arithmetic in Python<a class="headerlink" href="#arithmetic-in-python" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="6">
+<li><p>Python can carry out all basic kinds of arithmetic.  Most of the <em>operators</em> are the same as you’d expect.  Try typing the following mathematical expressions after the command prompt, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> in your code cell.  Press “shift+Enter” or click the “&gt;” play button along the top bar, and Python will <em>evaluate</em> or carry out your <em>command</em>.</p></li>
+</ol>
+<p>a. Try the following in your code cell above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 13 -->
+<p>b. Recall <em>order of operations</em> for arithmetic.  It applies here as well.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 16 -->
+<p>c. Fractions or division</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span>
+</pre></div>
+</div>
+<!-- 0.6000 -->
+<p>d. Raise numbers to powers (i.e. squaring numbers)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">^</span><span class="mi">2</span>
+</pre></div>
+</div>
+<!-- 25-->
+<p>e. Irrational numbers</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span>
+</pre></div>
+</div>
+<!--3.1416-->
+<p>f. Trigonometric functions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+<!--0-->
+<p><em>Note: that due to machine or numeric precision, this may not be exact.</em></p>
+<p>g. More functions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log10</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen">
+<h3>For each of the lines above, if you entered more than one in a single cell and then ran or executed the cell, which output was printed to the screen?<a class="headerlink" href="#for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen" title="Permalink to this heading">#</a></h3>
+<ol class="arabic" start="7">
+<li><p><strong>Create a <em>variable</em> in Python.</strong>  One of the powerful things about programming languages is that you can “name” your data.  Rather than carrying out a stream of calculations in the command window, you can work with different numbers at the same time, save partial answers, and combine them later.</p>
+<p>a. <strong>Create a <em>scalar</em> variable.</strong>  To create a variable, you choose a name for it which starts with a character, e.g. <code class="docutils literal notranslate"><span class="pre">a</span></code>, and then put it at the left of the equal sign in your command window.  Put the value you’d like to assign to that variable to the right of the equal sign.    A scalar variable is a single number.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>Enter this in a code cell below.</p>
+<p>Create a new code cell after, and type <code class="docutils literal notranslate"><span class="pre">a</span></code> then run the cell.  What is printed to the screen?</p>
+<p>Try also a <code class="docutils literal notranslate"><span class="pre">print(a)</span></code> then execute.  This shows you what is contained in your variable <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>Try a <code class="docutils literal notranslate"><span class="pre">type(a)</span></code> then execute.  This command tells you what type of variable <code class="docutils literal notranslate"><span class="pre">a</span></code> is.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>b. <strong>Lists.</strong> Create a list.  In Python, we can string together a set of numbers (or anything else) with square brackets and commas into a “list”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>c. Try a <code class="docutils literal notranslate"><span class="pre">print(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">type(x)</span></code>.</p>
+<p>d. How long is your vector?  Try <code class="docutils literal notranslate"><span class="pre">len(x)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numeric-operations-packages">
+<h2>Numeric operations + packages<a class="headerlink" href="#numeric-operations-packages" title="Permalink to this heading">#</a></h2>
+<p>Now we’d like to do some more numeric operations.  Basic python has a lot of functionality, but to add additional capabiltiies, we import “packages”.  The packages must be installed on the computer or system already (see <a class="reference external" href="https://numpy.org/install/">installation instructions</a>), but in order for your python notebook to know about those capabilities, you need to <code class="docutils literal notranslate"><span class="pre">import</span></code> the packages.</p>
+<p>A common package for numeric operations is <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  To import this package, we use the command <code class="docutils literal notranslate"><span class="pre">import</span></code> and then the package name, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  Then to call operations from the package, we would use the commands from within <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by writing <code class="docutils literal notranslate"><span class="pre">numpy.COMMAND</span></code>.  Some packages (like <code class="docutils literal notranslate"><span class="pre">numpy</span></code>) are so commonly used that we get lazy to write <code class="docutils literal notranslate"><span class="pre">numpy</span></code> all the time, and we want to shorten it.  We do this by renaming the package as we import it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>Typically, the cell importing packages is at the top or near the top of your notebook, so for all future notebooks in this course, the first code cell will be the import cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we&#39;d like to do some more numeric calculations</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="useful-reference">
+<h2>Useful reference<a class="headerlink" href="#useful-reference" title="Permalink to this heading">#</a></h2>
+<div class="highlight-seealso notranslate"><div class="highlight"><pre><span></span>https://numpy.org/doc/stable/user/basics.creation.html
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a numpy array</span>
+<span class="n">x1D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the contents of the new array to the screen using the `print` command</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the type of the array with the `type` command</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-for-yourself-how-did-these-differ-from-the-list-x-above">
+<h3>Check for yourself - how did these differ from the list <code class="docutils literal notranslate"><span class="pre">x</span></code> above?<a class="headerlink" href="#check-for-yourself-how-did-these-differ-from-the-list-x-above" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="calculate-the-average-of-the-vector">
+<h1>Calculate the average of the vector<a class="headerlink" href="#calculate-the-average-of-the-vector" title="Permalink to this heading">#</a></h1>
+<p>Here, there are two different ways to do this.  Type the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> command <code class="docutils literal notranslate"><span class="pre">mean</span></code> with “np.mean(<YOUR VARIABLE>)”</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1D</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try this below.</p>
+<p>In another cell after, the alternate formulation is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1D</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1D</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
+</pre></div>
+</div>
+</div>
+</div>
+<section id="now-try-creating-a-2-dimensional-array-matrix">
+<h2>Now try creating a 2 dimensional array (matrix)<a class="headerlink" href="#now-try-creating-a-2-dimensional-array-matrix" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Calculate the mean <em>of the rows</em>.</p>
+<p>Want to find out more about how to use a function in python?  There are three ways.  Try them below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or “np.mean?”</p>
+<p>To calculate the mean of the rows, you will need to use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> option for the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.mean<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-seaocn_env-py"
+        },
+        kernelOptions: {
+            name: "conda-env-seaocn_env-py",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-seaocn_env-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../exercises/overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview of exercises</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Python Introductory lab</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start-a-new-code-cell">Start a new code cell.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-in-python">Arithmetic in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-each-of-the-lines-above-if-you-entered-more-than-one-in-a-single-cell-and-then-ran-or-executed-the-cell-which-output-was-printed-to-the-screen">For each of the lines above, if you entered more than one in a single cell and then ran or executed the cell, which output was printed to the screen?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-operations-packages">Numeric operations + packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-reference">Useful reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-yourself-how-did-these-differ-from-the-list-x-above">Check for yourself - how did these differ from the list <code class="docutils literal notranslate"><span class="pre">x</span></code> above?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-of-the-vector">Calculate the average of the vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-try-creating-a-2-dimensional-array-matrix">Now try creating a 2 dimensional array (matrix)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
