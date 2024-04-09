@@ -5,3 +5,5 @@ regoz-cb/_build/*
 *_build/*
 *.ipynb_checkpoints*
 *nc
+*solution*
+regoz-cb/computing/*png
