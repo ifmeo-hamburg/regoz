@@ -1,6 +1,6 @@
 .DS_Store
-regoz-cb/_build/
-regoz-cb/_build/*
+*regoz-cb/_build/
+*regoz-cb/_build/*
 *data/*
 *_build/*
 *.ipynb_checkpoints*
