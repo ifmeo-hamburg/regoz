@@ -14,6 +14,8 @@ parts:
     chapters:
     - file: computing/computing-regoz-1.ipynb
     - file: computing/computing-regoz-2.ipynb
+    - file: computing/computing-regoz-3.ipynb
+    - file: computing/computing-regoz-4.ipynb
 #    - file: computing/practical-2.md
 #    - file: computing/practical-3.md
 #    - file: computing/practical-4.md
