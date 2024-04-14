@@ -1,0 +1,1140 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Python - Making a map &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-4-testing-solution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    BSc Regional Oceanography
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/schedule.html">Schedule (SuSe24)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-1.html">Python Introductory lab</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-2.html">Python - plotting a profile</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-3.html">Python - making a <span class="math notranslate nohighlight">\(\theta\)</span>-S diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-4.html">Python - Making a map</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/computing-regoz-4-testing-solution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/computing-regoz-4-testing-solution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python - Making a map</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-load-the-data">Create a notebook &amp; load the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-coastlines-to-the-maps">Add some coastlines to the maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pygmt-is-a-package-for-plotting">PyGMT is a package for plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pygmt-contour"><code class="docutils literal notranslate"><span class="pre">pygmt.contour</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-making-a-map">
+<h1>Python - Making a map<a class="headerlink" href="#python-making-a-map" title="Permalink to this heading">#</a></h1>
+<p><strong>Aim:</strong> To create a map of data from reanalysis heat fluxes.</p>
+<p><strong>Data:</strong> You will need to download files from <a class="reference external" href="https://www.cen.uni-hamburg.de/en/icdc/data/atmosphere/reanalysis-atmosphere/ncep.html">ICDC</a>.  We will be using NCEP Reanalysis heat fluxes at the ocean surface, and you will need one snapshot of sensible heat flux, latex heat flux, net shortwave and net longwave radiation flux.</p>
+<!--If you prefer to do this without python, you can instead get data here: 
+- [ICDC LAS](http://icdc.cen.uni-hamburg.de/las-int/getUI.do?dsid=id-13512db7081948&catid=DE25BCEB877C860DC89A1CFDB057A4B6&varid=air-id-13512db7081948&plot=XY_zoomable_image&view=xy&auto=true)
+- [PSL NOAA](https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html)
+
+For the purpose of this exercise, it's fine to use either source.-->
+<p><strong>Directions:</strong> Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> and 8 figures.  The figures will form part of your answer to questions on the exercise sheet.</p>
+<hr><section id="create-a-notebook-load-the-data">
+<h2>Create a notebook &amp; load the data<a class="headerlink" href="#create-a-notebook-load-the-data" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> containing the commands for this assignment, or copy this file and rename it, e.g., <code class="docutils literal notranslate"><span class="pre">computing-regoz-3-&lt;Lastname&gt;.ipynb</span></code></p></li>
+<li><p>Import necessary packages.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">xarray</span></code>.  You may also need</p>
+<p>If you are missing any of these packages, please refer to <span class="xref myst">Resources: Python</span>.</p>
+</li>
+<li><p>Download some data.  First decide what year you’d like to work with; anything from 1948 to 2023 is fine.  Then navigate to each of the 4 components of surface heat fluxes on the ICDC page <a class="reference external" href="https://icdc.cen.uni-hamburg.de/thredds-int/catalog/dataicdc/reanalyses/ncep_reanalysis1/DATA/sensible_heat_flux/catalog.html">https://icdc.cen.uni-hamburg.de/thredds-int/catalog/dataicdc/reanalyses/ncep_reanalysis1/DATA/sensible_heat_flux/catalog.html</a>.  Download one of each file for your chosen year.  Note that these files are about 30 mb each.</p></li>
+<li><p>Make a basic exploration. How big are the data?  What are the coordinates?  Can you plot a single map on simple axes?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">cmocean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;../data/&#39;</span>
+<span class="n">fpre</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">,</span> <span class="s1">&#39;nswrs&#39;</span><span class="p">,</span> <span class="s1">&#39;nlwrs&#39;</span><span class="p">,</span> <span class="s1">&#39;shtfl&#39;</span><span class="p">]</span>
+<span class="n">fpost</span> <span class="o">=</span> <span class="s1">&#39;.sfc.gauss.1979.nc&#39;</span>
+
+<span class="n">flux_components</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fpre</span><span class="p">)):</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">filepath</span> <span class="o">+</span> <span class="n">fpre</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">fpost</span>
+
+    <span class="n">flux_components</span><span class="p">[</span><span class="n">fpre</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+
+<span class="n">d1</span> <span class="o">=</span> <span class="n">flux_components</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;1979-01-01T00:00:00&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:  (lat: 94, lon: 192, time: 1)
+Coordinates:
+  * lat      (lat) float32 88.54 86.65 84.75 82.85 ... -84.75 -86.65 -88.54
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+  * time     (time) datetime64[ns] 1979-01-01
+Data variables:
+    lhtfl    (time, lat, lon) float32 ...
+Attributes:
+    Conventions:  COARDS
+    title:        4x daily NMC reanalysis (1979)
+    description:  Data is from NMC initialized reanalysis\n(4x/day).  It cons...
+    platform:     Model
+    references:   http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanaly...
+    history:      created 95/03/13 by Hoop (netCDF2.3)\nConverted to chunked,...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure out how big the datasets are</span>
+<span class="n">flux_components</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lhtfl</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flux_components</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">])</span>
+
+<span class="c1"># Plot the fields</span>
+<span class="c1"># choose the index of the snapshot to show</span>
+<span class="n">itime</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">flux_components</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">]</span>
+<span class="n">map1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">lhtfl</span><span class="p">[</span><span class="n">itime</span><span class="p">,:,:]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">data1</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">map1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Latent heat flux&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Cumbersome date time to string</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">itime</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;NCEP Reanalysis </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:  (lat: 94, lon: 192, time: 1460)
+Coordinates:
+  * lat      (lat) float32 88.54 86.65 84.75 82.85 ... -84.75 -86.65 -88.54
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+  * time     (time) datetime64[ns] 1979-01-01 ... 1979-12-31T18:00:00
+Data variables:
+    lhtfl    (time, lat, lon) float32 ...
+Attributes:
+    Conventions:  COARDS
+    title:        4x daily NMC reanalysis (1979)
+    description:  Data is from NMC initialized reanalysis\n(4x/day).  It cons...
+    platform:     Model
+    references:   http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanaly...
+    history:      created 95/03/13 by Hoop (netCDF2.3)\nConverted to chunked,...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;NCEP Reanalysis \n1979.01.01&#39;)
+</pre></div>
+</div>
+<img alt="../_images/1381a575d228a67c2044a2976ecfefa101a3104dd0501ca04afa5717f28ba65a.png" src="../_images/1381a575d228a67c2044a2976ecfefa101a3104dd0501ca04afa5717f28ba65a.png" />
+</div>
+</div>
+</section>
+<section id="add-some-coastlines-to-the-maps">
+<h2>Add some coastlines to the maps<a class="headerlink" href="#add-some-coastlines-to-the-maps" title="Permalink to this heading">#</a></h2>
+<p>We will take a look at the <code class="docutils literal notranslate"><span class="pre">pygmt</span></code> package.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.pygmt.org/latest/tutorials/basics/coastlines.html#sphx-glr-tutorials-basics-coastlines-py">https://www.pygmt.org/latest/tutorials/basics/coastlines.html#sphx-glr-tutorials-basics-coastlines-py</a></p>
+</div>
+<p>Alternatively, you may prefer <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://geohackweek.github.io/visualization/03-cartopy/">https://geohackweek.github.io/visualization/03-cartopy/</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygmt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(x.shape)</span>
+<span class="c1">#print(data1.lon.shape)</span>
+<span class="c1">#print(z.shape)</span>
+<span class="c1">#print(y.shape)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;10m&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">108</span><span class="p">,</span> <span class="o">-</span><span class="mi">103</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="c1">#print(grid.shape)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+
+<span class="n">d1</span> <span class="o">=</span> <span class="n">flux_components</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;1979-01-01T00:00:00&quot;</span><span class="p">))</span>
+<span class="c1">#print(d2)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">d2</span><span class="p">[</span><span class="s1">&#39;lhtfl&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;elevation&#39; (lat: 31, lon: 31)&gt;
+array([[2271.5, 2103.5, 2031.5, 1910. , 1804.5, 1758. , 1664.5, 1665.5,
+        1579. , 1824.5, 2149.5, 2016. , 1912.5, 2002.5, 2102. , 1994. ,
+        1861.5, 1746. , 1651.5, 1576.5, 1483. , 1481. , 1484.5, 1481. ,
+        1413.5, 1333.5, 1303. , 1306. , 1329. , 1278. , 1293. ],
+       [2241.5, 2099.5, 2320. , 2273. , 2004. , 1864.5, 1728.5, 1739. ,
+        1616.5, 1939. , 2134. , 2043. , 1956. , 2039. , 2115.5, 1996.5,
+        1833. , 1700. , 1614. , 1579.5, 1525.5, 1449.5, 1419.5, 1437. ,
+        1380. , 1298.5, 1244.5, 1220.5, 1232.5, 1204. , 1210. ],
+       [2149. , 2153. , 2373. , 2526.5, 2327. , 1930.5, 1807.5, 1828. ,
+        1694.5, 1748.5, 1862.5, 1981.5, 1927.5, 2023.5, 2151. , 2037. ,
+        1896.5, 1805. , 1722. , 1657.5, 1552. , 1442. , 1368. , 1352.5,
+        1333. , 1275. , 1222.5, 1199.5, 1193.5, 1168.5, 1142.5],
+       [2211. , 2208. , 2144. , 2207.5, 2297. , 1964. , 1885.5, 1809. ,
+        1779. , 1770. , 1695. , 1840.5, 1954.5, 2149.5, 2231. , 2228. ,
+        2061.5, 1970. , 1971. , 1896. , 1773. , 1551. , 1397. , 1337. ,
+        1372. , 1362. , 1277.5, 1256.5, 1249. , 1216.5, 1164. ],
+       [2106.5, 2121.5, 2079. , 2024. , 2009. , 1940.5, 1944.5, 2056. ,
+        2081. , 2129. , 1879.5, 1954.5, 2080. , 2492.5, 2626.5, 2639.5,
+        2248. , 2061. , 2046.5, 1993.5, 1905. , 1679. , 1506.5, 1464.5,
+        1498. , 1435. , 1333.5, 1379.5, 1375. , 1329. , 1258.5],
+...
+        3108. , 3375.5, 3286.5, 3552. , 3349.5, 3036. , 3056. , 2964. ,
+        2505.5, 2254. , 2083.5, 2003. , 2025.5, 1990. , 1876. , 1819. ,
+        1747. , 1715.5, 1691.5, 1660.5, 1604. , 1533.5, 1463. ],
+       [2176. , 2087. , 1940. , 2218.5, 2354. , 2366. , 2612. , 2808. ,
+        3020.5, 3224. , 3185.5, 3347.5, 3270. , 3370.5, 3277. , 2873.5,
+        2499.5, 2090.5, 1814. , 1848. , 1893.5, 1867. , 1781.5, 1724.5,
+        1666. , 1627.5, 1631.5, 1625.5, 1566.5, 1499.5, 1437.5],
+       [2400. , 2290.5, 2263.5, 2580. , 2921.5, 2633. , 2293. , 2432. ,
+        2570. , 2865.5, 3164.5, 3155. , 3243. , 3497. , 3283. , 2818. ,
+        2369.5, 1888. , 1669.5, 1704. , 1754. , 1746.5, 1680. , 1610. ,
+        1583. , 1537.5, 1514.5, 1535.5, 1526.5, 1472.5, 1409.5],
+       [2309. , 2515.5, 2634. , 2928.5, 3151. , 2994. , 2518. , 2514. ,
+        2506.5, 2801.5, 2933. , 2857. , 3147.5, 3262. , 3155.5, 2754. ,
+        2332. , 1780. , 1619.5, 1603.5, 1637. , 1630.5, 1591.5, 1533.5,
+        1517. , 1488.5, 1439.5, 1444. , 1476. , 1441.5, 1382. ],
+       [2098.5, 2194.5, 2410. , 2735.5, 3043. , 3219. , 2862.5, 2613.5,
+        2635. , 2595. , 2486. , 2593. , 2762. , 2832. , 3199. , 2745. ,
+        2128.5, 1660.5, 1574.5, 1543. , 1553. , 1539. , 1513. , 1483. ,
+        1458. , 1430. , 1381. , 1387. , 1436. , 1412. , 1357. ]],
+      dtype=float32)
+Coordinates:
+  * lon      (lon) float64 -108.0 -107.8 -107.7 -107.5 ... -103.3 -103.2 -103.0
+  * lat      (lat) float64 35.0 35.17 35.33 35.5 35.67 ... 39.5 39.67 39.83 40.0
+Attributes:
+    long_name:         Earth elevation relative to the geoid
+    cpt:               geo
+    units:             meters
+    vertical_datum:    EGM96
+    horizontal_datum:  WGS84
+&lt;xarray.DataArray &#39;lhtfl&#39; (time: 1, lat: 94, lon: 192)&gt;
+[18048 values with dtype=float32]
+Coordinates:
+  * lat      (lat) float32 88.54 86.65 84.75 82.85 ... -84.75 -86.65 -88.54
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
+  * time     (time) datetime64[ns] 1979-01-01
+Attributes:
+    long_name:     4xDaily Latent Heat Net Flux at surface
+    units:         W/m^2
+    precision:     1
+    GRIB_id:       121
+    GRIB_name:     LHTFL
+    var_desc:      Latent Heat Net Flux
+    dataset:       NMC Reanalysis
+    level_desc:    Surface
+    statistic:     Mean
+    parent_stat:   Individual Obs
+    actual_range:  [-416. 1401.]
+    valid_range:   [-2000.  2200.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pygmt-is-a-package-for-plotting">
+<h2>PyGMT is a package for plotting<a class="headerlink" href="#pygmt-is-a-package-for-plotting" title="Permalink to this heading">#</a></h2>
+<p>It is especially good for geophysical quantities (and geophysics).</p>
+<p>However, the formatting language looks a little different than matplotlib.</p>
+<p>We’ll take a look at ways to plot maps.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>PyGMT tutorials: <a class="reference external" href="https://www.pygmt.org/latest/tutorials/index.html">https://www.pygmt.org/latest/tutorials/index.html</a></p>
+</div>
+<section id="pygmt-contour">
+<h3><code class="docutils literal notranslate"><span class="pre">pygmt.contour</span></code><a class="headerlink" href="#pygmt-contour" title="Permalink to this heading">#</a></h3>
+<p>A contour map draws lines or contours representing equal values.  This is what you’re used to seeing for a topographic map for hiking, or bathymetry.  But it can be used for other 2-dimensional fields as well.</p>
+<p>In <em>GMT</em>, the contour function expects a table of x, y and z values.  See below for a stock example from <code class="docutils literal notranslate"><span class="pre">pygmt</span></code>.</p>
+<p>Run the following cell.  If you look at the figure created, it’s clearly a two-dimensional object.</p>
+<ol class="arabic simple">
+<li><p>Check the shape of <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code>.  Are they 1-dimensional or 2-dimensional?</p></li>
+<li><p>Check the shape of <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, and <code class="docutils literal notranslate"><span class="pre">Z</span></code>.  How many dimensions are they?</p></li>
+<li><p>Read the help on the command <code class="docutils literal notranslate"><span class="pre">flatten()</span></code>.  What does it do?</p></li>
+</ol>
+<p>Now check out the inputs to the function <code class="docutils literal notranslate"><span class="pre">fig.contour()</span></code>.</p>
+<ol class="arabic simple" start="4">
+<li><p>Where are axis limits specified?</p></li>
+<li><p>What happens if you change the <code class="docutils literal notranslate"><span class="pre">projection=&quot;X5c/20c&quot;</span></code>?</p></li>
+<li><p>What if you change <code class="docutils literal notranslate"><span class="pre">levels=5</span></code>?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># build the contours underlying data with the function z = x^2 + y^2</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">pygmt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">FONT_ANNOT_PRIMARY</span><span class="o">=</span><span class="s2">&quot;12p,Helvetica,blue&quot;</span><span class="p">,</span>
+            <span class="n">FONT_ANNOT_SECONDARY</span><span class="o">=</span><span class="s2">&quot;14p,Helvetica,red&quot;</span>
+            <span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">FONT_ANNOT_PRIMARY</span><span class="o">=</span><span class="s2">&quot;20p,Helvetica,blue&quot;</span><span class="p">,</span> <span class="n">FONT_LABEL</span><span class="o">=</span><span class="s2">&quot;15p,Helvetica,red&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+        <span class="n">region</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;X10c/10c&quot;</span><span class="p">,</span>
+        <span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ag&quot;</span><span class="p">,</span> <span class="s2">&quot;xaf+lx-axis&quot;</span><span class="p">,</span> <span class="s2">&quot;yaf+ly-axis&quot;</span><span class="p">],</span>
+        <span class="n">pen</span><span class="o">=</span><span class="s2">&quot;0.5p&quot;</span><span class="p">,</span>
+        <span class="c1"># pass the data as 3 1-D data columns</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+        <span class="c1"># set the contours z values intervals to 10</span>
+        <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="c1"># set the contours annotation intervals to 20</span>
+        <span class="n">annotation</span><span class="o">=</span><span class="s2">&quot;20+f18p&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;pygmt_test.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/afd6b9d44a75aca0e4fea6e24ce381b2d67b1620b5ae7b1ab2593a23d1d103e7.png" src="../_images/afd6b9d44a75aca0e4fea6e24ce381b2d67b1620b5ae7b1ab2593a23d1d103e7.png" />
+</div>
+</div>
+<p><strong>Compare this to what we normally do for <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">PyGMT</span></code> is clearly different.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, we would do something like</p>
+<p>For example, suppose we have a dataset with data at 2 latitudes and two longitudes.</p>
+<p>lat = [25 30]
+lon = [-40 -50 -60]</p>
+<p>Z = [[</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">10</span><span class="o">/</span><span class="mf">2.54</span><span class="p">)</span>  <span class="c1"># The argument projection for pyGMT is in centimeters so we divide centimeters by centimeter-per-inch to get inches</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;matplotlib_test.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5d9fd38518046b425d312bdc1ba48f92710cee9d6e69da883fbca8b9f0f7e328.png" src="../_images/5d9fd38518046b425d312bdc1ba48f92710cee9d6e69da883fbca8b9f0f7e328.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pygmt.contour requires the x, y and z inputs to be the same size</span>
+<span class="c1"># Normally for our </span>
+<span class="c1">#</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">d3</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span><span class="n">d3</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">d3</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">basemap</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> 
+<span class="c1">#    projection=&quot;W15c&quot;, </span>
+    <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;Cyl_stere/12c&quot;</span><span class="p">,</span>
+    <span class="n">frame</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">shorelines</span><span class="o">=</span><span class="s2">&quot;1/0.5p,black&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+    <span class="n">pen</span><span class="o">=</span><span class="s2">&quot;0.5p&quot;</span><span class="p">,</span> <span class="c1"># What stift is used to draw the contours</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/52189b1d4fe45253c56b679914e202aff9f6611e7748eb291ef66572bfb4ce95.png" src="../_images/52189b1d4fe45253c56b679914e202aff9f6611e7748eb291ef66572bfb4ce95.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">filepath</span> <span class="o">+</span> <span class="n">fpre</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">fpost</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">fname</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">fpre</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grdimage</span><span class="p">(</span>
+    <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+    <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;ag&quot;</span><span class="p">,</span>
+    <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;Cyl_stere/150/-20/15c&quot;</span><span class="p">,</span> 
+    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;g&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coast</span><span class="p">(</span><span class="n">shorelines</span><span class="o">=</span><span class="s2">&quot;1/0.5p,black&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x+l&#39;</span> <span class="o">+</span><span class="n">fpre</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;y+lW/m@+2@+&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grdimage [WARNING]: The step size of coordinate (Latitude [degrees_north]) in grid ../data/lhtfl.sfc.gauss.1979.nc is not constant.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grdimage [WARNING]: GMT will use a constant step size of -1.90413; the original ranges from -1.9048 to -1.8889.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grdimage [WARNING]: The y-coordinates and range attribute are in conflict; must rely on coordinates only
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grdimage [WARNING]: Guessing of registration in conflict between x and y, using gridline
+</pre></div>
+</div>
+<img alt="../_images/65c51d4b18649886bbaa57d230dd2ac10313d341ff448fee0cf4e1ad4f0a2962.png" src="../_images/65c51d4b18649886bbaa57d230dd2ac10313d341ff448fee0cf4e1ad4f0a2962.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pygmt</span><span class="o">.</span><span class="n">Figure</span><span class="o">.</span><span class="n">contour</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function contour in module pygmt.src.contour:
+
+contour(self, data=None, x=None, y=None, z=None, *, annotation=None, frame=None, levels=None, label_placement=None, projection=None, triangular_mesh_pen=None, no_clip=None, region=None, skip=None, verbose=None, pen=None, binary=None, panel=None, nodata=None, find=None, coltypes=None, header=None, incols=None, label=None, perspective=None, transparency=None, **kwargs)
+    Contour table data by direct triangulation.
+    
+    Takes a matrix, (x, y, z) triplets, or a file name as input and plots,
+    lines, polygons, or symbols at those locations on a map.
+    
+    Must provide either ``data`` or ``x``, ``y``, and ``z``.
+    
+    Full option list at :gmt-docs:`contour.html`
+    
+    **Aliases:**
+    
+    - A = annotation
+    - B = frame
+    - C = levels
+    - G = label_placement
+    - J = projection
+    - L = triangular_mesh_pen
+    - N = no_clip
+    - R = region
+    - S = skip
+    - V = verbose
+    - W = pen
+    - b = binary
+    - c = panel
+    - d = nodata
+    - e = find
+    - f = coltypes
+    - h = header
+    - i = incols
+    - l = label
+    - p = perspective
+    - t = transparency
+    
+    Parameters
+    ----------
+    data : str or numpy.ndarray or pandas.DataFrame or xarray.Dataset or geopandas.GeoDataFrame
+        Pass in (x, y, z) or (longitude, latitude, elevation) values by
+        providing a file name to an ASCII data table, a 2-D
+        :class:`numpy.ndarray`, a :class:`pandas.DataFrame`, an
+        :class:`xarray.Dataset` made up of 1-D :class:`xarray.DataArray`
+        data variables, or a :class:`geopandas.GeoDataFrame` containing the
+        tabular data.
+    x/y/z : 1-D arrays
+        Arrays of x and y coordinates and values z of the data points.
+    projection : str
+        *projcode*\[*projparams*/]\ *width*.
+        Select map :doc:`projection &lt;/projections/index&gt;`.
+    region : str or list
+        *xmin/xmax/ymin/ymax*\ [**+r**][**+u**\ *unit*].
+        Specify the :doc:`region &lt;/tutorials/basics/regions&gt;` of interest.
+    annotation : str or int
+        Specify or disable annotated contour levels, modifies annotated
+        contours specified in ``levels``.
+    
+        - Specify a fixed annotation interval *annot_int* or a
+          single annotation level +\ *annot_int*.
+    frame : bool or str or list
+        Set map boundary
+        :doc:`frame and axes attributes &lt;/tutorials/basics/frames&gt;`. 
+    levels : str or int
+        Specify the contour lines to generate.
+    
+        - The file name of a CPT file where the color boundaries will
+          be used as contour levels.
+        - The file name of a 2 (or 3) column file containing the contour
+          levels (col 1), (**C**)ontour or (**A**)nnotate (col 2), and optional
+          angle (col 3).
+        - A fixed contour interval *cont_int* or a single contour with
+          +\ *cont_int*.
+    D : str
+        Dump contour coordinates.
+    E : str
+        Network information.
+    label_placement : str
+        [**d**\|\ **f**\|\ **n**\|\ **l**\|\ **L**\|\ **x**\|\ **X**]\ *args*.
+        Control the placement of labels along the quoted lines. It supports
+        five controlling algorithms. See :gmt-docs:`contour.html#g` for
+        details.
+    I : bool
+        Color the triangles using CPT.
+    triangular_mesh_pen : str
+        Pen to draw the underlying triangulation [Default is ``None``].
+    no_clip : bool
+        Do **not** clip contours or image at the frame boundaries
+        [Default is ``False`` to fit inside ``region``].
+    Q : float or str
+        [*cut*][**+z**].
+        Do not draw contours with less than *cut* number of points.
+    skip : bool or str
+        [**p**\|\ **t**].
+        Skip input points outside region.
+    pen : str
+        Set pen attributes for lines or the outline of symbols.
+    label : str
+        Add a legend entry for the contour being plotted. Normally, the
+        annotated contour is selected for the legend. You can select the
+        regular contour instead, or both of them, by considering the label
+        to be of the format [*annotcontlabel*][/*contlabel*]. If either
+        label contains a slash (/) character then use ``|`` as the
+        separator for the two labels instead.
+    verbose : bool or str
+        Select verbosity level [Default is **w**], which modulates the messages
+        written to stderr. Choose among 7 levels of verbosity:
+    
+        - **q** - Quiet, not even fatal error messages are produced
+        - **e** - Error messages only
+        - **w** - Warnings [Default]
+        - **t** - Timings (report runtimes for time-intensive algorithms)
+        - **i** - Informational messages (same as ``verbose=True``)
+        - **c** - Compatibility warnings
+        - **d** - Debugging messages
+    binary : bool or str
+        **i**\|\ **o**\ [*ncols*][*type*][**w**][**+l**\|\ **b**].
+        Select native binary input (using ``binary=&quot;i&quot;``) or output
+        (using ``binary=&quot;o&quot;``), where *ncols* is the number of data columns
+        of *type*, which must be one of:
+    
+            - **c** - int8_t (1-byte signed char)
+            - **u** - uint8_t (1-byte unsigned char)
+            - **h** - int16_t (2-byte signed int)
+            - **H** - uint16_t (2-byte unsigned int)
+            - **i** - int32_t (4-byte signed int)
+            - **I** - uint32_t (4-byte unsigned int)
+            - **l** - int64_t (8-byte signed int)
+            - **L** - uint64_t (8-byte unsigned int)
+            - **f** - 4-byte single-precision float
+            - **d** - 8-byte double-precision float
+            - **x** - use to skip *ncols* anywhere in the record
+    
+        For records with mixed types, append additional comma-separated
+        combinations of *ncols* *type* (no space). The following modifiers
+        are supported:
+    
+            - **w** after any item to force byte-swapping.
+            - **+l**\|\ **b** to indicate that the entire data file should
+              be read as little- or big-endian, respectively.
+    
+        Full documentation is at :gmt-docs:`gmt.html#bi-full`.
+    panel : bool or int or list
+        [*row,col*\|\ *index*].
+        Select a specific subplot panel. Only allowed when in subplot
+        mode. Use ``panel=True`` to advance to the next panel in the
+        selected order. Instead of *row,col* you may also give a scalar
+        value *index* which depends on the order you set via ``autolabel``
+        when the subplot was defined. **Note**: *row*, *col*, and *index*
+        all start at 0.
+    
+    nodata : str
+        **i**\|\ **o**\ *nodata*.
+        Substitute specific values with NaN (for tabular data). For
+        example, ``nodata=&quot;-9999&quot;`` will replace all values equal to -9999
+        with NaN during input and all NaN values with -9999 during output.
+        Prepend **i** to the *nodata* value for input columns only. Prepend
+        **o** to the *nodata* value for output columns only.
+    find : str
+        [**~**]\ *&quot;pattern&quot;* \| [**~**]/\ *regexp*/[**i**].
+        Only pass records that match the given *pattern* or regular
+        expressions [Default processes all records]. Prepend **~** to
+        the *pattern* or *regexp* to instead only pass data expressions
+        that do not match the pattern. Append **i** for case insensitive
+        matching. This does not apply to headers or segment headers.
+    coltypes : str
+        [**i**\|\ **o**]\ *colinfo*.
+        Specify data types of input and/or output columns (time or
+        geographical data). Full documentation is at
+        :gmt-docs:`gmt.html#f-full`.
+    header : str
+        [**i**\|\ **o**][*n*][**+c**][**+d**][**+m**\ *segheader*][**+r**\
+        *remark*][**+t**\ *title*].
+        Specify that input and/or output file(s) have *n* header records
+        [Default is 0]. Prepend **i** if only the primary input should have
+        header records. Prepend **o** to control the writing of header
+        records, with the following modifiers supported:
+    
+            - **+d** to remove existing header records.
+            - **+c** to add a header comment with column names to the
+              output [Default is no column names].
+            - **+m** to add a segment header *segheader* to the output
+              after the header block [Default is no segment header].
+            - **+r** to add a *remark* comment to the output [Default is no
+              comment]. The *remark* string may contain \\n to indicate
+              line-breaks.
+            - **+t** to add a *title* comment to the output [Default is no
+              title]. The *title* string may contain \\n to indicate
+              line-breaks.
+    
+        Blank lines and lines starting with \# are always skipped.
+    incols : str or 1-D array
+        Specify data columns for primary input in arbitrary order. Columns
+        can be repeated and columns not listed will be skipped [Default
+        reads all columns in order, starting with the first (i.e., column
+        0)].
+    
+        - For *1-D array*: specify individual columns in input order (e.g.,
+          ``incols=[1,0]`` for the 2nd column followed by the 1st column).
+        - For :py:class:`str`: specify individual columns or column
+          ranges in the format *start*\ [:*inc*]:*stop*, where *inc*
+          defaults to 1 if not specified, with columns and/or column ranges
+          separated by commas (e.g., ``incols=&quot;0:2,4+l&quot;`` to input the
+          first three columns followed by the log-transformed 5th column).
+          To read from a given column until the end of the record, leave
+          off *stop* when specifying the column range. To read trailing
+          text, add the column **t**. Append the word number to **t** to
+          ingest only a single word from the trailing text. Instead of
+          specifying columns, use ``incols=&quot;n&quot;`` to simply read numerical
+          input and skip trailing text. Optionally, append one of the
+          following modifiers to any column or column range to transform
+          the input columns:
+    
+            - **+l** to take the *log10* of the input values.
+            - **+d** to divide the input values by the factor *divisor*
+              [Default is 1].
+            - **+s** to multiple the input values by the factor *scale*
+              [Default is 1].
+            - **+o** to add the given *offset* to the input values [Default
+              is 0].
+    perspective : list or str
+        [**x**\|\ **y**\|\ **z**]\ *azim*\[/*elev*\[/*zlevel*]]\
+        [**+w**\ *lon0*/*lat0*\[/*z0*]][**+v**\ *x0*/*y0*].
+        Select perspective view and set the azimuth and elevation angle of
+        the viewpoint [Default is ``[180, 90]``]. Full documentation is at
+        :gmt-docs:`gmt.html#perspective-full`.
+    
+    transparency : int or float
+        Set transparency level, in [0-100] percent range
+        [Default is ``0``, i.e., opaque].
+        Only visible when PDF or raster format output is selected.
+        Only the PNG format selection adds a transparency layer
+        in the image (for further processing).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-root-py"
+        },
+        kernelOptions: {
+            name: "conda-root-py",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-root-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-load-the-data">Create a notebook &amp; load the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-coastlines-to-the-maps">Add some coastlines to the maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pygmt-is-a-package-for-plotting">PyGMT is a package for plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pygmt-contour"><code class="docutils literal notranslate"><span class="pre">pygmt.contour</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
