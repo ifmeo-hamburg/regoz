@@ -15,18 +15,34 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Figure out how big the datasets are
-print(flux_components['lhtfl'].lhtfl.shape)
-print(flux_components['lhtfl'])
+# Plot the fields
+# choose the index of the snapshot to show
+itime = 0
+map1 = all_flux.lhtfl[itime,:,:]
+
+fig, axs = plt.subplots(2,2)
+axs[0,0].contourf(data1.lon, data1.lat, map1, cmap='RdYlBu')
+axs[0,0].set_title('Latent heat flux')
+axs[0,0].set_ylabel('Latitude')
+
+# Cumbersome date time to string
+d = data1.time[itime].dt.strftime('%Y.%m.%d').values
+fig.suptitle('NCEP Reanalysis \n' + d)
+
+fig.savefig('fig1-heatflux-Lastname.png')
+
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[3], line 2[0m
-[1;32m      1[0m [38;5;66;03m# Figure out how big the datasets are[39;00m
-[0;32m----> 2[0m [38;5;28mprint[39m([43mflux_components[49m[[38;5;124m'[39m[38;5;124mlhtfl[39m[38;5;124m'[39m][38;5;241m.[39mlhtfl[38;5;241m.[39mshape)
-[1;32m      3[0m [38;5;28mprint[39m(flux_components[[38;5;124m'[39m[38;5;124mlhtfl[39m[38;5;124m'[39m])
+Cell [0;32mIn[5], line 4[0m
+[1;32m      1[0m [38;5;66;03m# Plot the fields[39;00m
+[1;32m      2[0m [38;5;66;03m# choose the index of the snapshot to show[39;00m
+[1;32m      3[0m itime [38;5;241m=[39m [38;5;241m0[39m
+[0;32m----> 4[0m map1 [38;5;241m=[39m [43mall_flux[49m[38;5;241m.[39mlhtfl[itime,:,:]
+[1;32m      6[0m fig, axs [38;5;241m=[39m plt[38;5;241m.[39msubplots([38;5;241m2[39m,[38;5;241m2[39m)
+[1;32m      7[0m axs[[38;5;241m0[39m,[38;5;241m0[39m][38;5;241m.[39mcontourf(data1[38;5;241m.[39mlon, data1[38;5;241m.[39mlat, map1, cmap[38;5;241m=[39m[38;5;124m'[39m[38;5;124mRdYlBu[39m[38;5;124m'[39m)
 
-[0;31mNameError[0m: name 'flux_components' is not defined
+[0;31mNameError[0m: name 'all_flux' is not defined
 
