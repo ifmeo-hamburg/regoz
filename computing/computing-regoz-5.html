@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-5';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Python - Making a map" href="computing-regoz-4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../general/schedule.html">Schedule (SuSe24)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-1.html">Python Introductory lab</a></li>
 
 
@@ -183,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-3.html">Python - making a <span class="math notranslate nohighlight">\(\theta\)</span>-S diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-4.html">Python - Making a map</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python - Loading and plotting ADCP data</a></li>
 </ul>
 
     </div>
@@ -494,6 +496,26 @@ For the purpose of this exercise, it's fine to use either source.-->
   warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lat in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lon in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_end_indices in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_start_indices in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:532: UserWarning: Workhorse ADCP identified as 75 kHz Long Ranger
+  warnings.warn(&#39;Workhorse ADCP identified as 75 kHz Long Ranger&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:233: UserWarning: Difference between calculated instrument depth and metadata instrument_depth exceeds 0.05% of the total water depth
+  warnings.warn(&quot;Difference between calculated instrument depth and metadata &quot;
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lat with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lon with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:209,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
@@ -506,14 +528,14 @@ For the purpose of this exercise, it's fine to use either source.-->
 <span class="ne">---&gt; </span><span class="mi">55</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc&#39;,), &#39;a&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;8c79e4b5-def8-42fa-91ae-f5b58205bdb1&#39;]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;,), &#39;a&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;b1fc7864-4ece-474b-bb07-d86fa4228e51&#39;]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">PermissionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ncnames_L0</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ncnames_L1</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ncnames_L0</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ncnames_L1</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1368,</span> in <span class="ni">nc_create_L0_L1</span><span class="nt">(in_file, file_meta, dest_dir, level, time_file, verbose)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1366</span> <span class="k">else</span><span class="p">:</span>
@@ -602,7 +624,7 @@ For the purpose of this exercise, it's fine to use either source.-->
 
 <span class="nn">File src/netCDF4/_netCDF4.pyx:2027,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
 
-<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc&#39;
+<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;
 </pre></div>
 </div>
 </div>
@@ -616,7 +638,7 @@ For the purpose of this exercise, it's fine to use either source.-->
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ncnames_L1</span><span class="p">)</span>
 <span class="c1">#filename = dest_dir + fname[0:-2] + &#39;_L0&#39; + &#39;adcp.nc&#39;</span>
 
-<span class="n">data1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncnames_L0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncnames_L1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
 
 <span class="c1">#print(data1.time.max())</span>
@@ -628,17 +650,17 @@ For the purpose of this exercise, it's fine to use either source.-->
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;]
 &lt;xarray.Dataset&gt;
-Dimensions:                   (time: 16709, distance: 31)
+Dimensions:                   (time: 14596, distance: 31)
 Coordinates:
-  * time                      (time) datetime64[ns] 2016-07-13T18:00:00 ... 2...
+  * time                      (time) datetime64[ns] 2016-07-13T21:30:00 ... 2...
   * distance                  (distance) float64 24.56 40.56 ... 488.6 504.6
-Data variables: (12/30)
-    VEL_MAGNETIC_EAST         (distance, time) float32 ...
-    VEL_MAGNETIC_NORTH        (distance, time) float32 ...
+Data variables: (12/36)
+    LCEWAP01                  (distance, time) float32 ...
+    LCNSAP01                  (distance, time) float32 ...
     LRZAAP01                  (distance, time) float32 ...
     LERRAP01                  (distance, time) float32 ...
-    TNIHCE01                  (distance, time) float32 ...
-    TNIHCE02                  (distance, time) float32 ...
+    LCEWAP01_QC               (distance, time) float32 ...
+    LCNSAP01_QC               (distance, time) float32 ...
     ...                        ...
     filename                  object ...
     instrument_serial_number  object ...
@@ -660,7 +682,7 @@ Attributes: (12/76)
     geospatial_lon_units:        degrees_east
     geospatial_vertical_min:     -24.56
     geospatial_vertical_max:     455.44
-[&#39;VEL_MAGNETIC_EAST&#39;, &#39;VEL_MAGNETIC_NORTH&#39;, &#39;LRZAAP01&#39;, &#39;LERRAP01&#39;, &#39;TNIHCE01&#39;, &#39;TNIHCE02&#39;, &#39;TNIHCE03&#39;, &#39;TNIHCE04&#39;, &#39;CMAGZZ01&#39;, &#39;CMAGZZ02&#39;, &#39;CMAGZZ03&#39;, &#39;CMAGZZ04&#39;, &#39;PCGDAP00&#39;, &#39;PCGDAP02&#39;, &#39;PCGDAP03&#39;, &#39;PCGDAP04&#39;, &#39;PRESPR01&#39;, &#39;latitude&#39;, &#39;longitude&#39;, &#39;PTCHGP01&#39;, &#39;HEADCM01&#39;, &#39;ROLLGP01&#39;, &#39;TEMPPR01&#39;, &#39;SVELCV01&#39;, &#39;filename&#39;, &#39;instrument_serial_number&#39;, &#39;instrument_model&#39;, &#39;instrument_depth&#39;, &#39;water_depth&#39;, &#39;geographic_area&#39;]
+[&#39;LCEWAP01&#39;, &#39;LCNSAP01&#39;, &#39;LRZAAP01&#39;, &#39;LERRAP01&#39;, &#39;LCEWAP01_QC&#39;, &#39;LCNSAP01_QC&#39;, &#39;LRZAAP01_QC&#39;, &#39;TNIHCE01&#39;, &#39;TNIHCE02&#39;, &#39;TNIHCE03&#39;, &#39;TNIHCE04&#39;, &#39;CMAGZZ01&#39;, &#39;CMAGZZ02&#39;, &#39;CMAGZZ03&#39;, &#39;CMAGZZ04&#39;, &#39;PCGDAP00&#39;, &#39;PCGDAP02&#39;, &#39;PCGDAP03&#39;, &#39;PCGDAP04&#39;, &#39;DISTTRAN&#39;, &#39;PPSAADCP&#39;, &#39;PRESPR01&#39;, &#39;PRESPR01_QC&#39;, &#39;latitude&#39;, &#39;longitude&#39;, &#39;PTCHGP01&#39;, &#39;HEADCM01&#39;, &#39;ROLLGP01&#39;, &#39;TEMPPR01&#39;, &#39;SVELCV01&#39;, &#39;filename&#39;, &#39;instrument_serial_number&#39;, &#39;instrument_model&#39;, &#39;instrument_depth&#39;, &#39;water_depth&#39;, &#39;geographic_area&#39;]
 </pre></div>
 </div>
 </div>
@@ -682,7 +704,20 @@ Attributes: (12/76)
 <span class="n">ncfile</span> <span class="o">=</span> <span class="s1">&#39;data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;</span>
 <span class="n">dest_fig</span> <span class="o">=</span> <span class="s1">&#39;figures/&#39;</span>
 <span class="n">output_files</span> <span class="o">=</span> <span class="n">plot_westcoast_nc_LX</span><span class="o">.</span><span class="n">create_westcoast_plots</span><span class="p">(</span>
-    <span class="n">ncfile</span><span class="p">,</span> <span class="n">dest_fig</span><span class="p">,</span> <span class="s2">&quot;RegOz&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">ncfile</span><span class="p">,</span> <span class="n">dest_fig</span><span class="p">,</span> <span class="s2">&quot;RegOz&quot;</span><span class="p">,</span> <span class="n">do_all_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;time&#39; ()&gt;
+array(&#39;2017-05-13T23:00:00.000000000&#39;, dtype=&#39;datetime64[ns]&#39;)
 </pre></div>
 </div>
 </div>
@@ -720,6 +755,15 @@ Attributes: (12/76)
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="computing-regoz-4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python - Making a map</p>
+      </div>
+    </a>
 </div>
                 </footer>
               

@@ -42,6 +42,24 @@ ncnames_L1 = ADCP_processing_L0_L1.nc_create_L0_L1(in_file=f, file_meta=meta, de
   warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
 /Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item segment_start_indices with value None not supported by netCDF
   warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+----- stderr -----
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lat in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lon in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_end_indices in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_start_indices in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+----- stderr -----
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:532: UserWarning: Workhorse ADCP identified as 75 kHz Long Ranger
+  warnings.warn('Workhorse ADCP identified as 75 kHz Long Ranger', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:233: UserWarning: Difference between calculated instrument depth and metadata instrument_depth exceeds 0.05% of the total water depth
+  warnings.warn("Difference between calculated instrument depth and metadata "
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lat with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lon with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
@@ -56,14 +74,14 @@ File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/back
 [0;32m---> 55[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
 [1;32m     56[0m     [38;5;28mself[39m[38;5;241m.[39m_cache[38;5;241m.[39mmove_to_end(key)
 
-[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '8c79e4b5-def8-42fa-91ae-f5b58205bdb1']
+[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L1.adcp.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'b1fc7864-4ece-474b-bb07-d86fa4228e51']
 
 During handling of the above exception, another exception occurred:
 
 [0;31mPermissionError[0m                           Traceback (most recent call last)
-Cell [0;32mIn[3], line 1[0m
-[0;32m----> 1[0m ncnames_L0 [38;5;241m=[39m [43mADCP_processing_L0_L1[49m[38;5;241;43m.[39;49m[43mnc_create_L0_L1[49m[43m([49m[43min_file[49m[38;5;241;43m=[39;49m[43mf[49m[43m,[49m[43m [49m[43mfile_meta[49m[38;5;241;43m=[39;49m[43mmeta[49m[43m,[49m[43m [49m[43mdest_dir[49m[38;5;241;43m=[39;49m[43mdest_dir[49m[43m,[49m[43m [49m[43mlevel[49m[38;5;241;43m=[39;49m[38;5;241;43m0[39;49m[43m)[49m
-[1;32m      2[0m ncnames_L1 [38;5;241m=[39m ADCP_processing_L0_L1[38;5;241m.[39mnc_create_L0_L1(in_file[38;5;241m=[39mf, file_meta[38;5;241m=[39mmeta, dest_dir[38;5;241m=[39mdest_dir, level[38;5;241m=[39m[38;5;241m1[39m)
+Cell [0;32mIn[3], line 2[0m
+[1;32m      1[0m ncnames_L0 [38;5;241m=[39m ADCP_processing_L0_L1[38;5;241m.[39mnc_create_L0_L1(in_file[38;5;241m=[39mf, file_meta[38;5;241m=[39mmeta, dest_dir[38;5;241m=[39mdest_dir, level[38;5;241m=[39m[38;5;241m0[39m)
+[0;32m----> 2[0m ncnames_L1 [38;5;241m=[39m [43mADCP_processing_L0_L1[49m[38;5;241;43m.[39;49m[43mnc_create_L0_L1[49m[43m([49m[43min_file[49m[38;5;241;43m=[39;49m[43mf[49m[43m,[49m[43m [49m[43mfile_meta[49m[38;5;241;43m=[39;49m[43mmeta[49m[43m,[49m[43m [49m[43mdest_dir[49m[38;5;241;43m=[39;49m[43mdest_dir[49m[43m,[49m[43m [49m[43mlevel[49m[38;5;241;43m=[39;49m[38;5;241;43m1[39;49m[43m)[49m
 
 File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1368[0m, in [0;36mnc_create_L0_L1[0;34m(in_file, file_meta, dest_dir, level, time_file, verbose)[0m
 [1;32m   1366[0m [38;5;28;01melse[39;00m:
@@ -152,5 +170,5 @@ File [0;32msrc/netCDF4/_netCDF4.pyx:2464[0m, in [0;36mnetCDF4._netCDF4.Datase
 
 File [0;32msrc/netCDF4/_netCDF4.pyx:2027[0m, in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
 
-[0;31mPermissionError[0m: [Errno 13] Permission denied: '/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc'
+[0;31mPermissionError[0m: [Errno 13] Permission denied: '/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L1.adcp.nc'
 
