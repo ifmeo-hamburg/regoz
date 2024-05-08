@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Python - Loading and plotting ADCP data &#8212; RegOz</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-5';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="RegOz - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="RegOz - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    BSc Regional Oceanography
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general/syllabus.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/schedule.html">Schedule (SuSe24)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-1.html">Python Introductory lab</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-2.html">Python - plotting a profile</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-3.html">Python - making a <span class="math notranslate nohighlight">\(\theta\)</span>-S diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-4.html">Python - Making a map</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/computing-regoz-5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/computing/computing-regoz-5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python - Loading and plotting ADCP data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-load-the-data">Create a notebook &amp; load the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data">Downloading data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data-using-the-pycurrents-package">Loading the data using the pycurrents package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-out-the-datafile-that-was-created">Check out the datafile that was created</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-1-plot-with-matplotlib">Fig 1. Plot with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-loading-and-plotting-adcp-data">
+<h1>Python - Loading and plotting ADCP data<a class="headerlink" href="#python-loading-and-plotting-adcp-data" title="Permalink to this heading">#</a></h1>
+<p><strong>Aim:</strong> To load and plot ADCP data from a *.000 binary file.</p>
+<p><strong>Data:</strong> Download the data files from <a class="reference external" href="https://www.dropbox.com/scl/fo/2vvmtsn925ce69rdff9vv/ANrCDyUea1yq_jAr6B3KSAA?rlkey=avbthcpyfi014p88tz1djuic6&amp;dl=0">here</a></p>
+<p><strong>Package:</strong> You will need to install the <code class="docutils literal notranslate"><span class="pre">pycurrents_ADCP_processing</span></code> package from <a class="github reference external" href="https://github.com/IOS-OSD-DPG/pycurrents_ADCP_processing">IOS-OSD-DPG/pycurrents_ADCP_processing</a>.  Follow the instructions carefully.  Note that it expects git and mercurial to be installed.</p>
+<!--If you prefer to do this without python, you can instead get data here: 
+- [ICDC LAS](http://icdc.cen.uni-hamburg.de/las-int/getUI.do?dsid=id-13512db7081948&catid=DE25BCEB877C860DC89A1CFDB057A4B6&varid=air-id-13512db7081948&plot=XY_zoomable_image&view=xy&auto=true)
+- [PSL NOAA](https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html)
+
+For the purpose of this exercise, it's fine to use either source.-->
+<p><strong>Directions:</strong> Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> and 2 figures.</p>
+<hr><section id="create-a-notebook-load-the-data">
+<h2>Create a notebook &amp; load the data<a class="headerlink" href="#create-a-notebook-load-the-data" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> containing the commands for this assignment, or copy this file and rename it, e.g., <code class="docutils literal notranslate"><span class="pre">computing-regoz-4-&lt;Lastname&gt;.ipynb</span></code></p></li>
+<li><p>Import necessary packages.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">xarray</span></code>.  You may also need</p>
+<p>If you are missing any of these packages, please refer to <span class="xref myst">Resources: Python</span>.</p>
+</li>
+<li><p>Import the pycurrents_ADCP_processing package.  The installation here is multi-step:</p></li>
+<li><p>Download some data.</p>
+<ul class="simple">
+<li><p>Get the data files <a class="reference external" href="https://www.dropbox.com/scl/fo/2vvmtsn925ce69rdff9vv/ANrCDyUea1yq_jAr6B3KSAA?rlkey=avbthcpyfi014p88tz1djuic6&amp;dl=0">here</a>. Put them in a subdirectory called <code class="docutils literal notranslate"><span class="pre">data/</span></code></p></li>
+</ul>
+</li>
+<li><p>Make a basic exploration. How big are the data?  What are the coordinates?  Use <code class="docutils literal notranslate"><span class="pre">print()</span></code> or other commands you’ve learned in previous exercises.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pycurrents_ADCP_processing</span> <span class="kn">import</span> <span class="n">ADCP_processing_L0_L1</span><span class="p">,</span> <span class="n">ADCP_IOS_Header_file</span>
+<span class="kn">from</span> <span class="nn">pycurrents_ADCP_processing</span> <span class="kn">import</span> <span class="n">plot_westcoast_nc_LX</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="downloading-data">
+<h3>Downloading data<a class="headerlink" href="#downloading-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Put your data in the folder <code class="docutils literal notranslate"><span class="pre">data/</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;data/&#39;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;a1_20160713_20170513_0480m.000&#39;</span>
+<span class="n">mname</span> <span class="o">=</span> <span class="s1">&#39;a1_20160713_20170513_0480m_metadata.csv&#39;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">file_path</span> <span class="o">+</span> <span class="n">fname</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">file_path</span> <span class="o">+</span> <span class="n">mname</span>
+<span class="n">dest_dir</span> <span class="o">=</span> <span class="s1">&#39;data/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-the-data-using-the-pycurrents-package">
+<h3>Loading the data using the pycurrents package<a class="headerlink" href="#loading-the-data-using-the-pycurrents-package" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncnames_L0 = ADCP_processing_L0_L1.nc_create_L0_L1(in_file=f, file_meta=meta, dest_dir=dest_dir, level=0)
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncnames_L0</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ncnames_L1</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lat in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lon in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_end_indices in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_start_indices in csv file has blank value
+  warnings.warn(f&#39;Metadata item {row[0]} in csv file has blank value&#39;, UserWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:532: UserWarning: Workhorse ADCP identified as 75 kHz Long Ranger
+  warnings.warn(&#39;Workhorse ADCP identified as 75 kHz Long Ranger&#39;, UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:233: UserWarning: Difference between calculated instrument depth and metadata instrument_depth exceeds 0.05% of the total water depth
+  warnings.warn(&quot;Difference between calculated instrument depth and metadata &quot;
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lat with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lon with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item segment_end_indices with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item segment_start_indices with value None not supported by netCDF
+  warnings.warn(f&#39;Metadata item {key} with value {meta_dict[key]} not supported by netCDF&#39;)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:209,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">209</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/lru_cache.py:55,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">55</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc&#39;,), &#39;a&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;8c79e4b5-def8-42fa-91ae-f5b58205bdb1&#39;]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">PermissionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ncnames_L0</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ncnames_L1</span> <span class="o">=</span> <span class="n">ADCP_processing_L0_L1</span><span class="o">.</span><span class="n">nc_create_L0_L1</span><span class="p">(</span><span class="n">in_file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">file_meta</span><span class="o">=</span><span class="n">meta</span><span class="p">,</span> <span class="n">dest_dir</span><span class="o">=</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1368,</span> in <span class="ni">nc_create_L0_L1</span><span class="nt">(in_file, file_meta, dest_dir, level, time_file, verbose)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1366</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1367</span>     <span class="n">nc_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">out_name</span><span class="p">)]</span>
+<span class="ne">-&gt; </span><span class="mi">1368</span>     <span class="n">out</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">nc_names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;NETCDF4&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1370</span> <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1372</span> <span class="k">return</span> <span class="n">nc_names</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/core/dataset.py:1912,</span> in <span class="ni">Dataset.to_netcdf</span><span class="nt">(self, path, mode, format, group, engine, encoding, unlimited_dims, compute, invalid_netcdf)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1909</span>     <span class="n">encoding</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">   </span><span class="mi">1910</span> <span class="kn">from</span> <span class="nn">xarray.backends.api</span> <span class="kn">import</span> <span class="n">to_netcdf</span>
+<span class="ne">-&gt; </span><span class="mi">1912</span> <span class="k">return</span> <span class="n">to_netcdf</span><span class="p">(</span>  <span class="c1"># type: ignore  # mypy cannot resolve the overloads:(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1913</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1914</span>     <span class="n">path</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1915</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1916</span>     <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1917</span>     <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1918</span>     <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1919</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1920</span>     <span class="n">unlimited_dims</span><span class="o">=</span><span class="n">unlimited_dims</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1921</span>     <span class="n">compute</span><span class="o">=</span><span class="n">compute</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1922</span>     <span class="n">multifile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1923</span>     <span class="n">invalid_netcdf</span><span class="o">=</span><span class="n">invalid_netcdf</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1924</span> <span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/api.py:1215,</span> in <span class="ni">to_netcdf</span><span class="nt">(dataset, path_or_file, mode, format, group, engine, encoding, unlimited_dims, compute, multifile, invalid_netcdf)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1211</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1212</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>             <span class="sa">f</span><span class="s2">&quot;unrecognized option &#39;invalid_netcdf&#39; for engine </span><span class="si">{</span><span class="n">engine</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span>         <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1215</span> <span class="n">store</span> <span class="o">=</span> <span class="n">store_open</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1217</span> <span class="k">if</span> <span class="n">unlimited_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">unlimited_dims</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unlimited_dims&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:382,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">376</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span> <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">382</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:329,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">329</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:391,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span> <span class="k">def</span> <span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">391</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:385,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span> <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">385</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>     <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/contextlib.py:113,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:197,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">def</span> <span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">File ~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:215,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2464,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">File src/netCDF4/_netCDF4.pyx:2027,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">PermissionError</span>: [Errno 13] Permission denied: &#39;/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-out-the-datafile-that-was-created">
+<h3>Check out the datafile that was created<a class="headerlink" href="#check-out-the-datafile-that-was-created" title="Permalink to this heading">#</a></h3>
+<p>What are the variable names available?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ncnames_L1</span><span class="p">)</span>
+<span class="c1">#filename = dest_dir + fname[0:-2] + &#39;_L0&#39; + &#39;adcp.nc&#39;</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncnames_L0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+
+<span class="c1">#print(data1.time.max())</span>
+<span class="n">mykeys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mykeys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;]
+&lt;xarray.Dataset&gt;
+Dimensions:                   (time: 16709, distance: 31)
+Coordinates:
+  * time                      (time) datetime64[ns] 2016-07-13T18:00:00 ... 2...
+  * distance                  (distance) float64 24.56 40.56 ... 488.6 504.6
+Data variables: (12/30)
+    VEL_MAGNETIC_EAST         (distance, time) float32 ...
+    VEL_MAGNETIC_NORTH        (distance, time) float32 ...
+    LRZAAP01                  (distance, time) float32 ...
+    LERRAP01                  (distance, time) float32 ...
+    TNIHCE01                  (distance, time) float32 ...
+    TNIHCE02                  (distance, time) float32 ...
+    ...                        ...
+    filename                  object ...
+    instrument_serial_number  object ...
+    instrument_model          object ...
+    instrument_depth          float32 ...
+    water_depth               float32 ...
+    geographic_area           object ...
+Attributes: (12/76)
+    acknowledgement:             IOS Mooring Group
+    agency:                      IOS, Ocean Sciences Division, Sidney, B.C.
+    anchor_drop_time:            2016-07-13 20:59:00 UTC
+    anchor_release_time:         2017-05-13 23:00:00 UTC
+    anchor_type:                 2785 lbs w 2 m chain
+    comment:                     An archived raw .000 file was used to make t...
+    ...                          ...
+    geospatial_lat_units:        degrees_north
+    geospatial_lon_min:          -126.1952
+    geospatial_lon_max:          -126.1952
+    geospatial_lon_units:        degrees_east
+    geospatial_vertical_min:     -24.56
+    geospatial_vertical_max:     455.44
+[&#39;VEL_MAGNETIC_EAST&#39;, &#39;VEL_MAGNETIC_NORTH&#39;, &#39;LRZAAP01&#39;, &#39;LERRAP01&#39;, &#39;TNIHCE01&#39;, &#39;TNIHCE02&#39;, &#39;TNIHCE03&#39;, &#39;TNIHCE04&#39;, &#39;CMAGZZ01&#39;, &#39;CMAGZZ02&#39;, &#39;CMAGZZ03&#39;, &#39;CMAGZZ04&#39;, &#39;PCGDAP00&#39;, &#39;PCGDAP02&#39;, &#39;PCGDAP03&#39;, &#39;PCGDAP04&#39;, &#39;PRESPR01&#39;, &#39;latitude&#39;, &#39;longitude&#39;, &#39;PTCHGP01&#39;, &#39;HEADCM01&#39;, &#39;ROLLGP01&#39;, &#39;TEMPPR01&#39;, &#39;SVELCV01&#39;, &#39;filename&#39;, &#39;instrument_serial_number&#39;, &#39;instrument_model&#39;, &#39;instrument_depth&#39;, &#39;water_depth&#39;, &#39;geographic_area&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="fig-1-plot-with-matplotlib">
+<h2>Fig 1. Plot with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#fig-1-plot-with-matplotlib" title="Permalink to this heading">#</a></h2>
+<p>Now we’d like to take a look at the data for a single snapshot (a single time).  The example code below will choose the very first frame (where the time index is 0), and plot the latent heat flux.  Update the code in order to plot four fields (sensible, latent, shortwave and longwave).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Information and examples using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.contourf()</span></code>: <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contourf.html</a>.</p>
+<p>Scroll to the bottom of this page, and see a few examples of how to use <code class="docutils literal notranslate"><span class="pre">contourf()</span></code> and what the results can look like.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the fields</span>
+<span class="n">ncfile</span> <span class="o">=</span> <span class="n">ncnames_L1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ncfile</span> <span class="o">=</span> <span class="s1">&#39;data/a1_20160713_20170513_0480m_L1.adcp.nc&#39;</span>
+<span class="n">dest_fig</span> <span class="o">=</span> <span class="s1">&#39;figures/&#39;</span>
+<span class="n">output_files</span> <span class="o">=</span> <span class="n">plot_westcoast_nc_LX</span><span class="o">.</span><span class="n">create_westcoast_plots</span><span class="p">(</span>
+    <span class="n">ncfile</span><span class="p">,</span> <span class="n">dest_fig</span><span class="p">,</span> <span class="s2">&quot;RegOz&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-root-py"
+        },
+        kernelOptions: {
+            name: "conda-root-py",
+            path: "./computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-root-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-load-the-data">Create a notebook &amp; load the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-data">Downloading data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data-using-the-pycurrents-package">Loading the data using the pycurrents package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-out-the-datafile-that-was-created">Check out the datafile that was created</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-1-plot-with-matplotlib">Fig 1. Plot with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eleanor Frajka-Williams
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

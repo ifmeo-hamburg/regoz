@@ -1,0 +1,156 @@
+Traceback (most recent call last):
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ncnames_L0 = ADCP_processing_L0_L1.nc_create_L0_L1(in_file=f, file_meta=meta, dest_dir=dest_dir, level=0)
+ncnames_L1 = ADCP_processing_L0_L1.nc_create_L0_L1(in_file=f, file_meta=meta, dest_dir=dest_dir, level=1)
+
+------------------
+
+----- stderr -----
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lat in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item recovery_lon in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_end_indices in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:453: UserWarning: Metadata item segment_start_indices in csv file has blank value
+  warnings.warn(f'Metadata item {row[0]} in csv file has blank value', UserWarning)
+----- stderr -----
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:532: UserWarning: Workhorse ADCP identified as 75 kHz Long Ranger
+  warnings.warn('Workhorse ADCP identified as 75 kHz Long Ranger', UserWarning)
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:233: UserWarning: Difference between calculated instrument depth and metadata instrument_depth exceeds 0.05% of the total water depth
+  warnings.warn("Difference between calculated instrument depth and metadata "
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lat with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item recovery_lon with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item segment_end_indices with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+/Users/eddifying/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1278: UserWarning: Metadata item segment_start_indices with value None not supported by netCDF
+  warnings.warn(f'Metadata item {key} with value {meta_dict[key]} not supported by netCDF')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:209[0m, in [0;36mCachingFileManager._acquire_with_cache_info[0;34m(self, needs_lock)[0m
+[1;32m    208[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 209[0m     file [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_key[49m[43m][49m
+[1;32m    210[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m:
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/lru_cache.py:55[0m, in [0;36mLRUCache.__getitem__[0;34m(self, key)[0m
+[1;32m     54[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_lock:
+[0;32m---> 55[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
+[1;32m     56[0m     [38;5;28mself[39m[38;5;241m.[39m_cache[38;5;241m.[39mmove_to_end(key)
+
+[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '8c79e4b5-def8-42fa-91ae-f5b58205bdb1']
+
+During handling of the above exception, another exception occurred:
+
+[0;31mPermissionError[0m                           Traceback (most recent call last)
+Cell [0;32mIn[3], line 1[0m
+[0;32m----> 1[0m ncnames_L0 [38;5;241m=[39m [43mADCP_processing_L0_L1[49m[38;5;241;43m.[39;49m[43mnc_create_L0_L1[49m[43m([49m[43min_file[49m[38;5;241;43m=[39;49m[43mf[49m[43m,[49m[43m [49m[43mfile_meta[49m[38;5;241;43m=[39;49m[43mmeta[49m[43m,[49m[43m [49m[43mdest_dir[49m[38;5;241;43m=[39;49m[43mdest_dir[49m[43m,[49m[43m [49m[43mlevel[49m[38;5;241;43m=[39;49m[38;5;241;43m0[39;49m[43m)[49m
+[1;32m      2[0m ncnames_L1 [38;5;241m=[39m ADCP_processing_L0_L1[38;5;241m.[39mnc_create_L0_L1(in_file[38;5;241m=[39mf, file_meta[38;5;241m=[39mmeta, dest_dir[38;5;241m=[39mdest_dir, level[38;5;241m=[39m[38;5;241m1[39m)
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/pycurrents_ADCP_processing-1.0.1-py3.8.egg/pycurrents_ADCP_processing/ADCP_processing_L0_L1.py:1368[0m, in [0;36mnc_create_L0_L1[0;34m(in_file, file_meta, dest_dir, level, time_file, verbose)[0m
+[1;32m   1366[0m [38;5;28;01melse[39;00m:
+[1;32m   1367[0m     nc_names [38;5;241m=[39m [os[38;5;241m.[39mpath[38;5;241m.[39mjoin(dest_dir, out_name)]
+[0;32m-> 1368[0m     [43mout[49m[38;5;241;43m.[39;49m[43mto_netcdf[49m[43m([49m[43mnc_names[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mw[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mNETCDF4[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m   1370[0m out[38;5;241m.[39mclose()
+[1;32m   1372[0m [38;5;28;01mreturn[39;00m nc_names
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/core/dataset.py:1912[0m, in [0;36mDataset.to_netcdf[0;34m(self, path, mode, format, group, engine, encoding, unlimited_dims, compute, invalid_netcdf)[0m
+[1;32m   1909[0m     encoding [38;5;241m=[39m {}
+[1;32m   1910[0m [38;5;28;01mfrom[39;00m [38;5;21;01mxarray[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackends[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m to_netcdf
+[0;32m-> 1912[0m [38;5;28;01mreturn[39;00m [43mto_netcdf[49m[43m([49m[43m  [49m[38;5;66;43;03m# type: ignore  # mypy cannot resolve the overloads:([39;49;00m
+[1;32m   1913[0m [43m    [49m[38;5;28;43mself[39;49m[43m,[49m
+[1;32m   1914[0m [43m    [49m[43mpath[49m[43m,[49m
+[1;32m   1915[0m [43m    [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
+[1;32m   1916[0m [43m    [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;28;43mformat[39;49m[43m,[49m
+[1;32m   1917[0m [43m    [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m
+[1;32m   1918[0m [43m    [49m[43mengine[49m[38;5;241;43m=[39;49m[43mengine[49m[43m,[49m
+[1;32m   1919[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
+[1;32m   1920[0m [43m    [49m[43munlimited_dims[49m[38;5;241;43m=[39;49m[43munlimited_dims[49m[43m,[49m
+[1;32m   1921[0m [43m    [49m[43mcompute[49m[38;5;241;43m=[39;49m[43mcompute[49m[43m,[49m
+[1;32m   1922[0m [43m    [49m[43mmultifile[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m   1923[0m [43m    [49m[43minvalid_netcdf[49m[38;5;241;43m=[39;49m[43minvalid_netcdf[49m[43m,[49m
+[1;32m   1924[0m [43m[49m[43m)[49m
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/api.py:1215[0m, in [0;36mto_netcdf[0;34m(dataset, path_or_file, mode, format, group, engine, encoding, unlimited_dims, compute, multifile, invalid_netcdf)[0m
+[1;32m   1211[0m     [38;5;28;01melse[39;00m:
+[1;32m   1212[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m   1213[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124munrecognized option [39m[38;5;124m'[39m[38;5;124minvalid_netcdf[39m[38;5;124m'[39m[38;5;124m for engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m}[39;00m[38;5;124m"[39m
+[1;32m   1214[0m         )
+[0;32m-> 1215[0m store [38;5;241m=[39m [43mstore_open[49m[43m([49m[43mtarget[49m[43m,[49m[43m [49m[43mmode[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[43m,[49m[43m [49m[43mgroup[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1217[0m [38;5;28;01mif[39;00m unlimited_dims [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1218[0m     unlimited_dims [38;5;241m=[39m dataset[38;5;241m.[39mencoding[38;5;241m.[39mget([38;5;124m"[39m[38;5;124munlimited_dims[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:382[0m, in [0;36mNetCDF4DataStore.open[0;34m(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)[0m
+[1;32m    376[0m kwargs [38;5;241m=[39m [38;5;28mdict[39m(
+[1;32m    377[0m     clobber[38;5;241m=[39mclobber, diskless[38;5;241m=[39mdiskless, persist[38;5;241m=[39mpersist, [38;5;28mformat[39m[38;5;241m=[39m[38;5;28mformat[39m
+[1;32m    378[0m )
+[1;32m    379[0m manager [38;5;241m=[39m CachingFileManager(
+[1;32m    380[0m     netCDF4[38;5;241m.[39mDataset, filename, mode[38;5;241m=[39mmode, kwargs[38;5;241m=[39mkwargs
+[1;32m    381[0m )
+[0;32m--> 382[0m [38;5;28;01mreturn[39;00m [38;5;28;43mcls[39;49m[43m([49m[43mmanager[49m[43m,[49m[43m [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m[43m [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m[43m [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m)[49m
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:329[0m, in [0;36mNetCDF4DataStore.__init__[0;34m(self, manager, group, mode, lock, autoclose)[0m
+[1;32m    327[0m [38;5;28mself[39m[38;5;241m.[39m_group [38;5;241m=[39m group
+[1;32m    328[0m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m mode
+[0;32m--> 329[0m [38;5;28mself[39m[38;5;241m.[39mformat [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mds[49m[38;5;241m.[39mdata_model
+[1;32m    330[0m [38;5;28mself[39m[38;5;241m.[39m_filename [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mds[38;5;241m.[39mfilepath()
+[1;32m    331[0m [38;5;28mself[39m[38;5;241m.[39mis_remote [38;5;241m=[39m is_remote_uri([38;5;28mself[39m[38;5;241m.[39m_filename)
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:391[0m, in [0;36mNetCDF4DataStore.ds[0;34m(self)[0m
+[1;32m    389[0m [38;5;129m@property[39m
+[1;32m    390[0m [38;5;28;01mdef[39;00m [38;5;21mds[39m([38;5;28mself[39m):
+[0;32m--> 391[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire[49m[43m([49m[43m)[49m
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/netCDF4_.py:385[0m, in [0;36mNetCDF4DataStore._acquire[0;34m(self, needs_lock)[0m
+[1;32m    384[0m [38;5;28;01mdef[39;00m [38;5;21m_acquire[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
+[0;32m--> 385[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_manager[38;5;241m.[39macquire_context(needs_lock) [38;5;28;01mas[39;00m root:
+[1;32m    386[0m         ds [38;5;241m=[39m _nc4_require_group(root, [38;5;28mself[39m[38;5;241m.[39m_group, [38;5;28mself[39m[38;5;241m.[39m_mode)
+[1;32m    387[0m     [38;5;28;01mreturn[39;00m ds
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/contextlib.py:113[0m, in [0;36m_GeneratorContextManager.__enter__[0;34m(self)[0m
+[1;32m    111[0m [38;5;28;01mdel[39;00m [38;5;28mself[39m[38;5;241m.[39margs, [38;5;28mself[39m[38;5;241m.[39mkwds, [38;5;28mself[39m[38;5;241m.[39mfunc
+[1;32m    112[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 113[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mnext[39;49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mgen[49m[43m)[49m
+[1;32m    114[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+[1;32m    115[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mgenerator didn[39m[38;5;124m'[39m[38;5;124mt yield[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;28;01mNone[39;00m
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:197[0m, in [0;36mCachingFileManager.acquire_context[0;34m(self, needs_lock)[0m
+[1;32m    194[0m [38;5;129m@contextlib[39m[38;5;241m.[39mcontextmanager
+[1;32m    195[0m [38;5;28;01mdef[39;00m [38;5;21macquire_context[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
+[1;32m    196[0m [38;5;250m    [39m[38;5;124;03m"""Context manager for acquiring a file."""[39;00m
+[0;32m--> 197[0m     file, cached [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire_with_cache_info[49m[43m([49m[43mneeds_lock[49m[43m)[49m
+[1;32m    198[0m     [38;5;28;01mtry[39;00m:
+[1;32m    199[0m         [38;5;28;01myield[39;00m file
+
+File [0;32m~/micromamba/envs/seaocn_env/lib/python3.8/site-packages/xarray/backends/file_manager.py:215[0m, in [0;36mCachingFileManager._acquire_with_cache_info[0;34m(self, needs_lock)[0m
+[1;32m    213[0m     kwargs [38;5;241m=[39m kwargs[38;5;241m.[39mcopy()
+[1;32m    214[0m     kwargs[[38;5;124m"[39m[38;5;124mmode[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_mode
+[0;32m--> 215[0m file [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_opener[49m[43m([49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_args[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    216[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m==[39m [38;5;124m"[39m[38;5;124mw[39m[38;5;124m"[39m:
+[1;32m    217[0m     [38;5;66;03m# ensure file doesn't get overridden when opened again[39;00m
+[1;32m    218[0m     [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m [38;5;124m"[39m[38;5;124ma[39m[38;5;124m"[39m
+
+File [0;32msrc/netCDF4/_netCDF4.pyx:2464[0m, in [0;36mnetCDF4._netCDF4.Dataset.__init__[0;34m()[0m
+
+File [0;32msrc/netCDF4/_netCDF4.pyx:2027[0m, in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
+
+[0;31mPermissionError[0m: [Errno 13] Permission denied: '/Users/eddifying/Library/Mobile Documents/com~apple~CloudDocs/Work/oldwork3/teaching/RegOz-UHH/coursebook-regoz/regoz-cb/computing/data/a1_20160713_20170513_0480m_L0.adcp.nc'
+
