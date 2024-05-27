@@ -6,24 +6,29 @@ from datetime import date
 
 # Define index ranges and constants
 INDEX_RANGES = {
-    'date'      : (1, 7),
-    'depth'     : (9, 150),
-    'lat'       : 150,
-    'lon'       : 151,
-    'direction' : (152, 292),
-    'magnitude' : (293, 433)
+    'date'      : (2, 8),
+    'depth'     : (11, 128),
+    'lat'       : 130,
+    'lon'       : 129,
+    'direction' : (131, 247),
+    'magnitude' : (248, 364),
+    'other'     : (365, 481),
+    'dir_deg'   : (482, 598),
+    'other2'    : (599, 715),
+    'other3'    : (716, 832),
+    'other4'    : (833, 949)
 }
 
 def read_adcp_ascii_file(data_file: str, 
                          cruise: str = 'Unknown', 
                          station: str = 'Unknown', 
                          INDEX_RANGES: dict = {
-                             'date'      : (1, 7),
-                             'depth'     : (9, 150),
-                             'lat'       : 150,
-                             'lon'       : 151,
-                             'direction' : (152, 292),
-                             'magnitude' : (293, 433)
+                             'date'      : (2, 8),
+                             'depth'     : (11, 128),
+                             'lat'       : 130,
+                             'lon'       : 129,
+                             'direction' : (482, 598),
+                             'magnitude' : (599, 715)
                          
                          },
                          NAN_VALUE: int = -32768

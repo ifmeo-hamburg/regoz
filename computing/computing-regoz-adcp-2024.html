@@ -63,10 +63,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-adcp';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computing-regoz-adcp-2024';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Python - Making a map" href="computing-regoz-4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../general/schedule.html">Schedule (SuSe24)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-1.html">Python Introductory lab</a></li>
 
 
@@ -184,7 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-3.html">Python - making a <span class="math notranslate nohighlight">\(\theta\)</span>-S diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="computing-regoz-4.html">Python - Making a map</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python - Example of loading from binary ADCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computing-regoz-adcp.html">Python - Example of loading from binary ADCP</a></li>
 </ul>
 
     </div>
@@ -256,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/computing-regoz-adcp.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ifmeo-hamburg/RegOz/issues/new?title=Issue%20on%20page%20%2Fcomputing/computing-regoz-adcp-2024.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -286,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/computing/computing-regoz-adcp.ipynb" target="_blank"
+      <li><a href="../_sources/computing/computing-regoz-adcp-2024.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -437,11 +436,8 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># File paths</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/eddifying/Dropbox/data/SeePrakt-data/2023-seepraktikum/adcp-data/ascii/&#39;</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;ascii_template_20230511_002_ASC_Analyse.TXT&#39;</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">file_path</span> <span class="o">+</span> <span class="n">filename</span>
-
-<span class="c1"># Note that your ASCII file may be a different format, depending on how you set up the export.  </span>
-<span class="c1"># To try to figure it out (unless someone saved the configuration), try</span>
-<span class="c1"># filename=&#39;uhh_sp_2024_003_ASC.TXT&#39;</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/eddifying/Dropbox/Public/uhh-teaching/Seepraktikum_2024/&#39;</span>
+<span class="n">filename</span><span class="o">=</span><span class="s1">&#39;uhh_sp_2024_003_ASC.TXT&#39;</span>
 <span class="c1"># Open the *.txt file in excel</span>
 <span class="c1"># Select one row and copy this</span>
 <span class="c1"># Paste this row into a new excel spreadsheet</span>
@@ -450,43 +446,167 @@ document.write(`
 <span class="c1"># Figure out where the depth values start and end.  It&#39;ll start with 0, have a blank until about 2.5 m, then increment every 0.5m until around 60m</span>
 <span class="c1"># Direction will be as long as depth (and range from 0-360), but only the first few values will be valid (thereafter -32768)</span>
 <span class="c1"># Magnitude is similar</span>
-
-
+<span class="n">fname</span> <span class="o">=</span> <span class="n">file_path</span> <span class="o">+</span> <span class="n">filename</span>
 <span class="c1"># Define index ranges and constants</span>
 <span class="n">INDEX_RANGES</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;date&#39;</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
-    <span class="s1">&#39;depth&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
-    <span class="s1">&#39;lat&#39;</span>       <span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
-    <span class="s1">&#39;lon&#39;</span>       <span class="p">:</span> <span class="mi">151</span><span class="p">,</span>
-    <span class="s1">&#39;direction&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">152</span><span class="p">,</span> <span class="mi">292</span><span class="p">),</span>
-    <span class="s1">&#39;magnitude&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">293</span><span class="p">,</span> <span class="mi">433</span><span class="p">)</span>
+    <span class="s1">&#39;date&#39;</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="s1">&#39;depth&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>
+    <span class="s1">&#39;lat&#39;</span>       <span class="p">:</span> <span class="mi">130</span><span class="p">,</span>
+    <span class="s1">&#39;lon&#39;</span>       <span class="p">:</span> <span class="mi">129</span><span class="p">,</span>
+    <span class="s1">&#39;dir0&#39;</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">131</span><span class="p">,</span> <span class="mi">247</span><span class="p">),</span>
+    <span class="s1">&#39;other2&#39;</span>    <span class="p">:</span> <span class="p">(</span><span class="mi">248</span><span class="p">,</span> <span class="mi">364</span><span class="p">),</span>
+    <span class="s1">&#39;other&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="mi">365</span><span class="p">,</span> <span class="mi">481</span><span class="p">),</span>
+    <span class="s1">&#39;direction&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">482</span><span class="p">,</span> <span class="mi">598</span><span class="p">),</span>
+    <span class="s1">&#39;magnitude&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">599</span><span class="p">,</span> <span class="mi">715</span><span class="p">),</span>
+    <span class="s1">&#39;other3&#39;</span>    <span class="p">:</span> <span class="p">(</span><span class="mi">716</span><span class="p">,</span> <span class="mi">832</span><span class="p">),</span>
+    <span class="s1">&#39;other4&#39;</span>    <span class="p">:</span> <span class="p">(</span><span class="mi">833</span><span class="p">,</span> <span class="mi">949</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1"># Define NaN value</span>
 <span class="n">NAN_VALUE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">32768</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">read_adcp_ascii_file</span><span class="p">(</span> <span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;UHH Sea Practical 2023&#39;</span><span class="p">,</span> <span class="s1">&#39;stnx&#39;</span><span class="p">,</span> <span class="n">INDEX_RANGES</span><span class="p">,</span> <span class="n">NAN_VALUE</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">read_adcp_ascii_file</span><span class="p">(</span> <span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;UHH Sea Practical 2024&#39;</span><span class="p">,</span> <span class="s1">&#39;stnx&#39;</span><span class="p">,</span> <span class="n">INDEX_RANGES</span><span class="p">,</span> <span class="n">NAN_VALUE</span><span class="p">)</span>
 
 <span class="n">ds</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="s1">&#39;cruise&#39;</span><span class="p">)</span>
 <span class="n">ds</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="s1">&#39;station&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">magnitude</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
-Dimensions:    (time: 15440, depth: 140)
+Dimensions:    (time: 4002, depth: 116)
 Coordinates:
-  * time       (time) datetime64[ns] 2023-05-11T06:23:45 ... 2023-05-11T13:38:37
-  * depth      (depth) float64 2.45 2.95 3.45 3.95 ... 70.45 70.95 71.45 71.95
+  * time       (time) datetime64[ns] 2024-05-26T13:23:54 ... 2024-05-26T15:02:02
+  * depth      (depth) float64 0.0 2.55 3.05 3.55 ... 58.05 58.55 59.05 59.55
 Data variables:
-    direction  (time, depth) float64 135.4 339.8 300.9 203.1 ... nan nan nan nan
-    magnitude  (time, depth) float64 0.231 0.149 0.084 0.158 ... nan nan nan nan
-    longitude  (time) float64 8.154 8.154 8.154 8.154 ... 8.16 8.16 8.16 8.16
-    latitude   (time) float64 53.51 53.51 53.51 53.51 ... 53.52 53.52 53.52
+    direction  (time, depth) float64 279.5 288.8 267.2 272.0 ... nan nan nan nan
+    magnitude  (time, depth) float64 0.327 0.23 0.286 0.529 ... nan nan nan nan
+    longitude  (time) float64 8.567 8.568 8.568 8.568 ... 8.859 8.859 8.859
+    latitude   (time) float64 54.11 54.11 54.11 54.11 ... 54.12 54.12 54.12
 </pre></div>
 </div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x161711d90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x161711c70&gt;,
+ &lt;matplotlib.lines.Line2D at 0x161711ca0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe5ee50&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe5ef40&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b070&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b160&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b250&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b340&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b430&gt;,
+ &lt;matplotlib.lines.Line2D at 0x161711dc0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b520&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b610&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b7c0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b8b0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3b9a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3ba90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3bb80&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3bc70&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3bd60&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3be50&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe3bf40&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48070&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48160&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48250&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48340&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48430&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48520&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48610&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48700&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe487f0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe488e0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe489d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48ac0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48bb0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48ca0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48d90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48e80&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe48f70&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe560a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56190&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56280&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56370&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56460&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56550&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56640&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56730&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56820&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56910&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56a00&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56af0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56be0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56cd0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56dc0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56eb0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x15fe56fa0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c20d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c21c0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c22b0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c23a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2490&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2580&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2670&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2760&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2850&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2940&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2a30&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2b20&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2c10&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2d00&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2df0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2ee0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617c2fd0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8100&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d81f0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d82e0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d83d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d84c0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d85b0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d86a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8790&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8880&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8970&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8a60&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8b50&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8c40&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8d30&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8e20&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617d8f10&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad040&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad130&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad220&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad310&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad400&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad4f0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad5e0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad6d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad7c0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad8b0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ad9a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ada90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617adb80&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617adc70&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617add60&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617ade50&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617adf40&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df070&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df160&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df250&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df340&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df430&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df520&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df610&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df700&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df7f0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x1617df8e0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/c771306f21444caf9357662bd1671e619c76ba10254716f715b4472496311eed.png" src="../_images/c771306f21444caf9357662bd1671e619c76ba10254716f715b4472496311eed.png" />
 </div>
 </div>
 <section id="take-a-look-at-the-data">
@@ -503,10 +623,10 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Velocity magnitude vector is (15440, 140)
-Time vector is (15440,)
-Depth vector is (140,)
-Time interval in seconds is 1.690005829
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Velocity magnitude vector is (4002, 116)
+Time vector is (4002,)
+Depth vector is (116,)
+Time interval in seconds is 1.471632091
 </pre></div>
 </div>
 </div>
@@ -534,8 +654,8 @@ Time interval in seconds is 1.690005829
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>178.0
-Using a filter window length of NN=178.0 to make 5-minute averages
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>204.0
+Using a filter window length of NN=204.0 to make 5-minute averages
 </pre></div>
 </div>
 </div>
@@ -569,10 +689,10 @@ Using a filter window length of NN=178.0 to make 5-minute averages
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x156a87190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x161988700&gt;
 </pre></div>
 </div>
-<img alt="../_images/8b05d734ddb422ffebad46c77ff77511e1e9be19e05f2bad0c71ebcfc3ead33c.png" src="../_images/8b05d734ddb422ffebad46c77ff77511e1e9be19e05f2bad0c71ebcfc3ead33c.png" />
+<img alt="../_images/9ebfbe496bf390e8b42d575c35b3acd68b29ba37f1b860895addcc6c7143ee7d.png" src="../_images/9ebfbe496bf390e8b42d575c35b3acd68b29ba37f1b860895addcc6c7143ee7d.png" />
 </div>
 </div>
 </section>
@@ -626,7 +746,7 @@ Using a filter window length of NN=178.0 to make 5-minute averages
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Latitude&#39;)
 </pre></div>
 </div>
-<img alt="../_images/2b19eed239a7efd67b9333de50cdcfdd26d4ca12d4db15ff45b872fb0cc3ceb1.png" src="../_images/2b19eed239a7efd67b9333de50cdcfdd26d4ca12d4db15ff45b872fb0cc3ceb1.png" />
+<img alt="../_images/47c5696e138a03db7e3c7bac77d2115339d6aa8673f0a1651400ce1d16695e8b.png" src="../_images/47c5696e138a03db7e3c7bac77d2115339d6aa8673f0a1651400ce1d16695e8b.png" />
 </div>
 </div>
 </section>
@@ -642,9 +762,9 @@ Using a filter window length of NN=178.0 to make 5-minute averages
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(140,)
-(88,)
-(88, 140)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(116,)
+(21,)
+(21, 116)
 </pre></div>
 </div>
 </div>
@@ -698,7 +818,7 @@ Using a filter window length of NN=178.0 to make 5-minute averages
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1e08187b710ae0829e728fc7b66ea1fecd33503e8110a827f3870647949d261b.png" src="../_images/1e08187b710ae0829e728fc7b66ea1fecd33503e8110a827f3870647949d261b.png" />
+<img alt="../_images/2161ff35762327cdd1686039049917dcf274949dca160fa260a1eabca4061538.png" src="../_images/2161ff35762327cdd1686039049917dcf274949dca160fa260a1eabca4061538.png" />
 </div>
 </div>
 </section>
@@ -778,7 +898,7 @@ Defined this way, the directions are 0 points east, and degrees increment in the
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/be775d8555c2e342307350391d8378f4006147c51434e015193dfff66b7831d6.png" src="../_images/be775d8555c2e342307350391d8378f4006147c51434e015193dfff66b7831d6.png" />
+<img alt="../_images/0acae53084def033a39e958ed72634d79dd312da6c6e22494f88979a579b2263.png" src="../_images/0acae53084def033a39e958ed72634d79dd312da6c6e22494f88979a579b2263.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -859,7 +979,7 @@ Defined this way, the directions are 0 points east, and degrees increment in the
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0543c3e2b4b6582c57625637dbfe856b0e43312ad15cbd4ab5ec4f2daff23f34.png" src="../_images/0543c3e2b4b6582c57625637dbfe856b0e43312ad15cbd4ab5ec4f2daff23f34.png" />
+<img alt="../_images/2c20483e9c489947bb1479ea76c3f32fa63cf5c2bedc8d153375748f72185f7e.png" src="../_images/2c20483e9c489947bb1479ea76c3f32fa63cf5c2bedc8d153375748f72185f7e.png" />
 </div>
 </div>
 </section>
@@ -895,15 +1015,6 @@ Defined this way, the directions are 0 points east, and degrees increment in the
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="computing-regoz-4.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python - Making a map</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
